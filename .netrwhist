@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/usr/local/man'
+let g:netrw_dirhist_2='/home/sergio/myreadline/include'
+let g:netrw_dirhist_3='/home/sergio/gap'
+let g:netrw_dirhist_4='/home/sergio/.kde4/cache-maurice'
+let g:netrw_dirhist_5='/home/sergio/.kde4/socket-maurice'
