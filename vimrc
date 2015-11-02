@@ -15,6 +15,12 @@
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
  
+"------------------------------------------------------------
+" Pathogen settings
+" execute pathogen#infect() # from vim.org/scripts
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -159,3 +165,5 @@ nnoremap <C-L> :nohl<CR><C-L>
 "------------------------------------------------------------
 " Viminfo
 " set viminfo='100,<50,s10,h
+
+
