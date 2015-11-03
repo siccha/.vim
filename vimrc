@@ -166,6 +166,4 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Viminfo
 " set viminfo='100,<50,s10,h
 
-"------------------------------------------------------------
-" Aliases
-command PL !pdflatex %; pdflatex %;
+
