@@ -19,7 +19,7 @@ set nocompatible
 " Pathogen settings
 " execute pathogen#infect() # from vim.org/scripts
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" call pathogen#helptags()
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
