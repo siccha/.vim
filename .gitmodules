@@ -10,3 +10,6 @@
 [submodule "bundle/vimtex"]
 	path = bundle/vimtex
 	url = https://github.com/lervag/vimtex
+[submodule "bundle/nerdtree-git-plugin"]
+	path = bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
