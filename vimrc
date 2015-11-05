@@ -17,8 +17,8 @@ set nocompatible
  
 "------------------------------------------------------------
 " Pathogen settings
-" execute pathogen#infect() # from vim.org/scripts
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect() 
+" call pathogen#runtime_append_all_bundles() # deprecated
 " call pathogen#helptags()
 
 " Attempt to determine the type of a file based on its name and possibly its
@@ -148,7 +148,14 @@ set expandtab
 "set shiftwidth=4
 "set tabstop=4
  
- 
+
+"------------------------------------------------------------
+" Startup
+" 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+
 "------------------------------------------------------------
 " Mappings {{{1
 "
@@ -161,11 +168,15 @@ set expandtab
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+map <C-n> :NERDTreeToggle<CR>
  
+
 "------------------------------------------------------------
 " Viminfo
 " set viminfo='100,<50,s10,h
 
+
 "------------------------------------------------------------
 " Aliases
 command PL !pdflatex %; pdflatex %;
+
