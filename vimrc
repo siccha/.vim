@@ -171,7 +171,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 map <C-n> :NERDTreeToggle<CR>
- 
+nmap <F8> :TagbarToggle<CR> 
+" map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
 
 "------------------------------------------------------------
 " Viminfo
