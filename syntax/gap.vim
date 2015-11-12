@@ -143,8 +143,8 @@ let b:current_syntax = "gap"
 
 " some macros for editing GAP files (adjust as you like)
 " This adds word under cursor to local variables list.
-map <F4> miviwy?\<local\><CR>/;<CR>i, <ESC>p`i
-map! <F4> <ESC>miviwy?\<local\><CR>/;<CR>i, <ESC>p`ia
+" map <F4> miviwy?\<local\><CR>/;<CR>i, <ESC>p`i
+" map! <F4> <ESC>miviwy?\<local\><CR>/;<CR>i, <ESC>p`ia
 
 " for word completion, fall back to list of GAP global variable names
 " (after loading your favourite packages in GAP say:
@@ -164,8 +164,8 @@ func! ToggleCommentGAP()
   call setline(".", l)
 endfunc
 " I put it on F12, adjust as you like
-map <F12> :call ToggleCommentGAP()<CR>j
-map! <F12> <ESC>:call ToggleCommentGAP()<CR>ji
+" map <F12> :call ToggleCommentGAP()<CR>j
+" map! <F12> <ESC>:call ToggleCommentGAP()<CR>ji
 
 
 " function for nice indenting after line breaks (bound to <C-J>)
@@ -211,7 +211,7 @@ func! GAPnl()
 endfunc
 
 " call GAPnl, goto end of next line and in append mode
-map! <C-J> <ESC>:call GAPnl()<CR>j$a
+" map! <C-J> <ESC>:call GAPnl()<CR>j$a
 
 " position count from 0 here
 " (we assume that pos is after the begin delimiter b to match)
@@ -338,14 +338,14 @@ function! GAPlocal()
   return
 endfunction
 
-" I map it on F5
-map! <F5> <ESC>:call GAPlocal()<CR>i
-map <F5> :call GAPlocal()<CR>
-
-" very personal, for adding GAPDoc XML code in comments in GAP file
-vmap <ESC>}F14 y:n bla.xml<CR>Gp:.,$ s/##  \(.*\)/\1/<CR>i
-map <ESC>}F15 :n bla.xml<CR>:1,$ s/\(.*\)/##  \1/<CR>1GVGyu<C-^>gpi
-map! <ESC>}F15 <ESC>:n bla.xml<CR>:1,$ s/\(.*\)/##  \1/<CR>1GVGyu<C-^>gpi
-vmap <ESC>}F22 !(mv -f bla.xml bla1.xml; sed -e "s/^\#\#  \(.*\)/\1/" >bla.xml;xterm -e vim bla.xml ;sed -e "s/\(.*\)/\#\#  \1/" bla.xml)<CR><CR>
-
+" " I map it on F5
+" map! <F5> <ESC>:call GAPlocal()<CR>i
+" map <F5> :call GAPlocal()<CR>
+" 
+" " very personal, for adding GAPDoc XML code in comments in GAP file
+" vmap <ESC>}F14 y:n bla.xml<CR>Gp:.,$ s/##  \(.*\)/\1/<CR>i
+" map <ESC>}F15 :n bla.xml<CR>:1,$ s/\(.*\)/##  \1/<CR>1GVGyu<C-^>gpi
+" map! <ESC>}F15 <ESC>:n bla.xml<CR>:1,$ s/\(.*\)/##  \1/<CR>1GVGyu<C-^>gpi
+" vmap <ESC>}F22 !(mv -f bla.xml bla1.xml; sed -e "s/^\#\#  \(.*\)/\1/" >bla.xml;xterm -e vim bla.xml ;sed -e "s/\(.*\)/\#\#  \1/" bla.xml)<CR><CR>
+" 
 " vim: ts=2
