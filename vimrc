@@ -19,7 +19,7 @@ set nocompatible
 " Pathogen settings
 "
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['supertab']
+let g:pathogen_disabled = ['supertab', 'vim-snippets']
 
 execute pathogen#infect() 
 " call pathogen#runtime_append_all_bundles() # deprecated
@@ -152,6 +152,9 @@ set expandtab
 "set shiftwidth=4
 "set tabstop=4
  
+"------------------------------------------------------------
+" Disable plaintex and context filetypes for *.tex files
+let g:tex_flavor = "latex"
 
 "------------------------------------------------------------
 " Auto Commands
@@ -166,11 +169,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " UltiSnips configuration 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<C-j>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 
 " If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit="horizontal"
 
 "------------------------------------------------------------
 " Mappings {{{1
