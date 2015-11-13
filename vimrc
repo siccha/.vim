@@ -19,7 +19,7 @@ set nocompatible
 " Pathogen settings
 "
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['supertab', 'vim-snippets']
+let g:pathogen_disabled = ['supertab', 'vim-snippets', 'vim-autoclose']
 
 execute pathogen#infect() 
 " call pathogen#runtime_append_all_bundles() # deprecated
@@ -168,7 +168,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "------------------------------------------------------------
 " UltiSnips configuration 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
