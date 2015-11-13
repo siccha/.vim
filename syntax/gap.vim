@@ -162,10 +162,11 @@ func! ToggleCommentGAP()
     let l = "##  " . l
   endif
   call setline(".", l)
+  normal! k
 endfunc
 " I put it on F12, adjust as you like
-" map  <C-m> :call ToggleCommentGAP()<CR>j
-" map! <C-m> <ESC>:call ToggleCommentGAP()<CR>ji
+map  <C-q> :call ToggleCommentGAP()<CR>j
+map! <C-q> <ESC>:call ToggleCommentGAP()<CR>ji
 
 
 " function for nice indenting after line breaks (bound to <C-J>)
