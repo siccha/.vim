@@ -164,8 +164,8 @@ func! ToggleCommentGAP()
   call setline(".", l)
 endfunc
 " I put it on F12, adjust as you like
-" map <F12> :call ToggleCommentGAP()<CR>j
-" map! <F12> <ESC>:call ToggleCommentGAP()<CR>ji
+map  <C-c> :call ToggleCommentGAP()<CR>j
+map! <C-c> <ESC>:call ToggleCommentGAP()<CR>ji
 
 
 " function for nice indenting after line breaks (bound to <C-J>)
