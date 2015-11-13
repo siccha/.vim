@@ -1,0 +1,30 @@
+global !p
+def extractParams(t):
+  if t:
+    t = t.split(', ')
+  return t
+endglobal
+
+global !p
+def paramsToComs(t):
+  if t:
+    t = extractParams(t)
+    t = [ ("#   " + m + " - \n") for m in t ]	# prepend '#' and append newline
+    t = "".join(t)
+    t = t[:len(t)-2]				# remove last newline
+  return t
+endglobal
+
+snippet f "Insert gap function block" b
+###############################
+# function $1
+# Input:
+`!p snip.rv = paramsToComs(t[2])`
+#
+# Output:
+#   ${3:return values}
+###############################
+${1:${VISUAL:name}} := function(${2:param})
+$0
+end;
+endsnippet
