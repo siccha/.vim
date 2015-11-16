@@ -29,6 +29,7 @@ execute pathogen#infect()
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
+set modeline
  
 " Enable syntax highlighting
 syntax on
