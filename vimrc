@@ -192,6 +192,8 @@ let g:UltiSnipsEditSplit="horizontal"
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 map <C-n> :NERDTreeToggle<CR>
+" set wd of current split/tab to this file's dir
+map <C-d> :lcd %:h<CR>
 nmap <F8> :TagbarToggle<CR> 
 " map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
 
