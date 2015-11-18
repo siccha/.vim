@@ -197,6 +197,11 @@ map <C-d> :lcd %:h<CR>
 map <leader>u :b#<CR>
 
 "------------------------------------------------------------
+" command abbreviations (renamings) {{{1
+cabbrev GW Gw
+ca GWQ Gwq
+
+"------------------------------------------------------------
 " Viminfo
 " set viminfo='100,<50,s10,h
 
