@@ -184,19 +184,17 @@ let g:UltiSnipsEditSplit="horizontal"
 "
 " Useful mappings
  
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-" map Y y$
- 
+let mapleader=" "
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
-let mapleader=" "
 nnoremap <C-L> :nohl<CR><C-L>
 map <C-n> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR> 
 " set wd of current split/tab to this file's dir
 map <C-d> :lcd %:h<CR>
-nmap <F8> :TagbarToggle<CR> 
 " map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
+" go to last buffer
+map <leader>u :b#<CR>
 
 "------------------------------------------------------------
 " Viminfo
