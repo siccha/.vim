@@ -190,6 +190,7 @@ let g:UltiSnipsEditSplit="horizontal"
  
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
+let mapleader=" "
 nnoremap <C-L> :nohl<CR><C-L>
 map <C-n> :NERDTreeToggle<CR>
 " set wd of current split/tab to this file's dir
