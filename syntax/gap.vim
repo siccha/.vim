@@ -341,7 +341,7 @@ endfunction
 
 " " I map it on F5
 " map! <F5> <ESC>:call GAPlocal()<CR>i
-" map <F5> :call GAPlocal()<CR>
+ map <F5> :call GAPlocal()<CR>
 " 
 " " very personal, for adding GAPDoc XML code in comments in GAP file
 " vmap <ESC>}F14 y:n bla.xml<CR>Gp:.,$ s/##  \(.*\)/\1/<CR>i
