@@ -195,11 +195,13 @@ map <C-d> :lcd %:h<CR>
 " map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
 " go to last buffer
 map <leader>u :b#<CR>
+map <leader>f :/Install\w*(\s*
 
 "------------------------------------------------------------
 " command abbreviations (renamings) {{{1
 cabbrev GW Gw
 ca GWQ Gwq
+
 
 "------------------------------------------------------------
 " Viminfo
