@@ -5,4 +5,5 @@ endif
 augroup filetypedetect
   au! BufRead,BufNewFile *.g         setfiletype gap
   au! BufRead,BufNewFile *.gi        setfiletype gap
+  au! BufRead,BufNewFile *.gd        setfiletype gap
 augroup END
