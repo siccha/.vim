@@ -202,12 +202,6 @@ map <leader>f :/Install\w*(\s*
 cabbrev GW Gw
 ca GWQ Gwq
 
-
-"------------------------------------------------------------
-" Viminfo
-" set viminfo='100,<50,s10,h
-
-
 "------------------------------------------------------------
 " Aliases
 command PL !pdflatex %; pdflatex %;
