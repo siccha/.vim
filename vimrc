@@ -195,7 +195,12 @@ map <C-d> :lcd %:h<CR>
 " map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
 " go to last buffer
 map <leader>u :b#<CR>
+" find InstallMethod, Install... in file
 map <leader>f :/Install\w*(\s*
+" go to previous local definition
+map <leader>l :?local<CR><C-L>
+" toggle paste mode
+map <leader>p :set paste!
 
 "------------------------------------------------------------
 " command abbreviations (renamings) {{{1
