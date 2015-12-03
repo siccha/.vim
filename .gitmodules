@@ -31,3 +31,6 @@
 [submodule "bundle/CamelCaseMotion"]
 	path = bundle/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion
+[submodule "bundle/securemodelines"]
+	path = bundle/securemodelines
+	url = https://github.com/ciaranm/securemodelines

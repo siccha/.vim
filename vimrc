@@ -15,6 +15,7 @@
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
  
+
 "------------------------------------------------------------
 " Pathogen settings
 "
@@ -29,7 +30,6 @@ execute pathogen#infect()
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
-set modeline
  
 " Enable syntax highlighting
 syntax on
@@ -71,11 +71,12 @@ set showcmd
 " mapping of <C-L> below)
 set hlsearch
  
+" Using the securemodelines script
 " Modelines have historically been a source of security vulnerabilities. As
 " such, it may be a good idea to disable them and use the securemodelines
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-set nomodeline
- 
+" set nomodeline
+
  
 "------------------------------------------------------------
 " Usability options {{{1
@@ -133,11 +134,11 @@ set number
  
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
- 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<S-F11>
- 
- 
+
+" Keep 5 lines above and below cursor on screen:
+set scrolloff=5
+
+
 "------------------------------------------------------------
 " Indentation options {{{1
 "
@@ -153,10 +154,12 @@ set expandtab
 " four characters wide.
 "set shiftwidth=4
 "set tabstop=4
- 
+
+
 "------------------------------------------------------------
 " Disable plaintex and context filetypes for *.tex files
 let g:tex_flavor = "latex"
+
 
 "------------------------------------------------------------
 " Auto Commands
@@ -166,6 +169,16 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if NERDTree is only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" delimitMate: Insert ";" at EOL for C and GAP files
+au FileType c,gap let b:delimitMate_insert_eol_marker = 1
+au FileType c,gap let b:delimitMate_eol_marker = ";"
+
+
+"------------------------------------------------------------
+" delimitMate configuration
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 1
 
 "------------------------------------------------------------
 " UltiSnips configuration 
@@ -178,6 +191,7 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
+
 
 "------------------------------------------------------------
 " Mappings {{{1
@@ -200,14 +214,9 @@ map <leader>f :/Install\w*(\s*
 " go to previous local definition
 map <leader>l :?local<CR><C-L>
 " toggle paste mode
-map <leader>p :set paste!
+map <leader>p :set paste!<CR>
 
 "------------------------------------------------------------
 " command abbreviations (renamings) {{{1
 cabbrev GW Gw
 ca GWQ Gwq
-
-"------------------------------------------------------------
-" Aliases
-command PL !pdflatex %; pdflatex %;
-
