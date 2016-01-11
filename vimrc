@@ -8,29 +8,37 @@
 "------------------------------------------------------------
 " Features {{{1
 "
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
  
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
  
+" some Linux distros have filetype on in the system vimrc
+" turn filetype detection off and, even if it's not strictly
+" necessary, disable loading of indent scripts and filetype plugins
+filetype off
+filetype plugin indent off
+
 
 "------------------------------------------------------------
 " Pathogen settings
 "
+
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = ['supertab', 'vim-snippets', 'vim-autoclose']
 
 execute pathogen#infect() 
 " call pathogen#runtime_append_all_bundles() # deprecated
-" call pathogen#helptags()
+" call pathogen#helptags() " too crazy
+" set rtp+=~/.vim/bundle/YouCompleteMe
+" runtime plugin/youcompleteme.vim
 
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
  
+
 " Enable syntax highlighting
 syntax on
  
