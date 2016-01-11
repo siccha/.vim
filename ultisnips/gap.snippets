@@ -42,10 +42,11 @@ snippet f "Insert gap function block" b
 `!p snip.rv = paramsToComs(t[2])`
 #
 # Output:
-#   ${3:RETURN VALUES}
+#   $3
 ###############################
 ${1:${VISUAL:NAME}} := function( ${2:PARAM} )
-$0
+$4
+  return ${3:RETURN VALUE}
 end;
 endsnippet
 
@@ -63,7 +64,7 @@ snippet insm "Insert InstallMethod block" b
 InstallMethod( ${1:${VISUAL:NAME}}, ${2:DESCRIPTION},
 [ ${3:FILTERS} ],
 function( ${4:PARAM} )
-$0
+$6
   return ${5:RETURN VALUES}
 end );
 endsnippet
