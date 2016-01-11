@@ -85,7 +85,7 @@ set hlsearch
 " script, <http://www.vim.org/scripts/script.php?script_id=1876>.
 " set nomodeline
 
- 
+
 "------------------------------------------------------------
 " Usability options {{{1
 "
@@ -142,10 +142,10 @@ set number
  
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
-
+ 
 " Keep 5 lines above and below cursor on screen:
 set scrolloff=5
-
+ 
 "" Highlight current line:
 "hi CursorLine term=none cterm=none ctermbg=16 ctermfg=none
 "hi CursorColumn term=none cterm=none ctermbg=16 ctermfg=none
@@ -179,23 +179,15 @@ let g:tex_flavor = "latex"
 
 
 "------------------------------------------------------------
-" Auto Commands
-" 
-" Open NERDTree if no args
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Close vim if NERDTree is only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" delimitMate: Insert ";" at EOL for C and GAP files
-au FileType c,gap let b:delimitMate_insert_eol_marker = 1
-au FileType c,gap let b:delimitMate_eol_marker = ";"
-
+" YouCompleteMe configuration
+let g:ycm_seed_identifiers_with_syntax = 1
+" TODO: add GAPWORDS to ycm identifier list (sergio / Mo 11 Jan 2016 17:20:07 CET)
 
 "------------------------------------------------------------
 " delimitMate configuration
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
+
 
 "------------------------------------------------------------
 " UltiSnips configuration 
@@ -205,13 +197,23 @@ let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
-
+ 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
+
 "------------------------------------------------------------
-" YouCompleteMe configuration
-let g:ycm_seed_identifiers_with_syntax = 1
+" Auto Commands
+" 
+" Open NERDTree if no args
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Close vim if NERDTree is only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+ 
+" delimitMate: Insert ";" at EOL for C and GAP files
+au FileType c,gap let b:delimitMate_insert_eol_marker = 1
+au FileType c,gap let b:delimitMate_eol_marker = ";"
 
 
 "------------------------------------------------------------
