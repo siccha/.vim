@@ -146,6 +146,15 @@ set notimeout ttimeout ttimeoutlen=200
 " Keep 5 lines above and below cursor on screen:
 set scrolloff=5
 
+"" Highlight current line:
+"hi CursorLine term=none cterm=none ctermbg=16 ctermfg=none
+"hi CursorColumn term=none cterm=none ctermbg=16 ctermfg=none
+"" but only if the cursor does not move:
+"autocmd CursorHold,CursorHoldI * set cursorline
+"autocmd CursorMoved,CursorMovedI * set nocursorline
+"autocmd CursorHold,CursorHoldI * set cursorcolumn
+"autocmd CursorMoved,CursorMovedI * set nocursorcolumn
+
 
 "------------------------------------------------------------
 " Indentation options {{{1
