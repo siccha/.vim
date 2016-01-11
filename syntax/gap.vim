@@ -164,10 +164,6 @@ func! ToggleCommentGAP()
   call setline(".", l)
   normal! k
 endfunc
-" I put it on F12, adjust as you like
-map  <C-q> :call ToggleCommentGAP()<CR>j
-map! <C-q> <ESC>:call ToggleCommentGAP()<CR>ji
-
 
 " function for nice indenting after line breaks (bound to <C-J>)
 
@@ -339,14 +335,16 @@ function! GAPlocal()
   return
 endfunction
 
-" " I map it on F5
-" map! <F5> <ESC>:call GAPlocal()<CR>i
- map <F5> :call GAPlocal()<CR>
 " 
 " " very personal, for adding GAPDoc XML code in comments in GAP file
 " vmap <ESC>}F14 y:n bla.xml<CR>Gp:.,$ s/##  \(.*\)/\1/<CR>i
 " map <ESC>}F15 :n bla.xml<CR>:1,$ s/\(.*\)/##  \1/<CR>1GVGyu<C-^>gpi
 " map! <ESC>}F15 <ESC>:n bla.xml<CR>:1,$ s/\(.*\)/##  \1/<CR>1GVGyu<C-^>gpi
 " vmap <ESC>}F22 !(mv -f bla.xml bla1.xml; sed -e "s/^\#\#  \(.*\)/\1/" >bla.xml;xterm -e vim bla.xml ;sed -e "s/\(.*\)/\#\#  \1/" bla.xml)<CR><CR>
-" 
-" vim: ts=2
+
+
+map  <C-c> :call ToggleCommentGAP()<CR>j
+map! <C-c> <ESC>:call ToggleCommentGAP()<CR>ji
+
+" map! <F5> <ESC>:call GAPlocal()<CR>i
+ map <F5> :call GAPlocal()<CR>
