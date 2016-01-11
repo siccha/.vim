@@ -209,31 +209,55 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
+"------------------------------------------------------------
+" YouCompleteMe configuration
+let g:ycm_seed_identifiers_with_syntax = 1
+
 
 "------------------------------------------------------------
 " Mappings {{{1
 "
 " Useful mappings
- 
-let mapleader=" "
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
 map <C-n> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR> 
-" set wd of current split/tab to this file's dir
-map <C-d> :lcd %:h<CR>
-" map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
+map <C-q> <C-W>k
+map <C-e> <C-W>j
+map <F5> :call GAPlocal()<CR>
+
+" leader maps
+let mapleader=" "
+" <leader> w, e, b used by CamelCaseMotion
+"
+" Buffer mappings
 " go to last buffer
+map <leader>g :b<space>
 map <leader>u :b#<CR>
+map <leader>j :bnext<CR>
+map <leader>k :bprev<CR>
+map <leader>l :buffers<CR>
+
 " find InstallMethod, Install... in file
 map <leader>f :/Install\w*(\s*
 " go to previous local definition
-map <leader>l :?local<CR><C-L>
+map <leader>o :?local<CR><C-L>
 " toggle paste mode
 map <leader>p :set paste!<CR>
+
+
+" unused maps
+nmap <F8> :TagbarToggle<CR>
+" set wd of current split/tab to this file's dir
+map <C-d> :lcd %:h<CR>
+" map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
+
+
+" TODO: restrict GapComment, GapLocal to gap-files (sergio / Fr 04 Dez 2015 11:49:08 UTC)
+
 
 "------------------------------------------------------------
 " command abbreviations (renamings) {{{1
 cabbrev GW Gw
 ca GWQ Gwq
+ca QA qa
