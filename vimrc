@@ -5,10 +5,6 @@
 "              If you're a more advanced user, building your own .vimrc based
 "              on this file is still a good idea.
  
-"------------------------------------------------------------
-" Features {{{1
-"
- 
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
@@ -23,7 +19,6 @@ filetype plugin indent off
 "------------------------------------------------------------
 " Pathogen settings
 "
- 
 " To disable a plugin, add it's bundle name to the following list
 let g:pathogen_disabled = ['supertab', 'vim-snippets', 'vim-autoclose']
  
