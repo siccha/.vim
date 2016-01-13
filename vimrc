@@ -227,6 +227,7 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-q> <C-W>k
 map <C-e> <C-W>j
 map <F5> :call GAPlocal()<CR>
+" TODO: add scroll hkeys like C-B and C-D (sergio / Mi 13 Jan 2016 10:46:33 CET)
 
 " leader maps
 let mapleader=" "
