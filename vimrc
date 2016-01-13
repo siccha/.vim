@@ -17,12 +17,41 @@ filetype plugin indent off
 
 
 "------------------------------------------------------------
+" vim-plug settings
+" make sure you use single quotes
+call plug#begin()
+
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'bkad/CamelCaseMotion'
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ciaranm/securemodelines'
+Plug 'majutsushi/tagbar'
+Plug 'SirVer/ultisnips'
+
+" Add plugins to &runtimepath
+plug#end()
+
+
+"------------------------------------------------------------
 " Pathogen settings
 "
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['supertab', 'vim-snippets', 'vim-autoclose']
+" let g:pathogen_disabled = ['supertab']
  
-execute pathogen#infect() 
+" execute pathogen#infect() 
 " call pathogen#runtime_append_all_bundles() # deprecated
 " call pathogen#helptags() " too crazy
 " set rtp+=~/.vim/bundle/YouCompleteMe
