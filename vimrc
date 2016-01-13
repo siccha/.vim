@@ -151,11 +151,11 @@ let g:tex_flavor = "latex"
 " Plug-In configurations {{{1
 "------------------------------------------------------------
 
-
 "------------------------------------------------------------
 " YouCompleteMe configuration
 let g:ycm_seed_identifiers_with_syntax = 1
 " TODO: add GAPWORDS to ycm identifier list (sergio / Mo 11 Jan 2016 17:20:07 CET)
+
 
 "------------------------------------------------------------
 " delimitMate configuration
@@ -177,9 +177,14 @@ let g:UltiSnipsEditSplit="horizontal"
 
 
 "------------------------------------------------------------
+" nerdtree-git-plugin configuration
+let g:NERDTreeGitStatusIgnoreSubmodules = 1
+ 
+
+"------------------------------------------------------------
 " Auto Commands
-" 
-" Open NERDTree if no args
+"------------------------------------------------------------
+" Open NERDTree if no command line args
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if NERDTree is only window left
