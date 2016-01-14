@@ -15,6 +15,8 @@ set nocompatible
 filetype off
 filetype plugin indent off
 
+" use the correct python version
+let g:python_host_prog = '/usr/bin/python2'
 
 "------------------------------------------------------------
 " vim-plug settings
@@ -27,11 +29,12 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    !./install.py
+    !python2 ./install.py --clang-completer
   endif
 endfunction
 
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe'
 Plug 'bkad/CamelCaseMotion'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
@@ -42,8 +45,20 @@ Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 
 " Add plugins to &runtimepath
-plug#end()
+call plug#end()
 
+
+"------------------------------------------------------------
+" neovim settings
+" let alt 'send' ESC key
+let s:printable_ascii = map(range(32, 126), 'nr2char(v:val)')
+call remove(s:printable_ascii, 92)
+for s:char in s:printable_ascii
+    execute "inoremap <A-" . s:char . "> <Esc>" . s:char
+endfor
+unlet s:printable_ascii s:char
+
+" TODO: use vim's color scheme (sergio / Do 14 Jan 2016 15:32:58 CET)
 
 "------------------------------------------------------------
 " Pathogen settings
