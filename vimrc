@@ -43,6 +43,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ciaranm/securemodelines'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
+Plug 'vim-airline/vim-airline'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -58,7 +59,8 @@ for s:char in s:printable_ascii
 endfor
 unlet s:printable_ascii s:char
 
-" TODO: use vim's color scheme (sergio / Do 14 Jan 2016 15:32:58 CET)
+" to use vim's color scheme set the environment variable
+" TERM=xterm-256color
 
 "------------------------------------------------------------
 " Pathogen settings
