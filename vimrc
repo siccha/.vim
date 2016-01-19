@@ -264,7 +264,7 @@ map <leader>g :b<space>
 map <leader>u :b#<CR>
 map <leader>j :bnext<CR>
 map <leader>k :bprev<CR>
-map <leader>l :buffers<CR>
+map <leader>l :buffers<CR>:
 
 " find InstallMethod, Install... in file
 map <leader>f :/Install\w*(\s*
@@ -277,7 +277,7 @@ map <leader>p :set paste!<CR>
 " unused maps
 nmap <F8> :TagbarToggle<CR>
 " set wd of current split/tab to this file's dir
-map <C-d> :lcd %:h<CR>
+" map <C-d> :lcd %:h<CR> " conflicts with scrolling
 " map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
 
 
