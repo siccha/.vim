@@ -149,7 +149,7 @@ let b:current_syntax = "gap"
 " for word completion, fall back to list of GAP global variable names
 " (after loading your favourite packages in GAP say:
 " for w in NamesGVars() do AppendTo("~/.vim/GAPWORDS",w,"\n"); od;    )
-set complete=.,w,b,u,t,i,k~/.vim/GAPWORDS
+set complete=.,w,b,u,t,i,k,"/home/sergio/.vim/GAPWORDS"
 
 " function for *toggling* GAP comments in beginning of line
 func! ToggleCommentGAP()

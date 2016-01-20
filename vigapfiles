@@ -1,0 +1,2 @@
+#!/bin/bash
+nvim `find -regextype posix-extended -regex "(./\w*)*\.gi?"` $HOME/.vim/GAPWORDS

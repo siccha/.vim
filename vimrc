@@ -199,8 +199,9 @@ let g:tex_flavor = "latex"
 
 "------------------------------------------------------------
 " YouCompleteMe configuration
-let g:ycm_seed_identifiers_with_syntax = 1
-" TODO: add GAPWORDS to ycm identifier list (sergio / Mo 11 Jan 2016 17:20:07 CET)
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 0
+" GAPWORDS is loaded via ~/bin/vimgapfiles
 
 
 "------------------------------------------------------------
