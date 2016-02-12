@@ -4,11 +4,6 @@ Get the `.vim` folder:
     git clone https://github.com/ssiccha/.vim.git ~/.vim
 ```
 
-Create symlink for Neovim:
-```sh
-    ln -s ~/.vim ~/.config/nvim
-```
-
 If you do not want to install Neovim you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
 
 ### Install neovim from package
@@ -19,6 +14,11 @@ If you do not want to install Neovim you can continue with the section [Install 
     sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
     sudo apt-get install neovim
+```
+
+Create symlink for Neovim:
+```sh
+    ln -s ~/.vim ~/.config/nvim
 ```
 
 ### Install neovim from source
@@ -45,29 +45,34 @@ Make `nvim` binary available via `PATH`:
 Set `TERM` for neovim:
 ```sh
     echo 'export TERM="xterm-256color"' >> ~/.bashrc
-    source ~/.bashrc
 ```
 If you like, you can set up an alias for `nvim`:
 ```sh
     echo "alias 'vi'='nvim '" >> ~/.bashrc
 ```
+And reload the bash-settings:
+```sh
+    source ~/.bashrc
+```
+
+Create symlink to our config-folder for Neovim:
+```sh
+    ln -s ~/.vim ~/.config/nvim
+```
 
 ### Make Python available in Neovim
-Test whether `nvim` is able to use Python:
+Test whether Neovim is able to use Python:
 ```sh
     nvim
     :python print "hello"
 ```
 
 If this does not work, you can install the Python package `neovim` manually.
+For more information you can check the Neovim documentation on
+[Python in Neovim](https://neovim.io/doc/user/nvim_python.html)
 Prerequisites for the Python modules:
 ```sh
     sudo apt-get install python-dev python-pip python3-dev python3-pip
-```
-
-For more information you can check the Neovim documentation on
-[Python in Neovim](https://neovim.io/doc/user/nvim_python.html)
-```sh
     sudo pip2 install neovim
 ```
 
@@ -76,7 +81,6 @@ If there is no such symlink, you have to change the path in vimrc:line19.
 ```vim
     let g:python_host_prog = '/path/to/your/python2'
 ```
-
 
 ### Install vim plugins
 Install vim-plug, for more infosee https://github.com/junegunn/vim-plug#unix
