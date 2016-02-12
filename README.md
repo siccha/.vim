@@ -4,7 +4,7 @@ Get the `.vim` folder:
     git clone https://github.com/ssiccha/.vim.git ~/.vim
 ```
 
-If you do not want to install Neovim you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
+If you *do not want* to install *Neovim* you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
 
 ### Install neovim from package
     Neovim has been added to a Ubuntu PPA.
@@ -16,7 +16,7 @@ If you do not want to install Neovim you can continue with the section [Install 
     sudo apt-get install neovim
 ```
 
-Create symlink for Neovim:
+Create a symlink to our config-folder for Neovim:
 ```sh
     ln -s ~/.vim ~/.config/nvim
 ```
@@ -50,12 +50,12 @@ If you like, you can set up an alias for `nvim`:
 ```sh
     echo "alias 'vi'='nvim '" >> ~/.bashrc
 ```
-And reload the bash-settings:
+Now reload the bash-settings:
 ```sh
     source ~/.bashrc
 ```
 
-Create symlink to our config-folder for Neovim:
+And create a symlink to our config-folder for Neovim:
 ```sh
     ln -s ~/.vim ~/.config/nvim
 ```
@@ -70,7 +70,6 @@ Test whether Neovim is able to use Python:
 If this does not work, you can install the Python package `neovim` manually.
 For more information you can check the Neovim documentation on
 [Python in Neovim](https://neovim.io/doc/user/nvim_python.html)
-Prerequisites for the Python modules:
 ```sh
     sudo apt-get install python-dev python-pip python3-dev python3-pip
     sudo pip2 install neovim
@@ -83,18 +82,19 @@ If there is no such symlink, you have to change the path in vimrc:line19.
 ```
 
 ### Install vim plugins
-Install vim-plug, for more infosee https://github.com/junegunn/vim-plug#unix
-```sh
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
+vim-plug can e.g. easily manage vim-plugins that are available on github.
+It is already contained in this .vim-folder and does not need to be installed manually.
+For more information see [jungeunn/vim-plug](https://github.com/junegunn/vim-plug).
 
-Make sure that all YCM dependencies are available,
-  see https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation
+To use YouCompleteMe, make sure you have Vim 7.3.598 with python2 support.
+Ubuntu 14.04 and later have a Vim that is recent enough.
+You can see the version of Vim installed by running `vim --version`.
+For more information about the installation of YCM check
+[Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation)
 ```sh
     sudo apt-get install build-essential cmake
     sudo apt-get install python-dev
 ```
 
 Restart vim to reload .vimrc and `:PlugInstall` to install plugins via vim-plug.
-YouCompleteMe is compiled with python2 at the end of calling :PlugInstall.
+YouCompleteMe is automatically compiled with python2 at the end of calling `:PlugInstall`.
