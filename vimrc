@@ -33,8 +33,8 @@ function! BuildYCM(info)
   endif
 endfunction
 
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe'
 Plug 'bkad/CamelCaseMotion'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
