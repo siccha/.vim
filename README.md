@@ -87,7 +87,6 @@ It is already contained in this .vim-folder and does not need to be installed ma
 For more information see [jungeunn/vim-plug](https://github.com/junegunn/vim-plug).
 
 To use YouCompleteMe, make sure you have at the latest Vim 7.3.598 with python2 support.
-Ubuntu 14.04 and later have a Vim that is recent enough.
 For more information on how to install YCM check
 [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation).
 ```sh
