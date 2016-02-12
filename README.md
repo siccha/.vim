@@ -4,11 +4,11 @@ Get the `.vim` folder:
     git clone https://github.com/ssiccha/.vim.git ~/.vim
 ```
 
-If you *do not want* to install *Neovim* you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
+If you **do not want** to install **Neovim** you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
 
 ### Install neovim from package
-    Neovim has been added to a Ubuntu PPA.
-    More [information](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu).
+Neovim has been added to a Ubuntu PPA. For more information check
+[neovim/neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu).
 ```sh
     sudo apt-get install software-properties-common
     sudo add-apt-repository ppa:neovim-ppa/unstable
