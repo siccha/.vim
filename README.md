@@ -69,7 +69,7 @@ Test whether Neovim is able to use Python:
 
 If this does not work, you can install the Python package `neovim` manually.
 For more information you can check the Neovim documentation on
-[Python in Neovim](https://neovim.io/doc/user/nvim_python.html)
+[Python in Neovim](https://neovim.io/doc/user/nvim_python.html).
 ```sh
     sudo apt-get install python-dev python-pip
     sudo pip2 install neovim
@@ -82,19 +82,19 @@ If there is no such symlink, you have to change the path in `vimrc:line19`.
 ```
 
 ### Install vim plugins
-`vim-plug` can e.g. easily manage vim-plugins that are available on github.
+Among other things, `vim-plug` can easily manage vim-plugins that are available on github.
 It is already contained in this .vim-folder and does not need to be installed manually.
 For more information see [jungeunn/vim-plug](https://github.com/junegunn/vim-plug).
 
-To use YouCompleteMe, make sure you have Vim 7.3.598 with python2 support.
+To use YouCompleteMe, make sure you have at the latest Vim 7.3.598 with python2 support.
 Ubuntu 14.04 and later have a Vim that is recent enough.
-You can see the version of Vim installed by running `vim --version`.
-For more information about the installation of YCM check
+For more information on how to install YCM check
 [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation).
 ```sh
     sudo apt-get install build-essential cmake
     sudo apt-get install python-dev
 ```
 
-Now you can restart vim to reload .vimrc and enter `:PlugInstall` to install all plugins listed in `vimrc` via `vim-plug`.
-YouCompleteMe is automatically compiled using python2 at the end of calling `:PlugInstall`.
+Now you can restart vim to reload .vimrc and enter `:PlugInstall` to
+automagically install all plugins listed in the `vimrc` via `vim-plug`.
+YouCompleteMe is automatically compiled using Python 2 at the end of calling `:PlugInstall`.
