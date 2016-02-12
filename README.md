@@ -1,17 +1,27 @@
 Get the .vim folder:
+```sh
     git clone https://github.com/ssiccha/.vim.git ~/.vim
+```
 
 Create symlink for neovim:
+```sh
     ln -s ~/.vim ~/.config/nvim
+```
 
+If you do not want to install neovim you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
 
-If you do not want to install neovim you can continue with the last section `Install vim plugins`
 ### Install neovim from package
-    See https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu
+    Neovim has been added to a Ubuntu PPA. For more [details](https://github.com/neovim/neovim/wiki/Installing-Neovim#ubuntu)
+```sh
+    sudo apt-get install software-properties-common
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install neovim
+```
 
 ### Install neovim from source
-Build prerequisites, see https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites
-recent CMake and (Clang or GCC)
+[Build prerequisites](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites)
+e.g. recent verions of CMake and (Clang or GCC)
 ```sh
     sudo apt-get install libtool libtool-bin autoconf automake cmake \
         g++ pkg-config unzip libmsgpack-dev libuv-dev libluajit-5.1-dev
@@ -25,12 +35,12 @@ Build and install neovim:
     sudo make install
 ```
 
-Make nvim binary available via PATH:
+Make nvim binary available via `PATH`:
 ```sh
     ln -s ~/.local/opt/neovim/bin/nvim ~/.local/bin/nvim
     echo 'export PATH=$PATH:$HOME/.local/bin/' >> ~/.bashrc
 ```
-Set TERM for neovim
+Set `TERM` for neovim
 ```sh
     echo 'export TERM="xterm-256color"' >> ~/.bashrc
     source ~/.bashrc
@@ -40,14 +50,14 @@ If you like, you can set up an alias for nvim:
     echo "alias 'vi'='nvim '" >> ~/.bashrc
 ```
 
-### make python available under nvim
-Test whether nvim is able to use python:
+### Make Python available under nvim
+Test whether nvim is able to use Python:
 ```sh
     nvim
     :python print "hello"
 ```
 
-If this does not work, you have to install the python package `neovim`:
+If this does not work, you have to install the Python package `neovim`.
 Prerequisites for the Python modules:
 ```sh
     sudo apt-get install python-dev python-pip python3-dev python3-pip
