@@ -71,18 +71,18 @@ If this does not work, you can install the Python package `neovim` manually.
 For more information you can check the Neovim documentation on
 [Python in Neovim](https://neovim.io/doc/user/nvim_python.html)
 ```sh
-    sudo apt-get install python-dev python-pip python3-dev python3-pip
+    sudo apt-get install python-dev python-pip
     sudo pip2 install neovim
 ```
 
-Typically `/usr/bin` contains a symbolic link `python2` to the latest python2 version.
-If there is no such symlink, you have to change the path in vimrc:line19.
+Typically `/usr/bin` contains a symbolic link `python2` to the latest Python 2 version.
+If there is no such symlink, you have to change the path in `vimrc:line19`.
 ```vim
     let g:python_host_prog = '/path/to/your/python2'
 ```
 
 ### Install vim plugins
-vim-plug can e.g. easily manage vim-plugins that are available on github.
+`vim-plug` can e.g. easily manage vim-plugins that are available on github.
 It is already contained in this .vim-folder and does not need to be installed manually.
 For more information see [jungeunn/vim-plug](https://github.com/junegunn/vim-plug).
 
@@ -90,11 +90,11 @@ To use YouCompleteMe, make sure you have Vim 7.3.598 with python2 support.
 Ubuntu 14.04 and later have a Vim that is recent enough.
 You can see the version of Vim installed by running `vim --version`.
 For more information about the installation of YCM check
-[Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation)
+[Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation).
 ```sh
     sudo apt-get install build-essential cmake
     sudo apt-get install python-dev
 ```
 
-Restart vim to reload .vimrc and `:PlugInstall` to install plugins via vim-plug.
-YouCompleteMe is automatically compiled with python2 at the end of calling `:PlugInstall`.
+Now you can restart vim to reload .vimrc and enter `:PlugInstall` to install all plugins listed in `vimrc` via `vim-plug`.
+YouCompleteMe is automatically compiled using python2 at the end of calling `:PlugInstall`.
