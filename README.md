@@ -4,7 +4,22 @@ Get the `.vim` folder:
     git clone https://github.com/ssiccha/.vim.git ~/.vim
 ```
 
-If you **do not want** to install **Neovim** you can continue with the section [Install vim plugins](https://github.com/ssiccha/.vim#install-vim-plugins)
+### Install vim plugins
+Among other things, `vim-plug` can easily manage vim-plugins that are available on github.
+It is already contained in this .vim-folder and does not need to be installed manually.
+For more information see [junegunn/vim-plug](https://github.com/junegunn/vim-plug).
+
+To use YouCompleteMe, make sure you have at the latest Vim 7.3.598 with python2 support.
+For more information on how to install YCM check
+[Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation).
+```sh
+    sudo apt-get install build-essential cmake
+    sudo apt-get install python-dev
+```
+
+Now you can restart vim to reload .vimrc and enter `:PlugInstall` to
+automagically install all plugins listed in the `vimrc` via `vim-plug`.
+YouCompleteMe is automatically compiled using Python 2 at the end of calling `:PlugInstall`.
 
 ### Install neovim from package
 Neovim has been added to a Ubuntu PPA. For more information check
@@ -80,20 +95,3 @@ If there is no such symlink, you have to change the path in `vimrc:line19`.
 ```vim
     let g:python_host_prog = '/path/to/your/python2'
 ```
-
-### Install vim plugins
-Among other things, `vim-plug` can easily manage vim-plugins that are available on github.
-It is already contained in this .vim-folder and does not need to be installed manually.
-For more information see [jungeunn/vim-plug](https://github.com/junegunn/vim-plug).
-
-To use YouCompleteMe, make sure you have at the latest Vim 7.3.598 with python2 support.
-For more information on how to install YCM check
-[Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation).
-```sh
-    sudo apt-get install build-essential cmake
-    sudo apt-get install python-dev
-```
-
-Now you can restart vim to reload .vimrc and enter `:PlugInstall` to
-automagically install all plugins listed in the `vimrc` via `vim-plug`.
-YouCompleteMe is automatically compiled using Python 2 at the end of calling `:PlugInstall`.
