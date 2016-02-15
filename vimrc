@@ -153,8 +153,8 @@ set visualbell
 " is unset, this does nothing.
 " set t_vb=
 
-" Do not enable use of the mouse for all modes
-set mouse=
+" Enable use of the mouse for all modes
+set mouse=a
 
 " Set the command window height to 2 lines, to avoid many cases of having to
 " "press <Enter> to continue"
