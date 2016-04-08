@@ -246,12 +246,11 @@ au FileType c,gap let b:delimitMate_eol_marker = ";"
 " Mappings {{{1
 "
 " Useful mappings
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
 map <C-n> :NERDTreeToggle<CR>
-map <C-q> <C-W>k
-map <C-e> <C-W>j
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 map <F5> :call GAPlocal()<CR>
 " TODO: add scroll hkeys like C-B and C-D (sergio / Mi 13 Jan 2016 10:46:33 CET)
 
@@ -266,6 +265,13 @@ map <leader>u :b#<CR>
 map <leader>j :bnext<CR>
 map <leader>k :bprev<CR>
 map <leader>l :buffers<CR>:b<space>
+
+" yank line into system clipboard
+map <leader>y <S-V>"+yy
+
+" Map to turn off search highlighting
+"nnoremap <C-L> :nohl<CR><C-L>
+nnoremap <leader>/ :nohl<CR>
 
 " find InstallMethod, Install... in file
 map <leader>f :/Install\w*(\s*
