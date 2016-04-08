@@ -17,6 +17,11 @@ For more information on how to install YCM check
     sudo apt-get install python-dev
 ```
 
+Some Terminals use even less than 256 colors as standard setting.
+```sh
+    echo '#Set TERM:' >> ~/.bashrc
+    echo 'export TERM="xterm-256color"' >> ~/.bashrc
+```
 Now you can restart vim to reload .vimrc and enter `:PlugInstall` to
 automagically install all plugins listed in the `vimrc` via `vim-plug`.
 YouCompleteMe is automatically compiled using Python 2 at the end of calling `:PlugInstall`.
