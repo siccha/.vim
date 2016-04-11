@@ -118,4 +118,22 @@ endsnippet
 snippet lp "Long parenthesis"
 \left(${1:${VISUAL:contents}}\right)$0
 endsnippet
+
+snippet frame "frame" bA
+\begin{frame}
+  ${0}
+\end{frame}
+endsnippet
+
+snippet block "Block" bA
+\begin{block}{}
+  ${0}
+\end{block}
+endsnippet
+
+snippet def "Definitions Block" b
+\begin{block}{\defi{$1}}
+  ${0}
+\end{block}
+endsnippet
 # vim:ft=snippets:
