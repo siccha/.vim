@@ -28,6 +28,7 @@ Some Terminals use even less than 256 colors as standard setting. Setup `bash` a
 Now you can restart vim to reload .vimrc and enter `:PlugInstall` to
 automagically install all plugins listed in the `vimrc` via `vim-plug`.
 YouCompleteMe is automatically compiled using Python 2 at the end of calling `:PlugInstall`.
+Now, restart vim again.
 
 ### Install neovim from package
 Neovim has been added to a Ubuntu PPA. For more information check
