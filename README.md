@@ -19,10 +19,11 @@ Install the prerequisites to compile YCM:
     sudo apt-get install python-dev
 ```
 
-Some Terminals use even less than 256 colors as standard setting.
+Some Terminals use even less than 256 colors as standard setting. Setup `bash` accordingly.
 ```sh
     echo '#Set TERM:' >> ~/.bashrc
     echo 'export TERM="xterm-256color"' >> ~/.bashrc
+    source ~/.bashrc
 ```
 Now you can restart vim to reload .vimrc and enter `:PlugInstall` to
 automagically install all plugins listed in the `vimrc` via `vim-plug`.
