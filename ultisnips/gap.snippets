@@ -9,13 +9,21 @@ global !p
 def paramsToComs(t):
   if t:
     t = extractParams(t)
-    t = [ ("#   " + m + " - \n") for m in t ]	# prepend '#' and append newline
+    t = [ ("#   " + m + " -\n") for m in t ]	# prepend '#' and append newline
     t = "".join(t)
     t = t[:len(t)-2]				# remove last newline
   return t
 endglobal
 
-snippet if "if" b
+snippet _C "automatic _SERSI.C." A
+_SERSI.C.
+endsnippet
+
+snippet _S "automatic _SERSI." A
+_SERSI.
+endsnippet
+
+snippet if "if" bA
 if ${1:condition} then
   ${0:${VISUAL}}
 fi;
