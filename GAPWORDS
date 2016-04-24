@@ -1,2 +1,4 @@
 # vim: set ft=gap
 SymmetricGroup
+GeneralLinearGroup
+SpecialLinearGroup
