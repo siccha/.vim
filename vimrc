@@ -213,7 +213,7 @@ let g:delimitMate_expand_cr = 1
 "------------------------------------------------------------
 " UltiSnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-i>"
+let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
