@@ -1,4 +1,7 @@
 # vim: set ft=gap
 SymmetricGroup
+LargestMovedPoint
+SmallestMovedPoint
+MovedPoints
 GeneralLinearGroup
 SpecialLinearGroup
