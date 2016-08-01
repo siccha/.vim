@@ -192,6 +192,11 @@ set expandtab
 " Disable plaintex and context filetypes for *.tex files
 let g:tex_flavor = "latex"
 
+"------------------------------------------------------------
+" Set location of swap files
+if hostname() == "elwin"
+  set directory=/mnt/localdata/sergio/nvimswap//
+endif
 
 "------------------------------------------------------------
 " Plug-In configurations {{{1
