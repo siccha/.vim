@@ -1,7 +1,11 @@
 # vim: set ft=gap
+Length
 SymmetricGroup
 LargestMovedPoint
 SmallestMovedPoint
 MovedPoints
 GeneralLinearGroup
 SpecialLinearGroup
+MutableCopyMat
+IdentityMat
+KroneckerProduct
