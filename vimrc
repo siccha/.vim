@@ -234,6 +234,10 @@ let g:NERDTreeGitStatusIgnoreSubmodules = 1
 
 
 "------------------------------------------------------------
+" delimitMate configuration see Auto Commands
+
+
+"------------------------------------------------------------
 " Auto Commands
 "------------------------------------------------------------
 " Open NERDTree if no command line args
@@ -242,9 +246,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if NERDTree is only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" delimitMate: Insert ";" at EOL for C and GAP files
-au FileType c,gap let b:delimitMate_insert_eol_marker = 1
-au FileType c,gap let b:delimitMate_eol_marker = ";"
+" delimitMate: Insert ";" at EOL for C, GAP and magma files
+au FileType c,gap,magma let b:delimitMate_insert_eol_marker = 1
+au FileType c,gap,magma let b:delimitMate_eol_marker = ";"
 
 
 "------------------------------------------------------------
