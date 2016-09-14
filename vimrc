@@ -211,9 +211,9 @@ let g:ycm_seed_identifiers_with_syntax = 0
 
 "------------------------------------------------------------
 " delimitMate configuration
+" also see Auto Commands
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
-
 
 "------------------------------------------------------------
 " UltiSnips configuration
@@ -231,10 +231,6 @@ let g:UltiSnipsEditSplit="horizontal"
 "------------------------------------------------------------
 " nerdtree-git-plugin configuration
 let g:NERDTreeGitStatusIgnoreSubmodules = 1
-
-
-"------------------------------------------------------------
-" delimitMate configuration see Auto Commands
 
 
 "------------------------------------------------------------
