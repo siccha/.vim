@@ -9,3 +9,4 @@ SpecialLinearGroup
 MutableCopyMat
 IdentityMat
 KroneckerProduct
+ShallowCopy
