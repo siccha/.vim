@@ -2,7 +2,27 @@ priority -50
 
 extends texmath
 
-snippet "b(egin)?" "begin{} / end{}" br
+snippet ausserdem "autocorrect" A
+au{\ss}erdem
+endsnippet
+
+snippet ss "insert sergio comment" A
+\se{$0}
+endsnippet
+
+snippet pau "insert \pause"
+\pause
+endsnippet
+
+snippet PAU "insert \pause" A
+\pause
+endsnippet
+
+snippet TE "insert text" A
+\text{$0}
+endsnippet
+
+snippet "beg(in)?" "begin{} / end{}" brA
 \begin{${1:something}}
 	${0:${VISUAL}}
 \end{$1}
@@ -120,20 +140,20 @@ snippet lp "Long parenthesis"
 endsnippet
 
 snippet frame "frame" bA
-\begin{frame}
-  ${0}
+\begin{frame}{$1}
+    ${0:${VISUAL}}
 \end{frame}
 endsnippet
 
 snippet block "Block" bA
-\begin{block}{}
-  ${0}
+\begin{block}{$1}
+    ${0}
 \end{block}
 endsnippet
 
 snippet def "Definitions Block" b
 \begin{block}{\defi{$1}}
-  ${0}
+    ${0}
 \end{block}
 endsnippet
 # vim:ft=snippets:
