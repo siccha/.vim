@@ -269,7 +269,7 @@ map <leader>g :b<space>
 map <leader>u :b#<CR>
 map <leader>j :bnext<CR>
 map <leader>k :bprev<CR>
-map <leader>l :buffers<CR>:b
+map <leader>l :buffers<CR>:b 
 
 " yank line into system clipboard
 map <leader>y <S-V>"+yy
