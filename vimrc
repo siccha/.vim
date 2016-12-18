@@ -183,8 +183,8 @@ set scrolloff=5
 "------------------------------------------------------------
 " Indentation options {{{1
 "
-set shiftwidth=2
-set softtabstop=2
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 
