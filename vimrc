@@ -63,19 +63,6 @@ unlet s:printable_ascii s:char
 " TERM=xterm-256color
 
 "------------------------------------------------------------
-" Pathogen settings
-"
-" To disable a plugin, add it's bundle name to the following list
-" let g:pathogen_disabled = ['supertab']
-
-" execute pathogen#infect()
-" call pathogen#runtime_append_all_bundles() # deprecated
-" call pathogen#helptags() " too crazy
-" set rtp+=~/.vim/bundle/YouCompleteMe
-" runtime plugin/youcompleteme.vim
-
-
-"------------------------------------------------------------
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
