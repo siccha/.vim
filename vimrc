@@ -272,7 +272,7 @@ map <leader>k :bprev<CR>
 map <leader>l :buffers<CR>:b 
 
 " yank line into system clipboard
-map <leader>y <S-V>"+yy
+map <leader>y "+yy
 
 " Map to turn off search highlighting
 "nnoremap <C-L> :nohl<CR><C-L>
