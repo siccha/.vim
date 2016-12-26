@@ -35,6 +35,7 @@ endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 " Plug 'Valloric/YouCompleteMe'
+Plug 'neomake/neomake'
 Plug 'bkad/CamelCaseMotion'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
@@ -214,6 +215,13 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
+"------------------------------------------------------------
+" Neomake configuration
+" for tex files: show no corrections
+" use Neomake! instead
+"let g:neomake_tex_maker = {
+"    \ 'exe': 'make'
+"    \ }
 
 "------------------------------------------------------------
 " nerdtree-git-plugin configuration
@@ -272,6 +280,10 @@ map <leader>o :?local<CR><C-L>
 " toggle paste mode
 map <leader>p :set paste!<CR>
 
+" make
+" Use the following to not show texchk output etc
+" map <leader>m :Neomake!<CR>
+map <leader>m :Neomake!<CR>
 
 " unused maps
 nmap <F8> :TagbarToggle<CR>
