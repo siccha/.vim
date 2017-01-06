@@ -281,9 +281,9 @@ map <leader>o :?local<CR><C-L>
 map <leader>p :set paste!<CR>
 
 " make
-" Use the following to not show texchk output etc
+" With latexmk use the -silent option for sane warnings
 " map <leader>m :Neomake!<CR>
-map <leader>m :Neomake!<CR>
+map <leader>m :Neomake<CR>
 
 " unused maps
 nmap <F8> :TagbarToggle<CR>
