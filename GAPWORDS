@@ -22,3 +22,7 @@ ActionHomomorphism
 
 AllTransitiveGroups
 AllPrimitiveGroups
+
+ProfileLineByLine
+UnprofileLinByLine
+OutputAnnotatedCodeCoverageFiles
