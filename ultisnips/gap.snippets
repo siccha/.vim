@@ -74,7 +74,7 @@ ${1:${VISUAL:NAME}} := function( ${2:PARAM} )
 end;
 endsnippet
 
-snippet insm "Insert InstallMethod block" b
+snippet InstallMethod "Insert InstallMethod block" b
 ###############################
 # Operation $1
 # Input:
@@ -85,11 +85,12 @@ snippet insm "Insert InstallMethod block" b
 # Output:
 #   $5
 ###############################
-InstallMethod( ${1:${VISUAL:NAME}}, ${2:DESCRIPTION},
+InstallMethod( ${1:${VISUAL:NAME}},
+${2:DESCRIPTION},
 [ ${3:FILTERS} ],
 function( ${4:PARAM} )
   $6
-  return ${5:RETURN VALUES}
+  return ${5:RETURN VALUES};
 end );
 endsnippet
 
