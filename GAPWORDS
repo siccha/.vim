@@ -1,28 +1,46 @@
 # vim: set ft=gap
-Length
+## General
 ShallowCopy
+CallFuncList
+InfoWarning
+ProfileLineByLine
+UnprofileLineByLine
+OutputAnnotatedCodeCoverageFiles
 
+## Lists
+Length
+Concatenation
+List
+Filtered
+Sort
+SortParallel
+SortedList
+
+## Matrices
+MutableCopyMat
+IdentityMat
+KroneckerProduct
+
+## Groups
+Group
+GeneratorsOfGroup
+ActionHomomorphism
+OrbitStabilizer
+
+## Semigroups
+InverseSemigroup
+GeneratorsOfInverseSemigroup
+GeneratorsOfSemigroup
+
+## Permutation Groups
 SymmetricGroup
 LargestMovedPoint
 SmallestMovedPoint
 MovedPoints
 NrMovedPoints
-
-OrbitStabilizer
-GeneratorsOfGroup
-
-GeneralLinearGroup
-SpecialLinearGroup
-
-MutableCopyMat
-IdentityMat
-KroneckerProduct
-
-ActionHomomorphism
-
 AllTransitiveGroups
 AllPrimitiveGroups
 
-ProfileLineByLine
-UnprofileLineByLine
-OutputAnnotatedCodeCoverageFiles
+## Matrix Groups
+GeneralLinearGroup
+SpecialLinearGroup
