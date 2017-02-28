@@ -155,6 +155,10 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
+"------------------------------------------------------------
+" Diff-Mode options {{{1
+" Highlighting
+highlight DiffText ctermbg=White
 
 "------------------------------------------------------------
 " Disable plaintex and context filetypes for *.tex files
@@ -256,6 +260,8 @@ nmap <F8> :TagbarToggle<CR>
 
 "------------------------------------------------------------
 " command abbreviations (renamings) {{{1
+" fugitive: Gw performs a 'git add'
 cabbrev GW Gw
 ca GWQ Gwq
+ca ST Gstatus
 ca QA qa
