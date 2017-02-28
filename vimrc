@@ -130,7 +130,7 @@ set visualbell
 " And reset the terminal code for the visual bell. If visualbell is set, and
 " this line is also included, vim will neither flash nor beep. If visualbell
 " is unset, this does nothing.
-" set t_vb=
+set t_vb=
 
 " Enable use of the mouse for all modes
 set mouse=a
@@ -161,10 +161,11 @@ set expandtab
 let g:tex_flavor = "latex"
 
 "------------------------------------------------------------
-" Set location of swap files
+" Set location of swap files for use on elwin
 if hostname() == "elwin"
   set directory=/mnt/localdata/sergio/nvimswap//
 endif
+
 
 "------------------------------------------------------------
 " Plug-In configurations {{{1
@@ -174,14 +175,17 @@ endif
 " YouCompleteMe configuration
 let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 0
-" GAPWORDS is loaded via ~/bin/vimgapfiles
-
+" GAPWORDS is loaded via ftplugin/gap.vim
 
 "------------------------------------------------------------
 " delimitMate configuration
 " also see Auto Commands
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
+
+" delimitMate: Insert ";" at EOL for C, GAP and magma files
+au FileType c,gap,magma let b:delimitMate_insert_eol_marker = 1
+au FileType c,gap,magma let b:delimitMate_eol_marker = ";"
 
 "------------------------------------------------------------
 " UltiSnips configuration
@@ -198,7 +202,7 @@ let g:UltiSnipsEditSplit="horizontal"
 
 "------------------------------------------------------------
 " nerdtree-git-plugin configuration
-let g:NERDTreeGitStatusIgnoreSubmodules = 1
+"let g:NERDTreeGitStatusIgnoreSubmodules = 1
 
 
 "------------------------------------------------------------
@@ -210,10 +214,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim if NERDTree is only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" delimitMate: Insert ";" at EOL for C, GAP and magma files
-au FileType c,gap,magma let b:delimitMate_insert_eol_marker = 1
-au FileType c,gap,magma let b:delimitMate_eol_marker = ";"
-
 
 "------------------------------------------------------------
 " Mappings {{{1
@@ -224,6 +224,7 @@ map <C-n> :NERDTreeToggle<CR>
 "map <C-l> <C-W>l
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+" TODO: restrict GapComment, GapLocal to gap-files (sergio / Fr 04 Dez 2015 11:49:08 UTC)
 map <F5> :call GAPlocal()<CR>
 " TODO: add scroll hkeys like C-B and C-D (sergio / Mi 13 Jan 2016 10:46:33 CET)
 
@@ -260,9 +261,6 @@ map <leader>m :Neomake<CR>
 
 " unused maps
 nmap <F8> :TagbarToggle<CR>
-
-
-" TODO: restrict GapComment, GapLocal to gap-files (sergio / Fr 04 Dez 2015 11:49:08 UTC)
 
 
 "------------------------------------------------------------
