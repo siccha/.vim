@@ -1,3 +1,4 @@
+" Originally from:
 " URL: http://vim.wikia.com/wiki/Example_vimrc
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
 " Description: A minimal, but feature rich, example .vimrc. If you are a
@@ -41,6 +42,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ciaranm/securemodelines'
 Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-scripts/repeatable-motions.vim'
 " Plug 'bkad/CamelCaseMotion'
 " Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -203,6 +205,12 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
+"------------------------------------------------------------
+" UltiSnips configuration
+map <Up> <Plug>RepeatMotionUp
+map <Down> <Plug>RepeatMotionDown
+map <Right> <Plug>RepeatMotionRight
+map <Left> <Plug>RepeatMotionLeft
 
 "------------------------------------------------------------
 " Auto Commands
