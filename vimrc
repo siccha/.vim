@@ -36,15 +36,15 @@ endfunction
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 " Plug 'Valloric/YouCompleteMe'
 Plug 'neomake/neomake'
-Plug 'bkad/CamelCaseMotion'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ciaranm/securemodelines'
-Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 Plug 'vim-airline/vim-airline'
+" Plug 'bkad/CamelCaseMotion'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'majutsushi/tagbar'
 
 " Add plugins to &runtimepath
 call plug#end()
