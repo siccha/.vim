@@ -98,12 +98,6 @@ set showcmd
 " mapping of <C-L> below)
 set hlsearch
 
-" Using the securemodelines script
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
-" see securemodelines plug-in
 
 "------------------------------------------------------------
 " Usability options {{{1
@@ -125,9 +119,6 @@ set nostartofline
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
 set ruler
-
-" Always display the status line, even if only one window is displayed
-" set laststatus=2
 
 " Instead of failing a command because of unsaved changes, instead raise a
 " dialogue asking if you wish to save changed files.
@@ -158,19 +149,8 @@ set notimeout ttimeout ttimeoutlen=200
 " Keep 5 lines above and below cursor on screen:
 set scrolloff=5
 
-"" Highlight current line:
-"hi CursorLine term=none cterm=none ctermbg=16 ctermfg=none
-"hi CursorColumn term=none cterm=none ctermbg=16 ctermfg=none
-"" but only if the cursor does not move:
-"autocmd CursorHold,CursorHoldI * set cursorline
-"autocmd CursorMoved,CursorMovedI * set nocursorline
-"autocmd CursorHold,CursorHoldI * set cursorcolumn
-"autocmd CursorMoved,CursorMovedI * set nocursorcolumn
-
-
 "------------------------------------------------------------
 " Indentation options {{{1
-"
 set shiftwidth=4
 set softtabstop=4
 set expandtab
@@ -215,13 +195,6 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
-"------------------------------------------------------------
-" Neomake configuration
-" for tex files: show no corrections
-" use Neomake! instead
-"let g:neomake_tex_maker = {
-"    \ 'exe': 'make'
-"    \ }
 
 "------------------------------------------------------------
 " nerdtree-git-plugin configuration
@@ -287,9 +260,6 @@ map <leader>m :Neomake<CR>
 
 " unused maps
 nmap <F8> :TagbarToggle<CR>
-" set wd of current split/tab to this file's dir
-" map <C-d> :lcd %:h<CR> " conflicts with scrolling
-" map <C-c> :!pdflatex %; pdflatex %<CR> <- only if .tex
 
 
 " TODO: restrict GapComment, GapLocal to gap-files (sergio / Fr 04 Dez 2015 11:49:08 UTC)
