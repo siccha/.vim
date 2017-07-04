@@ -195,6 +195,12 @@ au FileType c,gap,magma let b:delimitMate_insert_eol_marker = 1
 au FileType c,gap,magma let b:delimitMate_eol_marker = ";"
 
 "------------------------------------------------------------
+" vim-fugitive configuration
+" Opening a git object using fugitive creates a new buffer.
+" This autocommand deletes unused buffers.
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+"------------------------------------------------------------
 " UltiSnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -244,6 +250,9 @@ map <leader>j :bnext<CR>
 map <leader>k :bprev<CR>
 map <leader>l :buffers<CR>:b 
 
+" Fugitive mappings
+map <leader>s :Gstatus<CR>
+
 " yank line into system clipboard
 map <leader>y "+yy
 
@@ -251,17 +260,17 @@ map <leader>y "+yy
 "nnoremap <C-L> :nohl<CR><C-L>
 nnoremap <leader>/ :nohl<CR>
 
+" make
+" With latexmk use the -silent option for sane warnings
+" map <leader>m :Neomake!<CR>
+map <leader>m :Neomake<CR>
+
 " find InstallMethod, Install... in file
 map <leader>f :/Install\w*(\s*
 " go to previous local definition
 map <leader>o :?local<CR><C-L>
 " toggle paste mode
 map <leader>p :set paste!<CR>
-
-" make
-" With latexmk use the -silent option for sane warnings
-" map <leader>m :Neomake!<CR>
-map <leader>m :Neomake<CR>
 
 " unused maps
 nmap <F8> :TagbarToggle<CR>
