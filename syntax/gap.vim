@@ -329,7 +329,7 @@ function! GAPlocal()
   if (strlen(vars) > 1)
     let vars = strpart(vars, 1, strlen(vars) - 2)
     let vars = substitute(vars, ",", ", ", "g")
-    let vars = matchstr(getline(locline), "^[ ]*") . "  local " . vars . ";"
+    let vars = matchstr(getline(locline), "^[ ]*") . "    local " . vars . ";"
     call append(locline, vars)
   endif
   return
