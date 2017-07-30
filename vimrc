@@ -243,7 +243,8 @@ map <F5> :call GAPlocal()<CR>
 " leader maps
 let mapleader=" "
 " <leader> w, e, b used by CamelCaseMotion
-"
+" Tab mappings
+map <leader>q :tabclose<CR>
 " Buffer mappings
 " go to last buffer
 map <leader>g :b<space>
