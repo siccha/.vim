@@ -256,8 +256,10 @@ map <leader>l :buffers<CR>:b
 " Fugitive mappings
 map <leader>s :Gstatus<CR>
 
+" yank selection into system clipboard
+map <leader>y "+y
 " yank line into system clipboard
-map <leader>y "+yy
+map <leader>Y "+yy
 
 " Map to turn off search highlighting
 "nnoremap <C-L> :nohl<CR><C-L>
