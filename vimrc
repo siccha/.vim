@@ -244,17 +244,19 @@ map <F5> :call GAPlocal()<CR>
 let mapleader=" "
 " <leader> w, e, b used by CamelCaseMotion
 " Tab mappings
-map <leader>q :tabclose<CR>
+map <leader>te :tabedit<CR>
+map <leader>tq :tabclose<CR>
 " Buffer mappings
 " go to last buffer
-map <leader>g :b<space>
 map <leader>u :b#<CR>
 map <leader>j :bnext<CR>
 map <leader>k :bprev<CR>
 map <leader>l :buffers<CR>:b 
 
 " Fugitive mappings
-map <leader>s :Gstatus<CR>
+map <leader>gs :Gstatus<CR>
+map <leader>gd :Gdiff<CR>
+map <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
 " yank selection into system clipboard
 map <leader>y "+y
