@@ -244,8 +244,8 @@ map <F5> :call GAPlocal()<CR>
 let mapleader=" "
 " <leader> w, e, b used by CamelCaseMotion
 " Tab mappings
-map <leader>te :tabedit<CR>
-map <leader>tq :tabclose<CR>
+map <leader>te :tabedit 
+map <leader>tc :tabclose<CR>
 " Buffer mappings
 " go to last buffer
 map <leader>u :b#<CR>
