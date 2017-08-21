@@ -247,8 +247,10 @@ let mapleader=" "
 map <leader>te :tabedit 
 map <leader>tc :tabclose<CR>
 " Buffer mappings
-" go to last buffer
+" Go to last buffer
 map <leader>u :b#<CR>
+" Reload buffer
+map <leader>e :e<CR>
 map <leader>j :bnext<CR>
 map <leader>k :bprev<CR>
 map <leader>l :buffers<CR>:b 
