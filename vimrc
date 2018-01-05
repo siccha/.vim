@@ -169,12 +169,6 @@ highlight DiffText ctermbg=White
 " Disable plaintex and context filetypes for *.tex files
 let g:tex_flavor = "latex"
 
-"------------------------------------------------------------
-" Set location of swap files for use on elwin
-if hostname() == "elwin"
-  set directory=/mnt/localdata/sergio/nvimswap//
-endif
-
 
 "------------------------------------------------------------
 " Plug-In configurations {{{1
@@ -246,6 +240,7 @@ let mapleader=" "
 " Tab mappings
 map <leader>te :tabedit 
 map <leader>tc :tabclose<CR>
+map <leader>tq :tabclose<CR>
 " Buffer mappings
 " Go to last buffer
 map <leader>u :b#<CR>
@@ -292,3 +287,10 @@ cabbrev GW Gw
 ca GWQ Gwq
 ca ST Gstatus
 ca QA qa
+
+" `runtime` is the relative version of `source` and checks the runtimepath
+" variable
+" Generally useful settings and mappings should go here
+runtime vimrc_general
+" My personal maps etc
+runtime vimrc_private

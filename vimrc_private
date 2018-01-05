@@ -1,0 +1,7 @@
+"------------------------------------------------------------
+" Personal Settings
+"------------------------------------------------------------
+" Set location of swap files for use on elwin
+if hostname() == "elwin"
+  set directory=/mnt/localdata/sergio/nvimswap//
+endif
