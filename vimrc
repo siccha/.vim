@@ -57,15 +57,18 @@ call plug#end()
 
 "------------------------------------------------------------
 " neovim settings
-" let alt 'send' ESC key
-let s:printable_ascii = map(range(32, 126), 'nr2char(v:val)')
-call remove(s:printable_ascii, 92)
-for s:char in s:printable_ascii
-    execute "inoremap <A-" . s:char . "> <Esc>" . s:char
-endfor
-unlet s:printable_ascii s:char
+" Let combinations of alt with other keys send an ESC key first
+" This can be used to exit insert mode with e.g. <A-j>.
+if has('nvim')
+    let s:printable_ascii = map(range(32, 126), 'nr2char(v:val)')
+    call remove(s:printable_ascii, 92)
+    for s:char in s:printable_ascii
+        execute "inoremap <A-" . s:char . "> <Esc>" . s:char
+    endfor
+    unlet s:printable_ascii s:char
+endif
 
-" to use vim's color scheme set the environment variable
+" to use color schemes with nvim set the environment variable
 " TERM=xterm-256color
 
 "------------------------------------------------------------
@@ -79,7 +82,8 @@ syntax on
 
 
 "------------------------------------------------------------
-" Must have options {{{1
+" Must have options
+"------------------------------------------------------------
 "
 " These are highly recommended options.
 
@@ -105,7 +109,8 @@ set hlsearch
 
 
 "------------------------------------------------------------
-" Usability options {{{1
+" Usability options
+"------------------------------------------------------------
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
@@ -155,13 +160,13 @@ set notimeout ttimeout ttimeoutlen=200
 set scrolloff=5
 
 "------------------------------------------------------------
-" Indentation options {{{1
+" Indentation options
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
 "------------------------------------------------------------
-" Diff-Mode options {{{1
+" Diff-Mode options
 " Highlighting
 highlight DiffText ctermbg=White
 
@@ -171,7 +176,7 @@ let g:tex_flavor = "latex"
 
 
 "------------------------------------------------------------
-" Plug-In configurations {{{1
+" Plug-In configurations
 "------------------------------------------------------------
 
 "------------------------------------------------------------
