@@ -30,12 +30,12 @@ function! BuildYCM(info)
   " - status: 'installed', 'updated', or 'unchanged'
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status == 'installed' || a:info.force
-    !python2 ./install.py --clang-completer
+    "--clang-completer " you can add this option if you want semantic C support
+    !python2 ./install.py
   endif
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-" Plug 'Valloric/YouCompleteMe'
 Plug 'neomake/neomake'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
