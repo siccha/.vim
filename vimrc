@@ -181,7 +181,6 @@ let g:tex_flavor = "latex"
 
 "------------------------------------------------------------
 " YouCompleteMe configuration
-let g:ycm_complete_in_comments = 1
 let g:ycm_seed_identifiers_with_syntax = 0
 " GAPWORDS is loaded via ftplugin/gap.vim
 
@@ -209,93 +208,16 @@ let g:UltiSnipsJumpForwardTrigger="<C-j>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
-"------------------------------------------------------------
-" UltiSnips configuration
-map <Up> <Plug>RepeatMotionUp
-map <Down> <Plug>RepeatMotionDown
-map <Right> <Plug>RepeatMotionRight
-map <Left> <Plug>RepeatMotionLeft
 
 "------------------------------------------------------------
-" Auto Commands
+" Read further settings
 "------------------------------------------------------------
-" NONE
-
-
-"------------------------------------------------------------
-" Mappings {{{1
-"
-" Useful mappings
-map <C-n> :NERDTreeToggle<CR>
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
-" TODO: restrict GapComment, GapLocal to gap-files (sergio / Fr 04 Dez 2015 11:49:08 UTC)
-map <F5> :call GAPlocal()<CR>
-" TODO: add scroll hkeys like C-B and C-D (sergio / Mi 13 Jan 2016 10:46:33 CET)
-
-" leader maps
-let mapleader=" "
-" <leader> w, e, b used by CamelCaseMotion
-" Tab mappings
-map <leader>te :tabedit 
-map <leader>tc :tabclose<CR>
-map <leader>tq :tabclose<CR>
-" Buffer mappings
-" Go to last buffer
-map <leader>u :b#<CR>
-" Reload buffer
-map <leader>e :e<CR>
-map <leader>j :bnext<CR>
-map <leader>k :bprev<CR>
-map <leader>l :buffers<CR>:b 
-
-" Fugitive mappings
-map <leader>gs :Gstatus<CR>
-map <leader>gd :Gdiff<CR>
-map <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
-
-" yank selection into system clipboard
-map <leader>y "+y
-" yank line into system clipboard
-map <leader>Y "+yy
-
-" Map to turn off search highlighting
-"nnoremap <C-L> :nohl<CR><C-L>
-nnoremap <leader>/ :nohl<CR>
-
-" make
-" With latexmk use the -silent option for sane warnings
-" map <leader>m :Neomake!<CR>
-map <leader>m :Neomake<CR>
-
-" find InstallMethod, Install... in file
-map <leader>f :/Install\w*(\s*
-" go to previous local definition
-map <leader>o :?local<CR><C-L>
-" toggle paste mode
-map <leader>p :set paste!<CR>
-
-" unused maps
-nmap <F8> :TagbarToggle<CR>
-
-
-"------------------------------------------------------------
-" command abbreviations (renamings) {{{1
-" fugitive: Gw performs a 'git add'
-cabbrev GW Gw
-ca GWQ Gwq
-ca ST Gstatus
-ca QA qa
-
-" `runtime` is the relative version of `source` and checks the runtimepath
-" variable
-" Generally useful settings and mappings should go here
-runtime vimrc_general
+" `runtime` is the relative version of `source` and checks the
+" runtimepath variable
+" Generally useful mappings should go here
+runtime vimrc_mappings
 " My personal maps etc
 runtime vimrc_private

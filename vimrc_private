@@ -1,7 +1,25 @@
 "------------------------------------------------------------
+" Plug-In configurations
+"------------------------------------------------------------
+
+"------------------------------------------------------------
+" YouCompleteMe configuration
+let g:ycm_complete_in_comments = 1
+
+"------------------------------------------------------------
+" RepeatableMotions configuration
+map <Up> <Plug>RepeatMotionUp
+map <Down> <Plug>RepeatMotionDown
+map <Right> <Plug>RepeatMotionRight
+map <Left> <Plug>RepeatMotionLeft
+
+"------------------------------------------------------------
 " Personal Settings
 "------------------------------------------------------------
 " Set location of swap files for use on elwin
 if hostname() == "elwin"
   set directory=/mnt/localdata/sergio/nvimswap//
 endif
+
+" Quit with Ctrl-q
+noremap <C-q> :q<CR>
