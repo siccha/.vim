@@ -181,8 +181,13 @@ let g:tex_flavor = "latex"
 
 "------------------------------------------------------------
 " YouCompleteMe configuration
-let g:ycm_seed_identifiers_with_syntax = 0
-" GAPWORDS is loaded via ftplugin/gap.vim
+" WIP: How to populate the GAPTAGS file from GAPWORDS automatically?
+" Use a Makefile?
+function CreateGAPTAGS()
+endfunction
+let g:ycm_collect_identifiers_from_tags_files = 1
+" TODO How to make path dynamic?
+let &tags = "/home/sergio/.vim/GAPTAGS"
 
 "------------------------------------------------------------
 " delimitMate configuration
