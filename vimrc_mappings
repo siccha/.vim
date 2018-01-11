@@ -18,7 +18,7 @@ noremap <S-Left> <C-W>h
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Automatically write a GAP local statement
-map <F5> :call GAPlocal()<CR>
+noremap <F5> :call GAPlocal()<CR>
 
 "------------------------------------------------------------
 " Leader maps
@@ -27,29 +27,31 @@ let mapleader=" "
 
 " Mappings to move through buffers
 " List all available buffers
-map <leader>l :buffers<CR>:b 
+noremap <leader>l :buffers<CR>:b 
 " Go to last buffer
-map <leader>u :b#<CR>
+noremap <leader>u :b#<CR>
 " Reload buffer
-map <leader>e :e<CR>
-map <leader>j :bnext<CR>
-map <leader>k :bprev<CR>
+noremap <leader>e :e<CR>
+noremap <leader>j :bnext<CR>
+noremap <leader>k :bprev<CR>
 
-" Open and close tabs
-map <leader>te :tabedit 
-map <leader>tc :tabclose<CR>
-map <leader>tq :tabclose<CR>
+" Do things to tabs
+noremap <leader>te :tabedit 
+noremap <leader>tc :tabclose<CR>
+noremap <leader>tq :tabclose<CR>
+noremap <leader>tj :tabmove +1<CR>
+noremap <leader>tk :tabmove -1<CR>
 
 " Fugitive mappings
-map <leader>s :Gstatus<CR>
-map <leader>gs :Gstatus<CR>
-map <leader>gd :Gdiff<CR>
-map <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
+noremap <leader>s :Gstatus<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
 " Yank selection into the OS clipboard
-map <leader>y "+y
+noremap <leader>y "+y
 " Yank line into the OS clipboard
-map <leader>Y "+yy
+noremap <leader>Y "+yy
 
 " Map to turn off search highlighting (in addition to <C-l>
 nnoremap <leader>/ :nohl<CR>
@@ -57,14 +59,14 @@ nnoremap <leader>/ :nohl<CR>
 " Make
 " With latexmk use the -silent option for sane warnings
 " map <leader>m :Neomake!<CR>
-map <leader>m :Neomake<CR>
+noremap <leader>m :Neomake<CR>
 
 " find InstallMethod, Install... in file
-map <leader>f :/Install\w*(\s*
+noremap <leader>f :/Install\w*(\s*
 " go to previous local definition
-map <leader>o :?local<CR><C-L>
+noremap <leader>o :?local<CR><C-L>
 " toggle paste mode (not needed in nvim)
-map <leader>p :set paste!<CR>
+noremap <leader>p :set paste!<CR>
 
 "------------------------------------------------------------
 " Command abbreviations (renamings)
