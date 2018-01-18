@@ -63,7 +63,7 @@ syn keyword gapMethsel  NewMethod
 
 syn keyword gapOperator	and div in mod not or
 
-syn keyword gapFunction	function -> return local end Error 
+syn keyword gapFunction	function -> return local end Error ErrorNoReturn
 syn keyword gapConditional	if else elif then fi
 syn keyword gapRepeat		do od for while repeat until
 syn keyword gapOtherKey         Info Unbind IsBound
