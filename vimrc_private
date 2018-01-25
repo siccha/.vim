@@ -21,5 +21,8 @@ if hostname() == "elwin"
   set directory=/mnt/localdata/sergio/nvimswap//
 endif
 
+" Insert GAPDoc XML-tags
+map <leader>a a<A></A><ESC>3hi
+
 " Quit with Ctrl-q
 noremap <C-q> :q<CR>
