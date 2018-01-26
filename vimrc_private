@@ -18,11 +18,11 @@ map <Left> <Plug>RepeatMotionLeft
 "------------------------------------------------------------
 " Set location of swap files for use on elwin
 if hostname() == "elwin"
-  set directory=/mnt/localdata/sergio/nvimswap//
+  set directory=/mnt/localdata/sergio/nvimswap/
 endif
 
 " Insert GAPDoc XML-tags
-map <leader>a a<A></A><ESC>3hi
-
-" Quit with Ctrl-q
+noremap <leader>a a<A></A><ESC>3hi
+" Quit
 noremap <C-q> :q<CR>
+noremap <leader><C-q> :q!<CR>

@@ -183,8 +183,10 @@ let g:tex_flavor = "latex"
 " YouCompleteMe configuration
 " WIP: How to populate the GAPTAGS file from GAPWORDS automatically?
 " Use a Makefile?
-function CreateGAPTAGS()
-endfunction
+if !exists('*CreateGAPTAGS')
+    function CreateGAPTAGS()
+    endfunction
+endif
 let g:ycm_collect_identifiers_from_tags_files = 1
 " TODO How to make path dynamic?
 let &tags = "/home/sergio/.vim/GAPTAGS"
