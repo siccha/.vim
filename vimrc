@@ -36,7 +36,7 @@ function! BuildYCM(info)
 endfunction
 
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'

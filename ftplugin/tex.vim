@@ -4,8 +4,8 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
-" Let :Neomake! be executed on each write
-if !exists("s:latex_auto_make")
-  au BufWritePost * Neomake!
-endif
-let s:latex_auto_make = 1
+"" Let :Neomake! be executed on each write
+"if !exists("s:latex_auto_make")
+"  au BufWritePost * Neomake!
+"endif
+"let s:latex_auto_make = 1
