@@ -10,20 +10,21 @@
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
-" some Linux distros have filetype on in the system vimrc
-" turn filetype detection off and, even if it's not strictly
-" necessary, disable loading of indent scripts and filetype plugins
+" some Linux distros have filetype on in the system vimrc turn filetype
+" detection off and, even if it's not strictly necessary, disable loading of
+" indent scripts and filetype plugins for now
 filetype off
 filetype plugin indent off
 
 " use the correct python version
 let g:python_host_prog = '/usr/bin/python2'
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " vim-plug settings
 " make sure you use single quotes
 call plug#begin()
 
+" This lets vim-plug call the python 2 script `install.py` to build YCM
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
@@ -35,30 +36,53 @@ function! BuildYCM(info)
   endif
 endfunction
 
+"-----------------------------------------------------------------------------
+" Must have plugins
+" Provides tab completion
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-" Plug 'neomake/neomake'
-Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
-Plug 'ciaranm/securemodelines'
+" Provides code snippets. This plugin is VERY customizable and you
+" SHOULD at least have a look at the basic tutorials (2 - 10 minutes).
+" For links to the tutorials, see the file README.md.
 Plug 'SirVer/ultisnips'
+" Fixes all kinds of vulnerabilities related to modelines
+Plug 'ciaranm/securemodelines'
+" Provides a helpful status line (the thing at the bottom)
 Plug 'vim-airline/vim-airline'
+"-----------------------------------------------------------------------------
+" Nice to have plugins
+" Creates matching closing parantheses, brackets etc.
+Plug 'Raimondi/delimitMate'
+" Provides an awesome Git-wrapper for vim
+Plug 'tpope/vim-fugitive'
+" Defines some useful shortcuts like `[c` and `]c` for walking through
+" diffs in a diff view (e.g. when inspecting merge conflicts)
+Plug 'tpope/vim-unimpaired'
+" Makes motions like `[`/`]` but also `[c`/`]c` repeatable.
 Plug 'vim-scripts/repeatable-motions.vim'
+" TabooRename lets you choose display names for your tabs
 Plug 'gcmt/taboo.vim'
+" Support for the emacs orgmode
 Plug 'jceb/vim-orgmode'
+"-----------------------------------------------------------------------------
+" Plugins that do not run smoothly
+" Enables e.g. latex files to be compiled in the background
+" Plug 'neomake/neomake'
+" Enables movements that recognize both whitespaces AND capital letters
+" as word separators
 " Plug 'bkad/CamelCaseMotion'
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+"-----------------------------------------------------------------------------
+" Unused plugins
 " Plug 'majutsushi/tagbar'
 
 " Add plugins to &runtimepath
 call plug#end()
 
 
-"------------------------------------------------------------
-" neovim settings
-" Let combinations of alt with other keys send an ESC key first
-" This can be used to exit insert mode with e.g. <A-j>.
+"-----------------------------------------------------------------------------
+" neovim specific settings
+" Let combinations of alt with other keys send an ESC key first.
+" Thus pressing e.g. <A-j> can be used to exit insert mode.
+" This behaviour is a standard 'feature' in vanilla vim.
 if has('nvim')
     let s:printable_ascii = map(range(32, 126), 'nr2char(v:val)')
     call remove(s:printable_ascii, 92)
@@ -71,19 +95,10 @@ endif
 " to use color schemes with nvim set the environment variable
 " TERM=xterm-256color
 
-"------------------------------------------------------------
-" Attempt to determine the type of a file based on its name and possibly its
-" contents. Use this to allow intelligent auto-indenting for each filetype,
-" and for plugins that are filetype specific.
-filetype indent plugin on
 
-" Enable syntax highlighting
-syntax on
-
-
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Must have options
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 "
 " These are highly recommended options.
 
@@ -108,9 +123,17 @@ set showcmd
 set hlsearch
 
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Usability options
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+filetype indent plugin on
+
+" Enable syntax highlighting
+syntax on
+
 " Use case insensitive search, except when using capital letters
 set ignorecase
 set smartcase
@@ -159,27 +182,27 @@ set notimeout ttimeout ttimeoutlen=200
 " Keep 5 lines above and below cursor on screen:
 set scrolloff=5
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Indentation options
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Diff-Mode options
 " Highlighting
 highlight DiffText ctermbg=White
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Disable plaintex and context filetypes for *.tex files
 let g:tex_flavor = "latex"
 
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Plug-In configurations
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " YouCompleteMe configuration
 " WIP: How to populate the GAPTAGS file from GAPWORDS automatically?
 " Use a Makefile?
@@ -188,10 +211,9 @@ if !exists('*CreateGAPTAGS')
     endfunction
 endif
 let g:ycm_collect_identifiers_from_tags_files = 1
-" TODO How to make path dynamic?
-let &tags = "/home/sergio/.vim/GAPTAGS"
+let &tags = $HOME . "/.vim/GAPTAGS"
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " delimitMate configuration
 " also see Auto Commands
 let g:delimitMate_expand_space = 1
@@ -201,13 +223,13 @@ let g:delimitMate_expand_cr = 1
 au FileType c,gap,magma let b:delimitMate_insert_eol_marker = 1
 au FileType c,gap,magma let b:delimitMate_eol_marker = ";"
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " vim-fugitive configuration
 " Opening a git object using fugitive creates a new buffer.
 " This autocommand deletes unused buffers.
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " UltiSnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -219,9 +241,9 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 let g:UltiSnipsEditSplit="horizontal"
 
 
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " Read further settings
-"------------------------------------------------------------
+"-----------------------------------------------------------------------------
 " `runtime` is the relative version of `source` and checks the
 " runtimepath variable
 " Generally useful mappings should go here
