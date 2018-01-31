@@ -48,10 +48,13 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gd :Gdiff<CR>
 noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
+" Yank and Paste
 " Yank selection into the OS clipboard
 noremap <leader>y "+y
 " Yank line into the OS clipboard
 noremap <leader>Y "+yy
+" Paste from 'middle mouse button' register
+noremap <leader>m "*p
 
 " Map to turn off search highlighting (in addition to <C-l>
 nnoremap <leader>/ :nohl<CR>
