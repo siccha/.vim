@@ -240,6 +240,19 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
 
+"-----------------------------------------------------------------------------
+" Miscellanous fixes
+" These will probably be incorporated into upstream at some point in time
+"-----------------------------------------------------------------------------
+" Fix for fugitive `Gpush` freezing under neovim
+if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
+  let s:gui_askpass = system("git --exec-path")[0:-2] . "/git-gui--askpass"
+  if executable(s:gui_askpass)
+    let $SSH_ASKPASS = s:gui_askpass
+  elseif executable("ssh-askpass")
+    let $SSH_ASKPASS = "ssh-askpass"
+  endif
+endif
 
 "-----------------------------------------------------------------------------
 " Read further settings
