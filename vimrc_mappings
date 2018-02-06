@@ -22,8 +22,24 @@ noremap <F5> :call GAPlocal()<CR>
 
 "------------------------------------------------------------
 " Leader maps
+"------------------------------------------------------------
+" See :help mapleader
 let mapleader=" "
-" <leader> w, e, b used by CamelCaseMotion
+
+" Fugitive mappings
+noremap <leader><S-G> :Git 
+noremap <leader>s :Gstatus<CR>
+noremap <leader>gs :Git show<CR>
+noremap <leader>gl :Git log<CR>
+noremap <leader>gd :Git diff<CR>
+" diff (t)his buffer
+noremap <leader>gt :Gdiff<CR>
+" Somewhat hacky map to change from diff view to normal view
+" of the current buffer
+noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
+
+" The plugin CamelCaseMotion is not working atm. In principle <leader> w, e, b
+" should be used by CamelCaseMotion
 
 " Mappings to move through buffers
 " List all available buffers
@@ -39,14 +55,9 @@ noremap <leader>k :bprev<CR>
 noremap <leader>te :tabedit 
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
+noremap <leader>tr :TabooRename 
 noremap <leader>tj :tabmove +1<CR>
 noremap <leader>tk :tabmove -1<CR>
-
-" Fugitive mappings
-noremap <leader>s :Gstatus<CR>
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gd :Gdiff<CR>
-noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
 " Yank and Paste
 " Yank selection into the OS clipboard
