@@ -17,8 +17,7 @@ Create a symlink to our config-folder for Neovim:
 Check the [build prerequisites](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites),
 e.g. recent verions of CMake and (Clang or GCC)
 ```sh
-    sudo apt-get install libtool libtool-bin autoconf automake cmake \
-        g++ pkg-config unzip libmsgpack-dev libuv-dev libluajit-5.1-dev
+    sudo apt-get install ninja-build libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 ```
 
 Build and install Neovim:
