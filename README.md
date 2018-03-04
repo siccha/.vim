@@ -45,7 +45,7 @@ and
 [SirVer/ultisnips](https://github.com/SirVer/ultisnips).
 `YCM` is a completion engine whereas `ultisnips` enables you to write your own
 code snippets.
-To make full use of `ultisnips` you SHOULD have a look at the amazing, concise
+To make full use of `ultisnips` you **should** have a look at the amazing, concise
 ultisnips tutorials (the first 10 minutes should suffice).
 You can find links to SirVer's screencasts on `ultisnips`'
 [github repository](https://github.com/SirVer/ultisnips#screencasts)
