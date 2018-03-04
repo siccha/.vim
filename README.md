@@ -35,8 +35,8 @@ This may take some time. Now restart vim again.
 the leader key
 
 `vimrc_private` contains
-- my own mappings and settings that not everybody may want. You should
-comment out the `runtime vimrc_private` statement in the `vimrc`.
+- my own mappings and settings that not everybody may want. Create a symbolic
+link `link_to_vimrc_private` to `vimrc_private` if you want to enable it.
 
 
 This `vim` configuration is built around the awesome plugins

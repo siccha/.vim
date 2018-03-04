@@ -261,5 +261,6 @@ endif
 " runtimepath variable
 " Generally useful mappings should go here
 runtime vimrc_mappings
-" My personal maps etc
-runtime vimrc_private
+" My personal maps. Create this symbolic link to the file vimrc_private to
+" enable the personal maps
+runtime link_to_vimrc_private
