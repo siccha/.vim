@@ -10,7 +10,7 @@
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
-" some Linux distros have filetype on in the system vimrc turn filetype
+" Some Linux distros have filetype on in the system vimrc. Turn filetype
 " detection off and, even if it's not strictly necessary, disable loading of
 " indent scripts and filetype plugins for now
 filetype off
