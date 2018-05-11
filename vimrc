@@ -233,8 +233,8 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " UltiSnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-j>"
-let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:UltiSnipsJumpForwardTrigger="<A-l>"
+let g:UltiSnipsJumpBackwardTrigger="<A-h>"
 let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
