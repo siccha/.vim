@@ -52,6 +52,8 @@ Plug 'vim-airline/vim-airline'
 " Nice to have plugins
 " Creates matching closing parantheses, brackets etc.
 Plug 'Raimondi/delimitMate'
+" Enables e.g. latex files to be compiled in the background
+Plug 'neomake/neomake'
 " Provides an awesome Git-wrapper for vim
 Plug 'tpope/vim-fugitive'
 " Defines some useful shortcuts like `[c` and `]c` for walking through
@@ -65,8 +67,6 @@ Plug 'gcmt/taboo.vim'
 Plug 'jceb/vim-orgmode'
 "-----------------------------------------------------------------------------
 " Plugins that do not run smoothly
-" Enables e.g. latex files to be compiled in the background
-" Plug 'neomake/neomake'
 " Enables movements that recognize both whitespaces AND capital letters
 " as word separators
 " Plug 'bkad/CamelCaseMotion'
@@ -239,6 +239,19 @@ let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="horizontal"
+
+"-----------------------------------------------------------------------------
+" Neomake configuration
+" Neomake populates the quickfix list.
+" 'remove_invalid_entries' = 1
+" makes it ignore every line that doesn't match 'errorformat'
+let g:neomake_make_maker = {
+    \ 'remove_invalid_entries': 1,
+    \ }
+" Opens the quickfix list if errors occur
+let g:neomake_open_list=1
+" Use our custom configuration for `make`
+let g:neomake_enabled_makers=['make']
 
 "-----------------------------------------------------------------------------
 " Miscellanous fixes
