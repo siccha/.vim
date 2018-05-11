@@ -2,13 +2,28 @@ priority -50
 
 extends texmath
 
+# ?
+snippet newcom "newcommand" bA
+\newcommand{\\$1} {\ensuremath{$0}}
+endsnippet
+
+
+# symbols
 snippet varphi "varphi" A
 \varphi
 endsnippet
 
+# text
 snippet ausserdem "autocorrect" A
 au{\ss}erdem
 endsnippet
+
+# format
+snippet EMP "\emph" A
+\emph{$0}
+endsnippet
+
+# begin / end things
 
 snippet SS "insert sergio comment" A
 \se{$0}
@@ -191,6 +206,10 @@ endsnippet
 
 snippet mnsg "minimal normal subgroup" A
 minimal normal subgroup
+endsnippet
+
+snippet mm "standard math environment" bA
+    \$${0}\$
 endsnippet
 
 snippet dm "display math environment" bA
