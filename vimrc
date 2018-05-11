@@ -270,8 +270,8 @@ endif
 "-----------------------------------------------------------------------------
 " Read further settings
 "-----------------------------------------------------------------------------
-" `runtime` is the relative version of `source` and checks the
-" runtimepath variable
+" `runtime` is the relative version of `source`. It searches in 'runtimepath'
+" specified directories for files to include.
 " Generally useful mappings should go here
 runtime vimrc_mappings
 " My personal maps. Create this symbolic link to the file vimrc_private to
