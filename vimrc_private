@@ -16,8 +16,10 @@ map <Left> <Plug>RepeatMotionLeft
 "------------------------------------------------------------
 " Leader maps
 "------------------------------------------------------------
-inoremap <leader><space> <ESC>
+inoremap <S-space> <ESC>
 noremap <leader><space> 10j
+inoremap <S-del> <ESC>$a  <del><ESC>dw
+noremap <S-del> $a  <del><ESC>dw
 
 "------------------------------------------------------------
 " Set location of swap files for use on elwin

@@ -9,3 +9,9 @@ if !exists("s:latex_auto_make")
   au BufWritePost * Neomake!
 endif
 let s:latex_auto_make = 1
+
+" Make this one work only in tex files
+if !exists("s:override_tab")
+  inoremap <Tab> \
+endif
+let s:override_tab = 1
