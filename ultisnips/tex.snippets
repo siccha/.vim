@@ -7,6 +7,54 @@ snippet newcom "newcommand" bA
 \newcommand{\\$1} {\ensuremath{$0}}
 endsnippet
 
+##### Automatic snippets #####
+# Abbreviations
+snippet NLT "nearly-linear time" A
+nearly-linear time
+endsnippet
+
+# Environments
+snippet PRF "proof environment" A
+\begin{proof}
+$0
+\end{proof}
+endsnippet
+
+snippet defi "Definition" bA
+\begin{defi}
+    ${0}
+\end{defi}
+endsnippet
+
+snippet thm "Theorem" bA
+\begin{thm}
+    ${0}
+\end{thm}
+endsnippet
+
+snippet prp "Proposition" bA
+\begin{prp}
+    ${0}
+\end{prp}
+endsnippet
+
+snippet cor "Corollary" bA
+\begin{cor}
+    ${0}
+\end{cor}
+endsnippet
+
+snippet lem "Lemma" bA
+\begin{lemma}
+    ${0}
+\end{lemma}
+endsnippet
+
+snippet ex "Example" bA
+\begin{ex}
+    ${0}
+\end{ex}
+endsnippet
 
 # symbols
 snippet varphi "varphi" A
@@ -180,30 +228,7 @@ snippet defb "Definitions Block" bA
 \end{block}
 endsnippet
 
-snippet defi "Definition" bA
-\begin{defi}
-    ${0}
-\end{defi}
-endsnippet
-
-snippet thm "Theorem" bA
-\begin{thm}
-    ${0}
-\end{thm}
-endsnippet
-
-snippet cor "Corollary" bA
-\begin{cor}
-    ${0}
-\end{cor}
-endsnippet
-
-snippet lem "Lemma" bA
-\begin{lemma}
-    ${0}
-\end{lemma}
-endsnippet
-
+# Shortcuts
 snippet mnsg "minimal normal subgroup" A
 minimal normal subgroup
 endsnippet
@@ -216,5 +241,9 @@ snippet dm "display math environment" bA
 \[
     ${0}
 \]
+endsnippet
+
+snippet ** "\times" A
+\times
 endsnippet
 # vim:ft=snippets:
