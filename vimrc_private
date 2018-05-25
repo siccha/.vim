@@ -14,6 +14,12 @@ map <Right> <Plug>RepeatMotionRight
 map <Left> <Plug>RepeatMotionLeft
 
 "------------------------------------------------------------
+" Leader maps
+"------------------------------------------------------------
+inoremap <leader><space> <ESC>
+noremap <leader><space> 10j
+
+"------------------------------------------------------------
 " Set location of swap files for use on elwin
 if hostname() == "elwin"
   set directory=/mnt/localdata/sergio/nvimswap/

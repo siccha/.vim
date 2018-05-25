@@ -177,7 +177,8 @@ set relativenumber
 set number
 
 " Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
+" I took this from the internet. Is this for ssh connections?
+"set notimeout ttimeout ttimeoutlen=200
 
 " Keep 5 lines above and below cursor on screen:
 set scrolloff=5
