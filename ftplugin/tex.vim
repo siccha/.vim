@@ -11,7 +11,7 @@ endif
 let s:latex_auto_make = 1
 
 " Make this one work only in tex files
-if !exists("s:override_tab")
-  inoremap <Tab> \
+if !exists("b:override_tab")
+  inoremap <buffer> <Tab> \
 endif
-let s:override_tab = 1
+let b:override_tab = 1
