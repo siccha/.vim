@@ -5,4 +5,4 @@ plugged/**
 .netrwhist
 
 # This symbolic link is created to enable the "private" mappings
-link_to_vimrc_private
+link_to_private_mappings
