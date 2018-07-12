@@ -21,6 +21,9 @@ noremap <leader><space> 10j
 inoremap <S-del> <ESC>$a  <del><ESC>dw
 noremap <S-del> $a  <del><ESC>dw
 
+" Remap Y to be similar to C and D
+noremap Y y$
+
 "------------------------------------------------------------
 " Set location of swap files for use on elwin
 if hostname() == "elwin"
