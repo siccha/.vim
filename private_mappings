@@ -16,8 +16,12 @@ map <Left> <Plug>RepeatMotionLeft
 "------------------------------------------------------------
 " Leader maps
 "------------------------------------------------------------
+" Search backwards for a line without indentation
+" Can be used for GAP code to jump to definition of the outermost function.
+noremap <leader>d <ESC>?^\S<CR>:nohl<CR>
 inoremap <S-space> <ESC>
 noremap <leader><space> 10j
+" Delete EOL and following whitespace
 inoremap <S-del> <ESC>$a  <del><ESC>dw
 noremap <S-del> $a  <del><ESC>dw
 
