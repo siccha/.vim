@@ -89,3 +89,5 @@ noremap <leader>p :set paste!<CR>
 " You can use :Q to quit (instead of getting an error msg)
 ca Q q
 ca QA qa
+
+" vim: set ft=vim

@@ -41,3 +41,5 @@ noremap <leader>a a<A></A><ESC>3hi
 " Unfortunately <C-w> is already used for working with splits
 noremap <C-q> :q<CR>
 noremap <leader><C-q> :q!<CR>
+
+" vim: set ft=vim
