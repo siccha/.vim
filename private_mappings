@@ -39,7 +39,8 @@ noremap <leader>a a<A></A><ESC>3hi
 
 "------------------------------------------------------------
 " Maps for terminal mode
-:tnoremap <C-W><C-W> <C-\><C-N><C-W><C-W>
+:tnoremap <C-W> <C-\><C-N>
+
 " Quit
 " Unfortunately <C-w> is already used for working with splits
 noremap <C-q> :q<CR>
