@@ -28,7 +28,7 @@ let mapleader=" "
 
 " Fugitive mappings
 noremap <leader><S-G> :Git 
-noremap <leader>g :Gstatus<CR>
+noremap <leader>gg :Gstatus<CR>
 noremap <leader>s :Gstatus<CR>
 noremap <leader>gs :Git show<CR>
 noremap <leader>gl :Git log<CR>
