@@ -63,10 +63,10 @@ noremap <leader>tj :tabmove +1<CR>
 noremap <leader>tk :tabmove -1<CR>
 
 " Yank and Paste
-" Yank selection into the OS clipboard
-noremap <leader>y "+y
 " Yank line into the OS clipboard
-noremap <leader>Y "+yy
+nnoremap <leader>y "+yy
+" Yank selection into the OS clipboard
+xnoremap <leader>y "+y
 " Paste from 'middle mouse button' register
 noremap <leader>m "*p
 
