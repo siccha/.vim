@@ -64,6 +64,18 @@ snippet EX "Example" bA
 \end{ex}
 endsnippet
 
+snippet ENUM "Enumerate" bA
+\begin{enumerate}
+    \item$0
+\end{enumerate}
+endsnippet
+
+snippet ITEM "Itemize" bA
+\begin{itemize}
+    \item$0
+\end{itemize}
+endsnippet
+
 # symbols
 snippet varphi "varphi" A
 \varphi
@@ -79,7 +91,7 @@ snippet EMP "\emph" A
 \emph{$0}
 endsnippet
 
-# begin / end things
+# Stuff
 
 snippet SS "insert sergio comment" A
 \se{$0}
@@ -101,6 +113,9 @@ snippet TE "insert text" A
 \text{$0}
 endsnippet
 
+############################
+# Environments
+############################
 snippet "BEG" "begin{} / end{}" brA
 \begin{${1:something}}
 	${0:${VISUAL}}
@@ -131,18 +146,6 @@ snippet fig "Figure environment" b
 	\caption{${4/(\w+)\.\w+/\u$1/}$0}
 	\label{fig:${4/(\w+)\.\w+/$1/}}
 \end{figure}
-endsnippet
-
-snippet enum "Enumerate" b
-\begin{enumerate}
-	\item$0
-\end{enumerate}
-endsnippet
-
-snippet item "Itemize" b
-\begin{itemize}
-	\item$0
-\end{itemize}
 endsnippet
 
 snippet desc "Description" b
