@@ -55,7 +55,7 @@ noremap <leader>j :bnext<CR>
 noremap <leader>k :bprev<CR>
 
 " Do things to tabs
-noremap <leader>te :tabedit 
+noremap <leader>te :tabedit %<CR>
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
 noremap <leader>tr :TabooRename 
