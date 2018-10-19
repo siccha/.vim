@@ -21,8 +21,9 @@ map <Left> <Plug>RepeatMotionLeft
 noremap <leader>d <ESC>?^\S<CR>:nohl<CR>
 inoremap <S-space> <ESC>
 noremap <leader><space> 10j
-" Delete EOL and following whitespace
-inoremap <S-del> <ESC>$a  <del><ESC>dw
+" Delete EOL and following whitespace, if we were in insert mode
+" we go back to insert mode afterwards.
+inoremap <S-del> <ESC>$a  <del><ESC>dwi
 noremap <S-del> $a  <del><ESC>dw
 
 " Remap Y to be similar to C and D
