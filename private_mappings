@@ -43,6 +43,8 @@ noremap <leader>a a<A></A><ESC>3hi
 :tnoremap <C-W> <C-\><C-N>
 :tnoremap <S-tab> <C-\><C-N><C-W><C-W>
 
+" Save
+:noremap <C-s> :w<CR>
 " Quit
 " Unfortunately <C-w> is already used for working with splits
 noremap <C-q> :q<CR>

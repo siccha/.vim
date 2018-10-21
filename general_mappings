@@ -28,8 +28,8 @@ let mapleader=" "
 
 " Fugitive mappings
 noremap <leader><S-G> :Git 
-noremap <leader>gg :Gstatus<CR>
-noremap <leader>s :Gstatus<CR>
+noremap <leader>gg :Gstatus<CR>/modified<CR>
+noremap <leader>s :Gstatus<CR>/modified<CR>
 noremap <leader>gs :Git show<CR>
 noremap <leader>gl :Git log<CR>
 noremap <leader>gd :Git diff<CR>
