@@ -49,8 +49,8 @@ noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 noremap <leader>l :buffers<CR>:b 
 " Go to last buffer
 noremap <leader>u :b#<CR>
-" Reload buffer
-noremap <leader>e :e<CR>
+" Open current working directory
+noremap <leader>e :e .<CR>
 noremap <leader>j :bnext<CR>
 noremap <leader>k :bprev<CR>
 
