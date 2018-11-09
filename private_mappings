@@ -39,9 +39,13 @@ endif
 noremap <leader>a a<A></A><ESC>3hi
 
 "------------------------------------------------------------
+" Maps for movement
+:noremap <S-tab> <C-W><C-W>
+:tnoremap <S-tab> <C-\><C-N><C-W><C-W>
+
+"------------------------------------------------------------
 " Maps for terminal mode
 :tnoremap <C-W> <C-\><C-N>
-:tnoremap <S-tab> <C-\><C-N><C-W><C-W>
 
 " Save
 :noremap <C-s> :w<CR>
