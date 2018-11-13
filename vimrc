@@ -114,6 +114,9 @@ set hidden
 
 " Better command-line completion
 set wildmenu
+" First tab completes to longest common prefix. Afterwards tabs cycle full
+" completions.
+set wildmode=longest:full,full
 
 " Show partial commands in the last line of the screen
 set showcmd
