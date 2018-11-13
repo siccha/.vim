@@ -30,6 +30,10 @@ noremap <S-del> $a  <del><ESC>dw
 noremap Y y$
 
 "------------------------------------------------------------
+" Fugitive maps
+map -- <leader>gg
+
+"------------------------------------------------------------
 " Set location of swap files for use on elwin
 if hostname() == "elwin"
   set directory=/mnt/localdata/sergio/nvimswap/
