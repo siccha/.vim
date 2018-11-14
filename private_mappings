@@ -31,7 +31,7 @@ noremap Y y$
 
 "------------------------------------------------------------
 " Fugitive maps
-map -- <leader>gg
+map <leader>- <leader>gg
 
 "------------------------------------------------------------
 " Set location of swap files for use on elwin
@@ -49,6 +49,7 @@ noremap <leader>a a<A></A><ESC>3hi
 
 "------------------------------------------------------------
 " Maps for terminal mode
+" Make <C-W> exit terminal mode
 :tnoremap <C-W> <C-\><C-N>
 
 " Save
