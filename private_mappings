@@ -1,4 +1,17 @@
 "------------------------------------------------------------
+" Formatting options
+"------------------------------------------------------------
+" Settings to wrap text automatically
+" textwidth is used as the max line length when wrapping
+set textwidth=79
+"   t automatic line wrapping in text
+"   c automatic line wrapping in comments
+"   r insert comment leader when hitting <ENTER> in insert mode
+set formatoptions+=tcr
+"   o insert comment leader when hitting 'o' or 'O' in normal mode
+set formatoptions-=o 
+
+"------------------------------------------------------------
 " Plug-In configurations
 "------------------------------------------------------------
 
