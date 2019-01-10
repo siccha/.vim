@@ -66,11 +66,13 @@ noremap <leader>a a<A></A><ESC>3hi
 :tnoremap <C-W> <C-\><C-N>
 
 " Save
-:noremap <C-s> :w<CR>
+noremap  <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>a
-" Quit
+" Save and quit
 " Unfortunately <C-w> is already used for working with splits
-noremap <C-q> :q<CR>
-noremap <leader><C-q> :q!<CR>
+noremap   <C-q> :wq<CR>
+inoremap  <C-q> <ESC>:wq<CR>
+" Quit without saving
+noremap  <leader>fq :q!<CR>
 
 " vim: set ft=vim
