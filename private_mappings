@@ -67,7 +67,7 @@ noremap <leader>a a<A></A><ESC>3hi
 
 " Save
 noremap  <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>a
+inoremap <C-s> <ESC>:w<CR>
 " Save and quit
 " Unfortunately <C-w> is already used for working with splits
 noremap   <C-q> :wq<CR>
