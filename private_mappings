@@ -73,6 +73,7 @@ inoremap <C-s> <ESC>:w<CR>
 noremap   <C-q> :wq<CR>
 inoremap  <C-q> <ESC>:wq<CR>
 " Quit without saving
+noremap  <leader>q :q<CR>
 noremap  <leader>fq :q!<CR>
 
 " vim: set ft=vim
