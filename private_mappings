@@ -67,6 +67,10 @@ noremap <leader>a a<A></A><ESC>3hi
 
 "------------------------------------------------------------
 " Maps for terminal mode
+" Open terminal in split if does not exist, otherwise change
+" to terminal buffer.
+" Probably need a function here?
+noremap <leader>t :term<CR>
 " Make <C-W> exit terminal mode
 :tnoremap <C-W> <C-\><C-N>
 
@@ -74,11 +78,11 @@ noremap <leader>a a<A></A><ESC>3hi
 noremap  <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 " Save and quit
+noremap   <C-x> :x<CR>
+inoremap  <C-x> <ESC>:x<CR>
+" Quit
 " Unfortunately <C-w> is already used for working with splits
-noremap   <C-q> :wq<CR>
-inoremap  <C-q> <ESC>:wq<CR>
-" Quit without saving
-noremap  <leader>q :q<CR>
-noremap  <leader>fq :q!<CR>
+noremap   <C-q> :q<CR>
+inoremap  <C-q> <ESC>:q<CR>
 
 " vim: set ft=vim
