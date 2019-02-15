@@ -70,7 +70,7 @@ noremap <leader>a a<A></A><ESC>3hi
 " Open terminal in split if does not exist, otherwise change
 " to terminal buffer.
 " Probably need a function here?
-noremap <leader>t :term<CR>
+noremap <leader>tt :term<CR>
 " Make <C-W> exit terminal mode
 :tnoremap <C-W> <C-\><C-N>
 
