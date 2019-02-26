@@ -1,4 +1,7 @@
 "------------------------------------------------------------
+" Make vsplit put the new buffer on the right side
+set splitright
+"------------------------------------------------------------
 " Formatting options
 "------------------------------------------------------------
 " Settings to wrap text automatically
@@ -71,6 +74,7 @@ noremap <leader>a a<A></A><ESC>3hi
 " to terminal buffer.
 " Probably need a function here?
 noremap <leader>tt :term<CR>
+noremap <leader>tv :vs<CR>:term<CR>
 " Make <C-W> exit terminal mode
 :tnoremap <C-W> <C-\><C-N>
 
