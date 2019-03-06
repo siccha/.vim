@@ -46,6 +46,8 @@ noremap <leader><space> 10j
 " we go back to insert mode afterwards.
 inoremap <S-del> <ESC>$a  <del><ESC>dwi
 noremap <S-del> $a  <del><ESC>dw
+" substitute
+noremap <leader>s :<C-f>i:%s//gc<ESC>2hi
 
 " Remap Y to be similar to C and D
 noremap Y y$
