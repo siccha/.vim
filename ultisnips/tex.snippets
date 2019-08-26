@@ -35,6 +35,14 @@ snippet PHOM "permutation homomorphism" A
 permutation homomorphism
 endsnippet
 
+snippet PTIME "polynomial time" A
+polynomial time
+endsnippet
+
+snippet WCF "weakly canonical form" A
+weakly canonical form
+endsnippet
+
 # Environments
 snippet MM "standard math environment" bA
 \$
@@ -55,9 +63,9 @@ $0
 endsnippet
 
 snippet DEF "Definition" bA
-\begin{defi}
+\begin{defn}
     ${0}
-\end{defi}
+\end{defn}
 endsnippet
 
 snippet THM "Theorem" bA
@@ -82,6 +90,12 @@ snippet LEM "Lemma" bA
 \begin{lemma}
     ${0}
 \end{lemma}
+endsnippet
+
+snippet REM "Remark" bA
+\begin{remark}
+    ${0}
+\end{remark}
 endsnippet
 
 snippet EX "Example" bA
@@ -202,8 +216,6 @@ endsnippet
 snippet sec "Section" b
 \section{${1:section name}}
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-${0}
 endsnippet
 
 snippet sub "Subsection" b
@@ -270,11 +282,23 @@ snippet MNSG "minimal normal subgroup" A
 minimal normal subgroup
 endsnippet
 
+snippet FNAS "finite non-abelian simple" A
+finite non-abelian simple
+endsnippet
+
 snippet ** "\times" A
 \times
 endsnippet
 
 snippet .. "\ldots" A
 \ldots
+endsnippet
+
+snippet FAM "family" A
+$($0_i)_{i \in I}
+endsnippet
+
+snippet $FAM "family" A
+$($0_i)_{i \in I}
 endsnippet
 # vim:ft=snippets:
