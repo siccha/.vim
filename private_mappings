@@ -1,4 +1,8 @@
 "------------------------------------------------------------
+" Influences color theme.
+" bg = background
+set bg=light
+"------------------------------------------------------------
 " Make vsplit put the new buffer on the right side
 set splitright
 "------------------------------------------------------------
