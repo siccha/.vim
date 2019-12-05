@@ -39,7 +39,8 @@ endfunction
 
 "-----------------------------------------------------------------------------
 " Must have plugins
-" Provides tab completion
+" Provides tab completion. For system packages that need to be installed see
+" the README.md.
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 " Provides code snippets. This plugin is VERY customizable and you
 " SHOULD at least have a look at the basic tutorials (2 - 10 minutes).
