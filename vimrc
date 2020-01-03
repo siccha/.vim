@@ -25,6 +25,7 @@ let g:python_host_prog = '/usr/bin/python2'
 call plug#begin()
 
 " This lets vim-plug call the python 2 script `install.py` to build YCM
+" Check the README.md for system dependencies (i.e. apt-get repositories)
 function! BuildYCM(info)
   " info is a dictionary with 3 fields
   " - name:   name of the plugin
@@ -66,10 +67,10 @@ Plug 'gcmt/taboo.vim'
 " Support for the emacs orgmode
 Plug 'jceb/vim-orgmode'
 "-----------------------------------------------------------------------------
-" Plugins that do not run smoothly
-" Enables movements that recognize both whitespaces AND capital letters
-" as word separators
-" Plug 'bkad/CamelCaseMotion'
+" Plugins to try
+" Git.wincent.com/command-t.git
+" Kien/ctrlp. Vim
+" Terryma/vim-multiple-cursors
 "-----------------------------------------------------------------------------
 " Unused plugins
 " Plug 'majutsushi/tagbar'
@@ -133,6 +134,7 @@ set hlsearch
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
 filetype indent plugin on
+filetype indent off
 
 " Enable syntax highlighting
 syntax on
