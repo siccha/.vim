@@ -66,9 +66,6 @@ if hostname() == "elwin"
   set directory=/mnt/localdata/sergio/nvimswap/
 endif
 
-" Insert GAPDoc XML-tags
-noremap <leader>a a<A></A><ESC>3hi
-
 "------------------------------------------------------------
 " Maps for movement
 :noremap <S-tab> <C-W><C-W>
