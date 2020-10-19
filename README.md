@@ -11,7 +11,7 @@ For more information see [junegunn/vim-plug](https://github.com/junegunn/vim-plu
 
 Install the prerequisites to build the completion engine YCM:
 ```sh
-    sudo apt-get install build-essential cmake python-dev
+    sudo apt-get install build-essential cmake python-dev openjdk-11-jre mono npm go
 ```
 For more information on YCM see
 [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-installation).
