@@ -51,8 +51,8 @@ snippet PT "polynomial time" A
 polynomial time
 endsnippet
 
-snippet WCF "weakly canonical form" A
-weakly canonical form
+snippet WCF "weak canonical form" A
+weak canonical form
 endsnippet
 
 # Environments
@@ -112,19 +112,19 @@ endsnippet
 
 snippet EX "Example" bA
 \begin{ex}
-    ${0}
+${0}
 \end{ex}
 endsnippet
 
 snippet ENUM "Enumerate" bA
 \begin{enumerate}
-    \item$0
+\item$0
 \end{enumerate}
 endsnippet
 
 snippet ITEM "Itemize" bA
 \begin{itemize}
-    \item$0
+\item$0
 \end{itemize}
 endsnippet
 
@@ -170,14 +170,31 @@ endsnippet
 ############################
 snippet "BEG" "begin{} / end{}" brA
 \begin{${1:something}}
-	${0:${VISUAL}}
+${0:${VISUAL}}
 \end{$1}
 endsnippet
+
+snippet "FRA" "frame block" brA
+\begin{frame}{${0:title}}
+\end{frame}
+endsnippet
+
+snippet "BLO" "block" brA
+\begin{block}{${0:title}}
+\end{block}
+endsnippet
+
 
 snippet "PMAT" "begin{pmatrix} / end{pmatrix}" rA
 \begin{pmatrix}
 	${0}
 \end{pmatrix}
+endsnippet
+
+snippet "ALI" "begin{align*} / end{align*}" rA
+\begin{align*}
+	${0}
+\end{align*}
 endsnippet
 
 snippet tab "tabular / array environment" b
