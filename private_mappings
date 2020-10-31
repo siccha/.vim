@@ -58,7 +58,21 @@ noremap Y y$
 
 "------------------------------------------------------------
 " Fugitive maps
-map <leader>- <leader>gg
+noremap <leader>- <leader>gg
+noremap <leader><S-G> :Git 
+noremap <leader>gg :Gstatus<CR>/^M\><CR>
+noremap <leader>gb :Git blame
+noremap <leader>gs :Git show<CR>
+noremap <leader>gl :Git log<CR>
+noremap <leader>gd :Git diff<CR>
+noremap <leader>gp :Gpush 
+noremap <leader>g<S-P> :Gpush -f 
+" diff (t)his buffer
+noremap <leader>gt :Gdiff<CR>
+" Somewhat hacky map to change from diff view to normal view
+" of the current buffer
+noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
+
 
 "------------------------------------------------------------
 " Set location of swap files for use on elwin
