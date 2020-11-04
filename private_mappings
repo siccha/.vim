@@ -58,7 +58,7 @@ noremap Y y$
 
 "------------------------------------------------------------
 " Fugitive maps
-noremap <leader>- <leader>gg
+map <leader>- <leader>gg
 noremap <leader><S-G> :Git 
 noremap <leader>gg :Gstatus<CR>/^M\><CR>
 noremap <leader>gb :Git blame
