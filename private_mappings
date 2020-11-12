@@ -65,8 +65,10 @@ noremap <leader>gb :Git blame
 noremap <leader>gs :Git show<CR>
 noremap <leader>gl :Git log<CR>
 noremap <leader>gd :Git diff<CR>
-noremap <leader>gp :Gpush<CR> 
+noremap <leader>gp :Gpush<CR>
 noremap <leader>gfp :Gpush -f<CR>
+noremap <leader>gt :Gpush --tags<CR>
+noremap <leader>gft :Gpush -f --tags<CR>
 " diff (t)his buffer
 noremap <leader>gt :Gdiff<CR>
 " Somewhat hacky map to change from diff view to normal view
