@@ -56,6 +56,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'Raimondi/delimitMate'
 " Enables e.g. latex files to be compiled in the background
 Plug 'neomake/neomake'
+" Let commands run asynchronously
+Plug 'tpope/vim-dispatch'
 " Provides an awesome Git-wrapper for vim
 Plug 'tpope/vim-fugitive'
 " Defines some useful shortcuts like `[c` and `]c` for walking through
