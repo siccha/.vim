@@ -54,13 +54,14 @@ Plug 'vim-airline/vim-airline'
 " Nice to have plugins
 " Creates matching closing parantheses, brackets etc.
 Plug 'Raimondi/delimitMate'
+" Use gcc and gc<motion> to comment using commentstring
+Plug 'tpope/vim-commentary'
 " Enables e.g. latex files to be compiled in the background
 Plug 'neomake/neomake'
 " Let commands run asynchronously
 Plug 'tpope/vim-dispatch'
 " Use neovim terminal emulator for vim-dispatch
 Plug 'radenling/vim-dispatch-neovim'
-
 " Provides an awesome Git-wrapper for vim
 Plug 'tpope/vim-fugitive'
 " Defines some useful shortcuts like `[c` and `]c` for walking through
