@@ -64,6 +64,7 @@ noremap <leader>gg :Gstatus<CR>/^M\><CR>
 noremap <leader>gb :Git blame
 noremap <leader>gs :Git show<CR>
 noremap <leader>gl :Git log<CR>
+noremap <leader>ln :Git log --oneline<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gp :Gpush<CR>
 noremap <leader>gfp :Gpush -f<CR>
