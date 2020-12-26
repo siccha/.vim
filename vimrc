@@ -73,6 +73,8 @@ Plug 'vim-scripts/repeatable-motions.vim'
 Plug 'gcmt/taboo.vim'
 " Support for the emacs orgmode
 Plug 'jceb/vim-orgmode'
+" julia support
+Plug 'JuliaEditorSupport/julia-vim'
 "-----------------------------------------------------------------------------
 " Plugins to try
 " Git.wincent.com/command-t.git
