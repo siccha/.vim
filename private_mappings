@@ -91,7 +91,8 @@ endif
 " Open terminal in split if does not exist, otherwise change
 " to terminal buffer.
 " Probably need a function here?
-noremap <leader>tt :term<CR>
+noremap <leader>tb :term<CR>
+noremap <leader>tt :tabedit %<CR>:term<CR>i
 noremap <leader>tv :vs<CR>:term<CR>
 " Make <C-W> exit terminal mode
 :tnoremap <C-W> <C-\><C-N>
