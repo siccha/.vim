@@ -50,6 +50,9 @@ Plug 'SirVer/ultisnips'
 Plug 'ciaranm/securemodelines'
 " Provides a helpful status line (the thing at the bottom)
 Plug 'vim-airline/vim-airline'
+" Ctags
+Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
 " Creates matching closing parantheses, brackets etc.
@@ -73,16 +76,16 @@ Plug 'vim-scripts/repeatable-motions.vim'
 Plug 'gcmt/taboo.vim'
 " Support for the emacs orgmode
 Plug 'jceb/vim-orgmode'
-" julia support
+"-----------------------------------------------------------------------------
+" Language support
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'rust-lang/rust.vim'
 "-----------------------------------------------------------------------------
 " Plugins to try
 " Git.wincent.com/command-t.git
 " Kien/ctrlp. Vim
 " Terryma/vim-multiple-cursors
 "-----------------------------------------------------------------------------
-" Unused plugins
-" Plug 'majutsushi/tagbar'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -234,9 +237,9 @@ let &tags = $HOME . "/.vim/GAPTAGS"
 let g:delimitMate_expand_space = 1
 let g:delimitMate_expand_cr = 1
 
-" delimitMate: Insert ";" at EOL for C, GAP and magma files
-au FileType c,gap,magma let b:delimitMate_insert_eol_marker = 1
-au FileType c,gap,magma let b:delimitMate_eol_marker = ";"
+" delimitMate: Insert ";" at EOL for the given filetypes
+au FileType c,gap,magma,rust let b:delimitMate_insert_eol_marker = 1
+au FileType c,gap,magma,rust let b:delimitMate_eol_marker = ";"
 
 "-----------------------------------------------------------------------------
 " vim-fugitive configuration
