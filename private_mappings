@@ -39,8 +39,14 @@ map <Right> <Plug>RepeatMotionRight
 map <Left> <Plug>RepeatMotionLeft
 
 "------------------------------------------------------------
+" Tags configuration
+nmap <F8> :TagbarToggle<CR>
+
+"------------------------------------------------------------
 " Leader maps
 "------------------------------------------------------------
+" Comment/uncomment a line
+noremap <leader>c gcc
 " Search backwards for a line without indentation
 " Can be used for GAP code to jump to definition of the outermost function.
 noremap <leader>d <ESC>?^\S<CR>:nohl<CR>
@@ -61,8 +67,12 @@ noremap Y y$
 map <leader>- <leader>gg
 noremap <leader><S-G> :Git 
 noremap <leader>gg :Gstatus<CR>/^M\><CR>
+noremap <leader>grr :Grebase<CR>
+noremap <leader>gri :Grebase --interactive HEAD~
 noremap <leader>gb :Git blame
-noremap <leader>gs :Git show<CR>
+noremap <leader>gsh :Git show<CR>
+noremap <leader>gss :Git stash<CR>
+noremap <leader>gsp :Git stash pop<CR>
 noremap <leader>gll :Git log<CR>
 noremap <leader>gln :Git log --oneline<CR>
 noremap <leader>gd :Git diff<CR>
