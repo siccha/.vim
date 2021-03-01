@@ -67,6 +67,7 @@ noremap Y y$
 map <leader>- <leader>gg
 noremap <leader><S-G> :Git 
 noremap <leader>gg :Gstatus<CR>/^M\><CR>
+noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
 noremap <leader>gb :Git blame
@@ -76,10 +77,10 @@ noremap <leader>gsp :Git stash pop<CR>
 noremap <leader>gll :Git log<CR>
 noremap <leader>gln :Git log --oneline<CR>
 noremap <leader>gd :Git diff<CR>
-noremap <leader>gp :Gpush<CR>
-noremap <leader>gfp :Gpush -f<CR>
-noremap <leader>gt :Gpush --tags<CR>
-noremap <leader>gft :Gpush -f --tags<CR>
+noremap <leader>gpp :Gpush<CR>
+noremap <leader>gpf :Gpush -f<CR>
+noremap <leader>gtt :Gpush --tags<CR>
+noremap <leader>gtf :Gpush -f --tags<CR>
 " Somewhat hacky map to change from diff view to normal view
 " of the current buffer
 noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
