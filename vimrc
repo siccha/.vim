@@ -51,10 +51,11 @@ Plug 'ciaranm/securemodelines'
 " Provides a helpful status line (the thing at the bottom)
 Plug 'vim-airline/vim-airline'
 " Ctags
-Plug 'majutsushi/tagbar'
 Plug 'preservim/tagbar'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
+" Alternative for project drawer, that is for browsing the project file tree
+Plug 'tpope/vim-vinegar'
 " Creates matching closing parantheses, brackets etc.
 Plug 'Raimondi/delimitMate'
 " Use gcc and gc<motion> to comment using commentstring
@@ -222,14 +223,7 @@ let g:tex_flavor = "latex"
 
 "-----------------------------------------------------------------------------
 " YouCompleteMe configuration
-" WIP: How to populate the GAPTAGS file from GAPWORDS automatically?
-" Use a Makefile?
-if !exists('*CreateGAPTAGS')
-    function CreateGAPTAGS()
-    endfunction
-endif
 let g:ycm_collect_identifiers_from_tags_files = 1
-let &tags = $HOME . "/.vim/GAPTAGS"
 
 "-----------------------------------------------------------------------------
 " delimitMate configuration
