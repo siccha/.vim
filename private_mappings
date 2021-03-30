@@ -93,9 +93,13 @@ if hostname() == "elwin"
 endif
 
 "------------------------------------------------------------
-" Maps for movement
+" Maps for movement between splits
 :noremap <S-tab> <C-W><C-W>
 :tnoremap <S-tab> <C-\><C-N><C-W><C-W>
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 "------------------------------------------------------------
 " Maps for terminal mode
