@@ -266,6 +266,28 @@ let g:neomake_open_list=1
 let g:neomake_enabled_makers=['make']
 
 "-----------------------------------------------------------------------------
+" Tagbar Settings
+"-----------------------------------------------------------------------------
+let g:tagbar_type_gap = {
+    \ 'ctagstype' : 'gap',
+    \ 'kinds' : [
+        \ 'f:function',
+        \ 'v:value',
+        \ 'm:method',
+        \ 't:truemethod',
+        \ 'd:documentation',
+        \ 'c:category',
+        \ 'r:representation',
+        \ 'i:infoclass',
+        \ 'a:attribute',
+        \ 'p:property',
+        \ 's:synonym',
+        \ 'g:gfunction',
+        \ 'o:operation'
+    \ ]
+\ }
+
+"-----------------------------------------------------------------------------
 " Miscellanous fixes
 " These will probably be incorporated into fugitive at some point in time
 "-----------------------------------------------------------------------------
