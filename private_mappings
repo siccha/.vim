@@ -66,10 +66,13 @@ noremap Y y$
 " Fugitive maps
 map <leader>- <leader>gg
 noremap <leader><S-G> :Git 
+noremap <leader><S-S> :Git switch 
+noremap <leader>gi :Git 
 noremap <leader>gg :Gstatus<CR>/^M\><CR>
 noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
+noremap <leader>gre :Git restructure 
 noremap <leader>gb :Git blame
 noremap <leader>gsh :Git show<CR>
 noremap <leader>gss :Git stash<CR>
@@ -104,8 +107,8 @@ noremap <C-l> <C-w>l
 "------------------------------------------------------------
 " Working with tabs
 noremap <leader>tt :tabedit %<CR>:b 
-noremap <leader>trr :tabedit %<CR>:term<CR>i
-noremap <leader>te :tabedit 
+noremap <leader>ter :tabedit %<CR>:term<CR>i
+noremap <leader>tee :tabedit 
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
