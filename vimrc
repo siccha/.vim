@@ -54,6 +54,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'preservim/tagbar'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
+" If vim-fugitive is the Git, vim-rhubarb is the Hub.
+Plug 'tpope/vim-rhubarb'
 " Alternative for project drawer, that is for browsing the project file tree
 Plug 'tpope/vim-vinegar'
 " Creates matching closing parantheses, brackets etc.
