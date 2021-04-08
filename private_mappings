@@ -103,8 +103,12 @@ noremap <C-l> <C-w>l
 
 "------------------------------------------------------------
 " Working with tabs
-noremap <leader>tb :tabedit %<CR>:b 
-noremap <leader>tt :tabedit %<CR>:term<CR>i
+noremap <leader>tt :tabedit %<CR>:b 
+noremap <leader>trr :tabedit %<CR>:term<CR>i
+noremap <leader>te :tabedit 
+noremap <leader>tc :tabclose<CR>
+noremap <leader>tq :tabclose<CR>
+noremap <leader>tre :TabooRename 
 
 "------------------------------------------------------------
 " Maps for terminal mode

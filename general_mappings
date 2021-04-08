@@ -44,11 +44,6 @@ noremap <leader>k :bprev<CR>
 " Delete current buffer
 noremap <leader>bd :bdel<CR>
 
-" Do things to tabs
-noremap <leader>te :tabedit 
-noremap <leader>tc :tabclose<CR>
-noremap <leader>tq :tabclose<CR>
-noremap <leader>trr :TabooRename 
 " Yank current selection and use it as tab name
 noremap <leader>try y:TabooRename <C-F>p
 noremap <leader>tj :tabmove +1<CR>
