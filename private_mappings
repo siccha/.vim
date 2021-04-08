@@ -68,6 +68,7 @@ map <leader>- <leader>gg
 noremap <leader><S-G> :Git 
 noremap <leader><S-S> :Git switch 
 noremap <leader>gi :Git 
+noremap <C-G><C-G> :Gstatus<CR>/^M\><CR>
 noremap <leader>gg :Gstatus<CR>/^M\><CR>
 noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
@@ -81,9 +82,9 @@ noremap <leader>gll :Git log<CR>
 noremap <leader>gln :Git log --oneline<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gpp :Gpush<CR>
-noremap <leader>gpf :Gpush -f<CR>
-noremap <leader>gtt :Gpush --tags<CR>
-noremap <leader>gtf :Gpush -f --tags<CR>
+noremap <leader>gpff :Gpush -f<CR>
+noremap <leader>gtpp :Gpush --tags<CR>
+noremap <leader>gtpff :Gpush -f --tags<CR>
 " Somewhat hacky map to change from diff view to normal view
 " of the current buffer
 noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
