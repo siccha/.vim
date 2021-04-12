@@ -64,22 +64,21 @@ noremap Y y$
 
 "------------------------------------------------------------
 " Fugitive maps
-map <leader>- <leader>gg
 noremap <leader><S-G> :Git 
 noremap <leader><S-S> :Git switch 
 noremap <leader>gi :Git 
-noremap <C-G><C-G> :Gstatus<CR>/^M\><CR>
-noremap <leader>gg :Gstatus<CR>/^M\><CR>
+noremap <C-G> :Gstatus<CR>/^M\>\\|^U\><CR>
 noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
 noremap <leader>gre :Git restructure 
 noremap <leader>gb :Git blame
-noremap <leader>gsh :Git show<CR>
+noremap <leader>gsh :0Git show<CR>
 noremap <leader>gss :Git stash<CR>
 noremap <leader>gsp :Git stash pop<CR>
 noremap <leader>gll :Git log<CR>
 noremap <leader>gln :Git log --oneline<CR>
+noremap <leader>gup :Git update<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gpp :Gpush<CR>
 noremap <leader>gpff :Gpush -f<CR>
