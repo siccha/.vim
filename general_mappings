@@ -35,6 +35,7 @@ let mapleader=" "
 " Mappings to move through buffers
 " List all available buffers
 noremap <leader>l :buffers<CR>:b 
+noremap <leader>b :b 
 " Go to last buffer
 noremap <leader>u :b#<CR>
 " Open current working directory
