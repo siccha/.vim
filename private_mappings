@@ -68,6 +68,7 @@ noremap <leader><S-G> :Git
 noremap <leader><S-S> :Git switch 
 noremap <leader>gi :Git 
 noremap <C-G> :Gstatus<CR>/^M\>\\|^U\><CR>
+noremap <C--> :Gstatus<CR>/^M\>\\|^U\><CR>
 noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
@@ -78,7 +79,7 @@ noremap <leader>gss :Git stash<CR>
 noremap <leader>gsp :Git stash pop<CR>
 noremap <leader>gll :0Git log<CR>
 noremap <leader>gln :0Git log --oneline<CR>
-noremap <leader>gup :Git update<CR>
+noremap <leader>guu :Git update<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gpp :Gpush<CR>
 noremap <leader>gpff :Gpush -f<CR>
