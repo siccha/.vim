@@ -36,6 +36,7 @@ let mapleader=" "
 " List all available buffers
 noremap <leader>l :buffers<CR>:b 
 noremap <leader>b :b 
+noremap <leader>f :b 
 " Go to last buffer
 noremap <leader>u :b#<CR>
 " Open current working directory
@@ -63,13 +64,6 @@ nnoremap <leader>/ :nohl<CR>
 " With latexmk use the -silent option for sane warnings
 " map <leader>m :Neomake!<CR>
 noremap <leader>m :Neomake<CR>
-
-" find InstallMethod, Install... in file
-noremap <leader>f :/Install\w*(\s*
-" go to previous local definition
-noremap <leader>o :?local<CR><C-L>
-" toggle paste mode (not needed in nvim)
-noremap <leader>p :set paste!<CR>
 
 "------------------------------------------------------------
 " Command abbreviations (renamings)

@@ -63,6 +63,11 @@ noremap <leader>s :<C-f>i:%s//gc<ESC>2hi
 noremap Y y$
 
 "------------------------------------------------------------
+" GAP maps
+noremap <leader>gapq :vsplit term://bash gap-master tst/testquick.g<CR>G
+noremap <leader>gapa :vsplit term://bash gap-master tst/testall.g<CR>G
+
+"------------------------------------------------------------
 " Fugitive maps
 noremap <leader><S-G> :Git 
 noremap <leader><S-S> :Git switch 
@@ -73,6 +78,7 @@ noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
 noremap <leader>gre :Git restructure 
+noremap <leader>gree :Git restructure<CR>
 noremap <leader>gb :Git blame
 noremap <leader>gsh :0Git show<CR>
 noremap <leader>gss :Git stash<CR>
@@ -113,6 +119,8 @@ noremap <leader>tee :tabedit
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
+noremap <leader>tj :tabnext<CR>
+noremap <leader>tk :tabprevious<CR>
 
 "------------------------------------------------------------
 " Maps for terminal mode
