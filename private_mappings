@@ -84,7 +84,8 @@ noremap <leader>gsh :0Git show<CR>
 noremap <leader>gss :Git stash<CR>
 noremap <leader>gsp :Git stash pop<CR>
 noremap <leader>gll :0Git log<CR>
-noremap <leader>gln :0Git log --oneline<CR>
+noremap <leader>gln :Git log --decorate --oneline<CR>
+noremap <leader>0gln :0Git log --decorate --oneline<CR>
 noremap <leader>guu :Git update<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gpp :Gpush<CR>
