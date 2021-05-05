@@ -122,6 +122,8 @@ noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
 noremap <leader>tj :tabnext<CR>
 noremap <leader>tk :tabprevious<CR>
+noremap <leader>tmj :tabmove +1<CR>
+noremap <leader>tmk :tabmove -1<CR>
 
 "------------------------------------------------------------
 " Maps for terminal mode
