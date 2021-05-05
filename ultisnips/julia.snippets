@@ -1,0 +1,15 @@
+snippet FU "function with docstring" A
+"""
+    function $1
+
+Description
+
+# Examples
+\`\`\`jldoctest
+julia> $1
+\`\`\`
+"""
+function ${1:f()}
+    $0
+end
+endsnippet
