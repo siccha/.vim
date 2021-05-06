@@ -5,3 +5,4 @@ endif
 let b:did_ftplugin = 1
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#!,b:##,b:#,:%,:XCOMM,n:>,fb:-
 setlocal commentstring=#%s
+let b:dispatch = 'gap-master --quitonbreak tst/testall.g'
