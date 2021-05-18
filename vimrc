@@ -77,6 +77,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/repeatable-motions.vim'
 " TabooRename lets you choose display names for your tabs
 Plug 'gcmt/taboo.vim'
+" Unicode completion and search
+Plug 'chrisbra/unicode.vim'
 " Support for the emacs orgmode
 Plug 'jceb/vim-orgmode'
 "-----------------------------------------------------------------------------
@@ -288,6 +290,11 @@ let g:tagbar_type_gap = {
         \ 'o:operation'
     \ ]
 \ }
+
+"-----------------------------------------------------------------------------
+" Taboo settings
+" Remember tab names when you save the current session
+set sessionoptions+=tabpages,globals
 
 "-----------------------------------------------------------------------------
 " Miscellanous fixes
