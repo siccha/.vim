@@ -4,3 +4,5 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 let b:dispatch = 'julia --project=@. test/runtests.jl'
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=#%s
