@@ -111,6 +111,8 @@ noremap <C-l> <C-w>l
 " Working with tabs
 noremap <leader>tt :tabedit %<CR>:b 
 noremap <leader>ter :tabedit %<CR>:term<CR>i
+" Tab Edit This
+noremap <leader>tet :tabedit %
 noremap <leader>tee :tabedit 
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
