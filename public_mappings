@@ -7,7 +7,7 @@
 " Mappings
 "------------------------------------------------------------
 "
-" Move through splits by Ctrl + Arrow keys
+" Move through splits by Shift + Arrow keys
 noremap <S-Up> <C-W>k
 noremap <S-Down> <C-W>j
 noremap <S-Right> <C-W>l
