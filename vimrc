@@ -316,7 +316,7 @@ endif
 " `runtime` is the relative version of `source`. It searches in 'runtimepath'
 " specified directories for files to include.
 " Generally useful mappings should go here
-runtime general_mappings
+runtime public_mappings
 " My personal maps. Create this symbolic link to the file vimrc_private to
 " enable the personal maps
 runtime link_to_private_mappings
