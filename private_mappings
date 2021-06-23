@@ -67,8 +67,8 @@ noremap Y y$
 noremap <leader><S-G> :Git 
 noremap <leader><S-S> :Git switch 
 noremap <leader>gi :Git 
-noremap <C-G> :Gstatus<CR>/^M\>\\|^U\><CR>
-noremap <C--> :Gstatus<CR>/^M\>\\|^U\><CR>
+noremap <C-F> :Git<CR><C-W>H/^M\>\\|^U\><CR>
+noremap <C-G> :Git<CR>H/^M\>\\|^U\><CR>
 noremap <leader>gff :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
@@ -100,8 +100,8 @@ endif
 
 "------------------------------------------------------------
 " Maps for movement between splits
-:noremap <S-tab> <C-W><C-W>
-:tnoremap <S-tab> <C-\><C-N><C-W><C-W>
+noremap <S-tab> <C-W><C-W>
+tnoremap <S-tab> <C-\><C-N><C-W><C-W>
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
