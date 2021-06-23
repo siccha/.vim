@@ -6,16 +6,6 @@
 "------------------------------------------------------------
 " Mappings
 "------------------------------------------------------------
-"
-" Move through splits by Shift + Arrow keys
-noremap <S-Up> <C-W>k
-noremap <S-Down> <C-W>j
-noremap <S-Right> <C-W>l
-noremap <S-Left> <C-W>h
-" You can move through tabs with Ctrl + PageUp / PageDown
-" Make this also work in terminal mode
-:tnoremap <C-PageUp> <C-\><C-N><C-PageUp>
-:tnoremap <C-PageDown> <C-\><C-N><C-PageDown>
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>

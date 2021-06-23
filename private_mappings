@@ -99,16 +99,33 @@ if hostname() == "elwin"
 endif
 
 "------------------------------------------------------------
-" Maps for movement between splits
+" Moving through splits
 noremap <S-tab> <C-W><C-W>
 tnoremap <S-tab> <C-\><C-N><C-W><C-W>
+" These only work when I source the vimrc again, why?
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+noremap <S-Up> <C-W>k
+noremap <S-Down> <C-W>j
+noremap <S-Right> <C-W>l
+noremap <S-Left> <C-W>h
+
 "------------------------------------------------------------
-" Working with tabs
+" Moving through tabs
+noremap <leader>tj :tabnext<CR>
+noremap <leader>tk :tabprevious<CR>
+noremap <leader>tmj :tabmove +1<CR>
+noremap <leader>tmk :tabmove -1<CR>
+" You can move through tabs with Ctrl + PageUp / PageDown
+" Make this also work in terminal mode
+:tnoremap <C-PageUp> <C-\><C-N><C-PageUp>
+:tnoremap <C-PageDown> <C-\><C-N><C-PageDown>
+
+"------------------------------------------------------------
+" Opening and closing tabs
 noremap <leader>tt :tabedit %<CR>:b 
 noremap <leader>ter :tabedit %<CR>:term<CR>i
 " Tab Edit This
@@ -117,10 +134,6 @@ noremap <leader>tee :tabedit
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
-noremap <leader>tj :tabnext<CR>
-noremap <leader>tk :tabprevious<CR>
-noremap <leader>tmj :tabmove +1<CR>
-noremap <leader>tmk :tabmove -1<CR>
 
 "------------------------------------------------------------
 " Maps for terminal mode
