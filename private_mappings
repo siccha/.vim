@@ -51,13 +51,6 @@ function GrepTagFileAndSearch(name)
 endfunction
 command! -nargs=1 GrepTagFileAndSearch :call GrepTagFileAndSearch(<q-args>)
 
-function Gfixup(hash)
-    execute ":Gcommit"
-    startinsert
-    call feedkeys("fixup! " . a:hash)
-endfunction
-command! -nargs=1 GrepTagFileAndSearch :call GrepTagFileAndSearch(<q-args>)
-
 "------------------------------------------------------------
 " Leader maps
 "------------------------------------------------------------
