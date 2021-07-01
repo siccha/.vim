@@ -43,6 +43,22 @@ map <Left> <Plug>RepeatMotionLeft
 nmap <F8> :TagbarToggle<CR>
 
 "------------------------------------------------------------
+" Functions
+function GrepTagFileAndSearch(name)
+    execute "! grep " . a:name . " tags"
+    let @/ = '\<' . a:name . '\>'
+    normal! n
+endfunction
+command! -nargs=1 GrepTagFileAndSearch :call GrepTagFileAndSearch(<q-args>)
+
+function Gfixup(hash)
+    execute ":Gcommit"
+    startinsert
+    call feedkeys("fixup! " . a:hash)
+endfunction
+command! -nargs=1 GrepTagFileAndSearch :call GrepTagFileAndSearch(<q-args>)
+
+"------------------------------------------------------------
 " Leader maps
 "------------------------------------------------------------
 " Comment/uncomment a line
@@ -69,7 +85,7 @@ noremap <leader><S-S> :Git switch
 noremap <leader>gi :Git 
 noremap <C-F> :Git<CR><C-W>H/^M\>\\|^U\><CR>
 noremap <C-G> :Git<CR>H/^M\>\\|^U\><CR>
-noremap <leader>gff :Gfetch<CR>
+noremap <leader>gfe :Gfetch<CR>
 noremap <leader>grr :Grebase<CR>
 noremap <leader>gri :Grebase --interactive HEAD~
 noremap <leader>gre :Git restructure 
