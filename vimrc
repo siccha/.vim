@@ -320,3 +320,8 @@ runtime public_mappings
 " My personal maps. Create this symbolic link to the file vimrc_private to
 " enable the personal maps
 runtime link_to_private_mappings
+" Make bash aliases visible to vim
+let $BASH_ENV = "~/.vim_bash_env"
+"-----------------------------------------------------------------------------
+" Custom operators
+runtime! my-functions/*.vim
