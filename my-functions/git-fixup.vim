@@ -1,5 +1,7 @@
 nnoremap <leader>gff :set operatorfunc=<SID>MyGfixup<cr>g@
 vnoremap <leader>gff :<c-u>call <SID>MyGfixup(visualmode())<cr>
+" need a version which does not do operator stuff
+"command! -nargs=1 MyGfixup :call <SID>MyGfixup(<q-args>)
 
 function! s:MyGfixup(type)
     let saved_unnamed_register = @@
