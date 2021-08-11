@@ -8,5 +8,5 @@ setlocal commentstring=#%s
 if expand("%:e") == "gd"
     let b:dispatch = 'gap-master --quitonbreak makedoc.g -c "QUIT;" > /dev/null'
 else
-    let b:dispatch = 'gap-master --quitonbreak tst/testall.g'
+    let b:dispatch = 'gap-master --quitonbreak tst/testquick.g'
 endif
