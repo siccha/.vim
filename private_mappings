@@ -119,9 +119,13 @@ noremap <S-tab> <C-W><C-W>
 tnoremap <S-tab> <C-\><C-N><C-W><C-W>
 " These only work when I source the vimrc again, why?
 noremap <C-h> <C-w>h
+tnoremap <C-h> <C-\><C-N><C-W>h
 noremap <C-j> <C-w>j
+tnoremap <C-j> <C-\><C-N><C-W>j
 noremap <C-k> <C-w>k
+tnoremap <C-k> <C-\><C-N><C-W>k
 noremap <C-l> <C-w>l
+tnoremap <C-l> <C-\><C-N><C-W>l
 
 noremap <S-Up> <C-W>k
 noremap <S-Down> <C-W>j
@@ -130,10 +134,10 @@ noremap <S-Left> <C-W>h
 
 "------------------------------------------------------------
 " Moving through tabs
-noremap <leader>tj :tabnext<CR>
-noremap <leader>tk :tabprevious<CR>
-noremap <leader>tmj :tabmove +1<CR>
-noremap <leader>tmk :tabmove -1<CR>
+noremap <leader><PageUp> :tabprevious<CR>
+noremap <leader><PageDown> :tabnext<CR>
+noremap <leader>tj :tabmove +1<CR>
+noremap <leader>tk :tabmove -1<CR>
 " You can move through tabs with Ctrl + PageUp / PageDown
 " Make this also work in terminal mode
 :tnoremap <C-PageUp> <C-\><C-N><C-PageUp>
@@ -157,7 +161,9 @@ noremap <leader>tre :TabooRename
 " Probably need a function here?
 noremap <leader>tv :vs<CR>:term<CR>
 " Make <C-W> exit terminal mode
-:tnoremap <C-W> <C-\><C-N><C-W>
+:tnoremap <C-W> <C-\><C-N><C-W><ESC>
+" Make <C-W> also work in insert mode
+inoremap <C-W> <ESC><C-W>
 
 " Save
 noremap  <C-s> :w<CR>
