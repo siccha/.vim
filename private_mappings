@@ -106,13 +106,6 @@ noremap <leader>gtpff :Gpush -f --tags<CR>
 " of the current buffer
 noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
-
-"------------------------------------------------------------
-" Set location of swap files for use on elwin
-if hostname() == "elwin"
-  set directory=/mnt/localdata/sergio/nvimswap/
-endif
-
 "------------------------------------------------------------
 " Moving through splits
 noremap <S-tab> <C-W><C-W>
@@ -145,10 +138,8 @@ noremap <leader>tk :tabmove -1<CR>
 
 "------------------------------------------------------------
 " Opening and closing tabs
-noremap <leader>tt :tabedit %<CR>:b 
-noremap <leader>ter :tabedit term://bash<CR>i
-" Tab Edit This
-noremap <leader>tet :tabedit %<CR>
+noremap <leader>tt :tabedit %<CR>
+noremap <leader>tb :tabedit %<CR>:b
 noremap <leader>tee :tabedit 
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
@@ -156,15 +147,20 @@ noremap <leader>tre :TabooRename
 
 "------------------------------------------------------------
 " Maps for terminal mode
-" Open terminal in split if does not exist, otherwise change
-" to terminal buffer.
-" Probably need a function here?
+noremap <leader>ter :term<CR>i
+" Open terminal in split
 noremap <leader>tv :vs<CR>:term<CR>
 " Make <C-W> exit terminal mode
 :tnoremap <C-W> <C-\><C-N><C-W><ESC>
 " Make <C-W> also work in insert mode
 inoremap <C-W> <ESC><C-W>
 
+"------------------------------------------------------------
+" Dispatch-vim
+" gap this
+noremap `gt :Start gap-master --quitonbreak -c "Test(\"%\");QUIT;"<CR>
+
+"------------------------------------------------------------
 " Save
 noremap  <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
