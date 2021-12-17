@@ -161,6 +161,10 @@ inoremap <C-W> <ESC><C-W>
 noremap `gt :Start gap-master --quitonbreak -c "Test(\"%\");QUIT;"<CR>
 
 "------------------------------------------------------------
+" To redraw cursor in nvim when the GAP help confuses it
+" call the binary: redraw-cursor-in-nvim
+
+"------------------------------------------------------------
 " Save
 noremap  <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
