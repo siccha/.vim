@@ -180,19 +180,17 @@ tnoremap <S-tab> <C-\><C-N><C-W><C-W>
 command! -nargs=? -complete=buffer SP sp <args>|resize 10
 command! -nargs=? -complete=buffer VS vs <args>|vertical resize 10
 " These only work when I source the vimrc again, why?
-noremap <C-h> <C-w>h
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
 tnoremap <C-h> <C-\><C-N><C-W>h
-noremap <C-j> <C-w>j
 tnoremap <C-j> <C-\><C-N><C-W>j
-noremap <C-k> <C-w>k
 tnoremap <C-k> <C-\><C-N><C-W>k
-noremap <C-l> <C-w>l
 tnoremap <C-l> <C-\><C-N><C-W>l
 
-noremap <S-Up> <C-W>k
-noremap <S-Down> <C-W>j
-noremap <S-Right> <C-W>l
-noremap <S-Left> <C-W>h
+noremap <S-Right> :tabnext<CR>
+noremap <S-Left> :tabprevious<CR>
 
 "------------------------------------------------------------
 " Moving through tabs

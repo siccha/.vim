@@ -18,6 +18,7 @@ filetype plugin indent off
 
 " use the correct python version
 let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 "-----------------------------------------------------------------------------
 " vim-plug settings
@@ -315,7 +316,6 @@ endif
 "-----------------------------------------------------------------------------
 " `runtime` is the relative version of `source`. It searches in 'runtimepath'
 " specified directories for files to include.
-" Generally useful mappings should go here
 runtime mappings
 " Make bash aliases visible to vim
 let $BASH_ENV = "~/.vim_bash_env"
