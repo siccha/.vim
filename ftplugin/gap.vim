@@ -10,8 +10,8 @@ setlocal commentstring=#%s
 
 " Settings used by vim-dispatch
 if expand("%:e") == "gd"
-    let b:dispatch = 'gap-master --quitonbreak makedoc.g -c "QUIT;"'
+    let b:dispatch = 'gap-master --banner --quitonbreak makedoc.g -c "QUIT;"'
 else
-    let b:dispatch = 'gap-master --quitonbreak tst/testquick.g'
-    setlocal makeprg=gap-master\ tst/testall.g
+    let b:dispatch = 'gap-master --banner --quitonbreak tst/testquick.g'
+    setlocal makeprg=gap-master\ --banner\ tst/testall.g
 endif

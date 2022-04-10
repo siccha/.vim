@@ -3,4 +3,4 @@ if exists("b:did_ftplugin")
   finish
 endif
 let b:did_ftplugin = 1
-let b:dispatch = 'gap-master --quitonbreak makedoc.g -c "QUIT;"'
+let b:dispatch = 'gap-master --banner --quitonbreak makedoc.g -c "QUIT;"'

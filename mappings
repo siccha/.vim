@@ -176,6 +176,9 @@ noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 " Moving through splits
 noremap <S-tab> <C-W><C-W>
 tnoremap <S-tab> <C-\><C-N><C-W><C-W>
+" Open small splits
+command! -nargs=? -complete=buffer SP sp <args>|resize 10
+command! -nargs=? -complete=buffer VS vs <args>|vertical resize 10
 " These only work when I source the vimrc again, why?
 noremap <C-h> <C-w>h
 tnoremap <C-h> <C-\><C-N><C-W>h
@@ -212,8 +215,9 @@ noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
 
 "------------------------------------------------------------
-" Maps for terminal mode
-noremap <leader>ter :term<CR>i
+" Maps for terminals and terminal mode
+noremap <leader>ter :terminal<CR>i
+noremap <leader>gap :terminal gap-master<CR>i
 " Open terminal in split
 noremap <leader>tv :vs<CR>:term<CR>
 " Make <C-W> exit terminal mode
