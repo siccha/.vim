@@ -189,8 +189,8 @@ tnoremap <C-j> <C-\><C-N><C-W>j
 tnoremap <C-k> <C-\><C-N><C-W>k
 tnoremap <C-l> <C-\><C-N><C-W>l
 
-noremap <S-Right> :tabnext<CR>
-noremap <S-Left> :tabprevious<CR>
+noremap <S-H> :tabprevious<CR>
+noremap <S-L> :tabnext<CR>
 
 "------------------------------------------------------------
 " Moving through tabs
