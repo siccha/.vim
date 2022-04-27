@@ -173,12 +173,13 @@ noremap <leader>gtpff :Git push -f --tags
 noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
 "------------------------------------------------------------
-" Moving through splits
-noremap <S-tab> <C-W><C-W>
-tnoremap <S-tab> <C-\><C-N><C-W><C-W>
+" Open terminal split
+noremap <leader>vt :vsplit<CR>:terminal<CR>i
 " Open small splits
+command! NEW new |resize 10
 command! -nargs=? -complete=buffer SP sp <args>|resize 10
 command! -nargs=? -complete=buffer VS vs <args>|vertical resize 10
+" Moving through splits
 " These only work when I source the vimrc again, why?
 noremap <C-h> <C-W>h
 noremap <C-j> <C-W>j
@@ -222,6 +223,19 @@ noremap <leader>tv :vs<CR>:term<CR>
 :tnoremap <C-W> <C-\><C-N><C-W><ESC>
 " Make <C-W> also work in insert mode
 inoremap <C-W> <ESC><C-W>
+
+"------------------------------------------------------------
+" Quickfix window
+" Toggle it, from
+" https://stackoverflow.com/questions/11198382/how-to-create-a-key-map-to-open-and-close-the-quickfix-window-in-vim
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+nnoremap <leader>cc :call ToggleQuickFix()<cr>
 
 "------------------------------------------------------------
 " Dispatch-vim
