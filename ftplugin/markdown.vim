@@ -5,3 +5,5 @@ endif
 let b:did_ftplugin = 1
 
 setlocal textwidth=0
+set tabstop=2
+set shiftwidth=2
