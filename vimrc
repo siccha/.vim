@@ -22,6 +22,10 @@ let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 "-----------------------------------------------------------------------------
 " vim-plug settings
+" Recommended with neovim is to use the folder $HOME/.local/share/nvim/ and
+" there
+" - site/autoload/plug.vim
+" - plugged/  <- package folders go here
 " make sure you use single quotes
 call plug#begin()
 
