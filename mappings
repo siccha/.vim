@@ -180,7 +180,8 @@ command! NEW new |resize 10
 command! -nargs=? -complete=buffer SP sp <args>|resize 10
 command! -nargs=? -complete=buffer VS vs <args>|vertical resize 10
 " Moving through splits
-" These only work when I source the vimrc again, why?
+" These only work when I source the vimrc again. So I put them into a
+" hack_mappings file and source that again on startup via an alias.
 noremap <C-h> <C-W>h
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
