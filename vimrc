@@ -42,7 +42,18 @@ endfunction
 " Must have plugins
 " Provides tab completion. For system packages that need to be installed see
 " the README.md.
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Try nvim-cmp instead of YCM
+"Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+" For luasnip users.
+" Plug 'L3MON4D3/LuaSnip'
+" Plug 'saadparwaiz1/cmp_luasnip'
+" For ultisnips users.
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 " Provides code snippets. This plugin is VERY customizable and you
 " SHOULD at least have a look at the basic tutorials (2 - 10 minutes).
 " For links to the tutorials, see the file README.md.
@@ -60,7 +71,8 @@ Plug 'tpope/vim-rhubarb'
 " Alternative for project drawer, that is for browsing the project file tree
 Plug 'tpope/vim-vinegar'
 " Creates matching closing parantheses, brackets etc.
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
+Plug 'windwp/nvim-autopairs'
 " Use gcc and gc<motion> to comment using commentstring
 Plug 'tpope/vim-commentary'
 " Enables e.g. latex files to be compiled in the background
@@ -80,17 +92,33 @@ Plug 'vim-scripts/repeatable-motions.vim'
 Plug 'gcmt/taboo.vim'
 " Unicode completion and search
 Plug 'chrisbra/unicode.vim'
-" Support for the emacs orgmode
-Plug 'jceb/vim-orgmode'
 "-----------------------------------------------------------------------------
 " Language support
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'rust-lang/rust.vim'
 "-----------------------------------------------------------------------------
 " Plugins to try
+" Support for the emacs orgmode
+Plug 'jceb/vim-orgmode'
+" Plug tpope/vim-surround " parentheses matching etc
+" Plug vim-repeat " repeat gitsigns commands
 " Git.wincent.com/command-t.git
 " Kien/ctrlp. Vim
 " Terryma/vim-multiple-cursors
+" Telescope is a highly extendable fuzzy finder over lists. 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+" Telescope dependencies
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+"Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'lewis6991/gitsigns.nvim'
+" Folds
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+" configs for Language Server Protocol - LSP
+Plug 'neovim/nvim-lspconfig'
 "-----------------------------------------------------------------------------
 
 " Add plugins to &runtimepath
@@ -310,6 +338,64 @@ if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
     let $SSH_ASKPASS = "ssh-askpass"
   endif
 endif
+
+"-----------------------------------------------------------------------------
+" Plugins to try
+lua require('gitsigns').setup()
+lua require('telescope').setup()
+"lua require('telescope').load_extension('fzf')
+
+lua << EOF
+require('gitsigns').setup{
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    -- Actions
+    map({'n', 'v'}, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+    map({'n', 'v'}, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+    map('n', '<leader>hS', gs.stage_buffer)
+    map('n', '<leader>hu', gs.undo_stage_hunk)
+    map('n', '<leader>hR', gs.reset_buffer)
+    map('n', '<leader>hp', gs.preview_hunk)
+    map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>tb', gs.toggle_current_line_blame)
+    map('n', '<leader>hd', gs.diffthis)
+    map('n', '<leader>hD', function() gs.diffthis('~') end)
+    map('n', '<leader>td', gs.toggle_deleted)
+
+    -- Text object
+    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
+EOF
+
+" Short setup calls
+lua require('nvim-autopairs').setup{}
+"-----------------------------------------------------------------------------
+" Python development
+" Enable docstring preview in fold text
+let g:SimpylFold_docstring_preview = 1
+lua require'lspconfig'.pyright.setup{}
+lua require'lspconfig'.jedi_language_server.setup{}
 
 "-----------------------------------------------------------------------------
 " Read further settings
