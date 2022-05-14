@@ -36,8 +36,8 @@ noremap <leader>k :bprev<CR>
 
 " Yank current selection and use it as tab name
 noremap <leader>try y:TabooRename <C-F>p
-noremap <leader>tj :tabmove +1<CR>
-noremap <leader>tk :tabmove -1<CR>
+noremap <leader>tl :tabmove +1<CR>
+noremap <leader>th :tabmove -1<CR>
 
 " Yank and Paste
 " Yank line into the OS clipboard
