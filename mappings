@@ -34,11 +34,6 @@ noremap <leader>e :e .<CR>
 noremap <leader>j :bnext<CR>
 noremap <leader>k :bprev<CR>
 
-" Yank current selection and use it as tab name
-noremap <leader>try y:TabooRename <C-F>p
-noremap <leader>tl :tabmove +1<CR>
-noremap <leader>th :tabmove -1<CR>
-
 " Yank and Paste
 " Yank line into the OS clipboard
 nnoremap <leader>y "+yy
@@ -148,18 +143,18 @@ noremap <leader><S-S> :Git switch
 noremap <leader>gi :Git 
 noremap <C-F> :Git<CR><C-W>H/^M\>\\|^U\><CR>
 noremap <C-G> :Git<CR>H/^M\>\\|^U\><CR>
-noremap <leader>gee :Gedit<CR>
-noremap <leader>gfe :Gfetch<CR>
-noremap <leader>grr :Grebase<CR>
-noremap <leader>gri :Grebase --interactive HEAD~
+noremap <leader>gee :Git edit<CR>
+noremap <leader>gfe :Git fetch<CR>
+noremap <leader>grr :Git rebase<CR>
+noremap <leader>gri :Git rebase --interactive HEAD~
 noremap <leader>grcc :Git rebase --continue<CR>
 noremap <leader>gre :Git restructure 
 noremap <leader>gree :Git restructure<CR><CR>
-noremap <leader>gb :Gblame<CR>
+noremap <leader>gb :Git blame<CR>
 noremap <leader>gsh :0Git show<CR>
 noremap <leader>gss :Git stash<CR>
 noremap <leader>gsp :Git stash pop<CR>
-noremap <leader>gll :Glog<CR>
+noremap <leader>gll :Git log<CR>
 noremap <leader>gln :Git log --decorate --oneline<CR>
 noremap <leader>0gln :0Git log --decorate --oneline<CR>
 noremap <leader>guu :Git update<CR>
@@ -173,6 +168,7 @@ noremap <leader>gtpff :Git push -f --tags
 noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
 "------------------------------------------------------------
+" Splits
 " Open terminal split
 noremap <leader>vt :vsplit<CR>:terminal<CR>i
 " Open small splits
@@ -190,22 +186,27 @@ tnoremap <C-h> <C-\><C-N><C-W>h
 tnoremap <C-j> <C-\><C-N><C-W>j
 tnoremap <C-k> <C-\><C-N><C-W>k
 tnoremap <C-l> <C-\><C-N><C-W>l
+" Doesn't work
+tnoremap <C-S-h> <C-\><C-N><C-W>h
 
+noremap <C-W>_ <C-W>_:set cmdheight=2<CR>
+"------------------------------------------------------------
+" Tabs
+" Moving through tabs
+" Press ctrl+v to see what I need to map to map C-S-Tab
 noremap <S-H> :tabprevious<CR>
 noremap <S-L> :tabnext<CR>
 
-"------------------------------------------------------------
-" Moving through tabs
+noremap <leader><S-L> :tabmove +1<CR>
+noremap <leader><S-H> :tabmove -1<CR>
+
 noremap <leader><PageUp> :tabprevious<CR>
 noremap <leader><PageDown> :tabnext<CR>
-noremap <leader>tj :tabmove +1<CR>
-noremap <leader>tk :tabmove -1<CR>
 " You can move through tabs with Ctrl + PageUp / PageDown
 " Make this also work in terminal mode
 :tnoremap <C-PageUp> <C-\><C-N><C-PageUp>
 :tnoremap <C-PageDown> <C-\><C-N><C-PageDown>
 
-"------------------------------------------------------------
 " Opening and closing tabs
 noremap <leader>tt :tabedit %<CR>
 noremap <leader>tb :tabedit %<CR>:b
@@ -213,6 +214,9 @@ noremap <leader>tee :tabedit
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
+
+" Yank current selection and use it as tab name
+noremap <leader>try y:TabooRename <C-F>p
 
 "------------------------------------------------------------
 " Maps for terminals and terminal mode
