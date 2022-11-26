@@ -4,6 +4,9 @@ if exists("b:did_ftplugin")
 endif
 let b:did_ftplugin = 1
 
+" Automatically write a GAP local statement
+noremap <F5> :call GAPlocal()<CR>
+
 " Teach vim that autodoc comments start with #!
 setlocal comments=s1:/*,mb:*,ex:*/,://,b:#!,b:##,b:#,:%,:XCOMM,n:>,fb:-
 setlocal commentstring=#%s
