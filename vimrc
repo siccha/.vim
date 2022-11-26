@@ -18,7 +18,7 @@ filetype plugin indent off
 
 " use the correct python version
 let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/opt/homebrew/bin/python3'
+let g:python3_host_prog = '/opt/homebrew/bin/python3.9'
 
 "-----------------------------------------------------------------------------
 " vim-plug settings
@@ -53,6 +53,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
+Plug 'lukas-reineke/cmp-rg'
 " For luasnip users.
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'saadparwaiz1/cmp_luasnip'
@@ -68,6 +69,10 @@ Plug 'ciaranm/securemodelines'
 Plug 'vim-airline/vim-airline'
 " Ctags
 Plug 'preservim/tagbar'
+" Black for python
+Plug 'psf/black', { 'branch': 'stable' }
+" Isort for python
+Plug 'fisadev/vim-isort'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
 " If vim-fugitive is the Git, vim-rhubarb is the Hub.
@@ -91,25 +96,57 @@ Plug 'tpope/vim-fugitive'
 " diffs in a diff view (e.g. when inspecting merge conflicts)
 Plug 'tpope/vim-unimpaired'
 " Makes motions like `[`/`]` but also `[c`/`]c` repeatable.
-Plug 'vim-scripts/repeatable-motions.vim'
+" I think this screws up gitsigns as soon as the gitsign column disappears
+" because e.g. I staged or reset all hunks
+" Plug 'vim-scripts/repeatable-motions.vim'
 " TabooRename lets you choose display names for your tabs
 Plug 'gcmt/taboo.vim'
 " Unicode completion and search
 Plug 'chrisbra/unicode.vim'
+" Send buffer contents to a terminal
+Plug 'jpalardy/vim-slime'
+" Jump to any location specified by two characters
+Plug 'justinmk/vim-sneak'
+" Custom text-objects, dependecy of vim-textobj-underscore
+Plug 'kana/vim-textobj-user'
+" civ and cav = change inside snake_case, CamelCase and smallCamelCase
+Plug 'Julian/vim-textobj-variable-segment'
+" text object ij/aj for innermost of either (, [, {
+Plug 'Julian/vim-textobj-brace'
+" text object ir/ar for indention based paragraph
+Plug 'pianohacker/vim-textobj-indented-paragraph'
+" Signcolumn markers, stage from within buffer and much more
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'tmhedberg/SimpylFold'
+" Simple, no-hassle Vim sessions
+Plug 'tpope/vim-obsession'
+" <C-A> and <C-X> for dates
+Plug 'tpope/vim-speeddating'
+" Dependency of vim-markdown
+Plug 'godlygeek/tabular'
+" Syntax highlighting, matching rules and mappings for the original Markdown and extensions.
+Plug 'preservim/vim-markdown'
+" show the buffer name in non-focused windows
+Plug 'ldelossa/buffertag'
+" Changing and adding surrounding delimiters
+Plug 'kylechui/nvim-surround'
 "-----------------------------------------------------------------------------
-" Language support
+" language support
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'rust-lang/rust.vim'
+" configs for Language Server Protocol - LSP
+Plug 'neovim/nvim-lspconfig'
 "-----------------------------------------------------------------------------
 " Plugins to try
+" Fold preview plus dependecy
+Plug 'anuvyklack/keymap-amend.nvim'
+Plug 'anuvyklack/fold-preview.nvim'
 " Support for the emacs orgmode
 Plug 'jceb/vim-orgmode'
-" Plug tpope/vim-surround " parentheses matching etc
-" Plug vim-repeat " repeat gitsigns commands
 " Git.wincent.com/command-t.git
 " Kien/ctrlp. Vim
 " Terryma/vim-multiple-cursors
-" Telescope is a highly extendable fuzzy finder over lists. 
+" Telescope is a highly extendable fuzzy finder over lists.
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Telescope dependencies
@@ -117,12 +154,15 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 "Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'lewis6991/gitsigns.nvim'
+" repeat gitsigns commands
+Plug 'tpope/vim-repeat'
 " Folds
 Plug 'Konfekt/FastFold'
-Plug 'tmhedberg/SimpylFold'
-" configs for Language Server Protocol - LSP
-Plug 'neovim/nvim-lspconfig'
+" vscode-like pictograms for completion menu
+Plug 'onsails/lspkind.nvim', {'branch': 'master' }
+" Reimagine organization
+" Might have to do :Neorg sync-parsers
+Plug 'nvim-neorg/neorg'
 "-----------------------------------------------------------------------------
 
 " Add plugins to &runtimepath
@@ -238,6 +278,27 @@ set number
 " Keep 5 lines above and below cursor on screen:
 set scrolloff=5
 
+" When a file has been detected to have been changed outside of Vim and
+" it has not been changed inside of Vim, automatically read it again.
+" When the file has been deleted this is not done.
+set autoread
+
+" Sets 'foldlevel' when starting to edit another buffer in a window.
+set foldlevelstart=1
+
+let g:vim_markdown_folding_disabled = 1
+
+set conceallevel=2
+
+" Remove coloured background from folding
+hi! link Folded Normal
+
+" disable split resizing after closing or splitting
+set noequalalways
+
+" Removes status lines on each window, instead use buffertag plugin
+set laststatus=3
+
 "-----------------------------------------------------------------------------
 " Indentation options
 set shiftwidth=4
@@ -253,10 +314,53 @@ highlight DiffText ctermbg=White
 " Disable plaintex and context filetypes for *.tex files
 let g:tex_flavor = "latex"
 
+" Influences color theme.
+" bg = background
+set background=light
+
+"------------------------------------------------------------
+" Make vsplit put the new buffer on the right side
+set splitright
+
+" Make split put the new buffer below
+set splitbelow
+
+"------------------------------------------------------------
+" Formatting options
+"------------------------------------------------------------
+" Settings to wrap text automatically
+" textwidth is used as the max line length when wrapping
+" set textwidth=79
+"   t automatic line wrapping in text
+"   c automatic line wrapping in comments
+"   r insert comment leader when hitting <ENTER> in insert mode
+set formatoptions+=tcr
+"   o insert comment leader when hitting 'o' or 'O' in normal mode
+set formatoptions-=o 
+
+"------------------------------------------------------------
+" Highlighting
+"------------------------------------------------------------
+" Highlights trailing whitespace
+match Todo /\s\+$/
 
 "-----------------------------------------------------------------------------
 " Plug-In configurations
 "-----------------------------------------------------------------------------
+
+"-----------------------------------------------------------------------------
+" vim-airline
+" Don't show encoding, errors, and warnings in the status line
+let g:airline#extensions#default#layout = [
+    \ [ 'a', 'b', 'c' ],
+    \ [ 'x', 'z' ]
+    \ ]
+" TODO Need to use tabline to have this?
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"-----------------------------------------------------------------------------
+" Slime
+let g:slime_target = "neovim"
 
 "-----------------------------------------------------------------------------
 " YouCompleteMe configuration
@@ -277,6 +381,13 @@ au FileType c,gap,magma,rust let b:delimitMate_eol_marker = ";"
 " Opening a git object using fugitive creates a new buffer.
 " This autocommand deletes unused buffers.
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" Black configuration
+" python-lsp-black plugin should integrate with pylsp
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py execute 'Black' | execute 'Isort'
+augroup end
 
 "-----------------------------------------------------------------------------
 " UltiSnips configuration
@@ -329,6 +440,11 @@ let g:tagbar_type_gap = {
 " Remember tab names when you save the current session
 set sessionoptions+=tabpages,globals
 
+" restore_view: Don't let :mkview save too many things.
+" Instead of putting this into a plugin, I put it into
+" my-functions/restore-view.vim
+set viewoptions=cursor,folds
+
 "-----------------------------------------------------------------------------
 " Miscellanous fixes
 " These will probably be incorporated into fugitive at some point in time
@@ -344,13 +460,26 @@ if (len($SECURITYSESSIONID) || len($DISPLAY)) && empty($SSH_ASKPASS)
 endif
 
 "-----------------------------------------------------------------------------
+" Lua
 " Plugins to try
-lua require('gitsigns').setup()
+lua require('buffertag').enable()
 lua require('telescope').setup()
+lua require('fold-preview').setup()
 "lua require('telescope').load_extension('fzf')
+" From the fzf installation logs:
+" To install useful keybindings and fuzzy completion:
+"   /opt/homebrew/opt/fzf/install
+" To use fzf in Vim, add the following line to your .vimrc:
+"   set rtp+=/opt/homebrew/opt/fzf
+
 
 lua << EOF
 require('gitsigns').setup{
+  sign_priority = 100,
+  watch_gitdir = {
+    interval = 250,
+    follow_files = true
+  },
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
@@ -405,58 +534,77 @@ let g:SimpylFold_fold_docstring = 0
 " https://github.com/hrsh7th/nvim-cmp
 set completeopt=menu,menuone,noselect
 lua <<EOF
-  -- Setup nvim-cmp.
-  local cmp = require'cmp'
+local lspkind = require('lspkind')
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
-  cmp.setup({
-    snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      expand = function(args)
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
-    },
-    window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        --elseif vim.fn["vsnip#available"](1) == 1 then
-        --  feedkey("<Plug>(vsnip-expand-or-jump)", "")
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-        end
-      end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function()
-        if cmp.visible() then
-          cmp.select_prev_item()
-        --elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-        --  feedkey("<Plug>(vsnip-jump-prev)", "")
-        end
-      end, { "i", "s" }),
+-- Setup nvim-cmp.
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      --elseif vim.fn["vsnip#available"](1) == 1 then
+      --  feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      --elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+      --  feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+    { name = 'path' },
+  }, {
+    { name = 'buffer' },
+  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+      })
     }),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
-    }, {
-      { name = 'buffer' },
-    })
-  })
+  },
+})
 
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
@@ -487,8 +635,26 @@ lua <<EOF
 EOF
 
 " nvim-lspconfig mappings
+" automatically hover on hover
+" autocmd CursorHold  <buffer> lua vim.lsp.buf.hover()
+" trigger CursorHold after X ms
+" set updatetime=4000
 lua <<EOF
 -- Mappings.
+-- https://github.com/neovim/neovim/issues/14825#issuecomment-1017482249
+vim.g.diagnostics_visible = true
+function _G.toggle_diagnostics()
+  if vim.g.diagnostics_visible then
+    vim.g.diagnostics_visible = false
+    vim.diagnostic.disable()
+  else
+    vim.g.diagnostics_visible = true
+    vim.diagnostic.enable()
+  end
+end
+-- hld : h = Gitsigns, l = lsp, d = diagnostics
+vim.api.nvim_set_keymap('n', '<Leader>hld', ':call v:lua.toggle_diagnostics()<CR>', {silent=true, noremap=true})
+
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
@@ -508,24 +674,26 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>k', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR><C-F>0', opts)
+  -- TODO try this, it looks super cool!
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 
 -- Setup lspconfig.
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local util = require("lspconfig/util")
-local servers = { 'jedi_language_server' } -- 'pyright', 'rust_analyzer', 
+local servers = { 'pylsp' } -- 'jedi_language_server', 'pyright', 'rust_analyzer',
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -534,9 +702,71 @@ for _, lsp in pairs(servers) do
     return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
       util.path.dirname(fname)
     end,
+    settings = {
+        pylsp = {
+            plugins = {
+                jedi = {
+                    extra_paths = {
+                        "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
+                        "/Volumes/workplace/AlexaAsrDailyLMUpdate/src/AlexaAsrDailyLMUpdate/src",
+                        "/Volumes/workplace/phasa_ws/src/AlexaAsrDailyLMUpdate/src",
+                        "/Volumes/workplace/pyrama/build-clouddesktop/",
+                        "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/lib/",
+                        "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/recipes/",
+                        "/Volumes/workplace/asr-workspace/build-clouddesktop/Dory-BlueShift-Speech/Dory-BlueShift-Speech-1.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
+                    },
+                },
+            },
+        },
+    },
   }
 end
+
+-- Setup nvim-surround
+require("nvim-surround").setup()
+
+-- Treesitter
+require('nvim-treesitter.configs').setup{
+    -- "lua"
+    -- To be able to install neorg Treesitter parser on MacOS check https://github.com/nvim-neorg/neorg#troubleshooting-treesitter
+    -- Install llvm and use its clang compiler
+    ensure_installed = { "rust", "norg" },
+}
 EOF
+
+lua <<EOF
+-- Neorg
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {},
+        ["core.norg.dirman"] = {
+            config = {
+                workspaces = {
+                    work = "~/Documents/work",
+                    home = "~/Documents/private",
+                }
+            }
+        },
+        ["core.norg.concealer"] = {},
+        -- Needs setup?
+        ["core.norg.completion"] = {
+            config = {
+                engine = "nvim-cmp"
+            }
+        },
+        -- Needs setup?
+        -- ["core.gtd.base"] = {},
+    }
+}
+EOF
+"   core.presenter - Neorg module to create gorgeous presentation slides.
+"   core.gtd.base - Manages your tasks with Neorg using the Getting Things Done methodology.
+"   core.export.markdown - Interface for core.export to allow exporting to markdown.
+"   core.export - Exports Neorg documents into any other supported filetype.
+"   core.norg.dirman - This module is be responsible for managing directories full of .norg files.
+"   core.norg.completion - A wrapper to interface with several different completion engines.
+"   core.norg.concealer - Enhances the basic Neorg experience by using icons instead of text.
+"   core.norg.manoeuvre - A Neorg module for moving around different elements up and down.
 
 "-----------------------------------------------------------------------------
 " Read further settings
@@ -546,6 +776,7 @@ EOF
 runtime mappings
 " Make bash aliases visible to vim
 let $BASH_ENV = "~/.vim_bash_env"
+source ~/.amazon_config/vimrc
 "-----------------------------------------------------------------------------
 " Custom operators
 runtime! my-functions/*.vim
