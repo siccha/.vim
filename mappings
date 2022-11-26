@@ -6,12 +6,23 @@
 "------------------------------------------------------------
 " Mappings
 "------------------------------------------------------------
+" s is overwritten by sneak
+nnoremap <A-s> s
 
-" <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
+augroup MyTermMappings
+    autocmd!
+    " autocmd TermOpen => only define this map in terminal buffers
+    " When running tmux in a terminal emulator and one wants to send <C-A> to
+    " tmux, then the terminal emulator can't be in normal mode.
+    " If it is in normal mode and registers a <C-A> go into insert mode and resend
+    " <C-A>
+    autocmd TermOpen * nnoremap <buffer> <C-A> i<C-A>
+augroup END
 
-" Automatically write a GAP local statement
-noremap <F5> :call GAPlocal()<CR>
+" Where to put these?
+noremap <leader>% :let @+=@%<CR>
+" TODO make this an operator
+noremap gs :source<CR>
 
 "------------------------------------------------------------
 " Leader maps
@@ -30,7 +41,6 @@ noremap <leader>f :b
 " Go to last buffer
 " noremap <leader>uu :b#<CR> " use <C-6> or <C-^> instead
 " Open current working directory
-noremap <leader>e :e .<CR>
 noremap <leader>j :bnext<CR>
 noremap <leader>k :bprev<CR>
 
@@ -45,10 +55,16 @@ noremap <leader>m "*p
 " Map to turn off search highlighting (in addition to <C-l>
 nnoremap <leader>/ :nohl<CR>
 
+" Dispatch maps
+" mnemonic: r = run
+noremap <leader>re :execute "Dispatch" @e<CR>
+noremap <leader>rr :execute "Dispatch" @r<CR>
+noremap <leader>rt :execute "Dispatch" @t<CR>
+
 " Make
 " With latexmk use the -silent option for sane warnings
 " map <leader>m :Neomake!<CR>
-noremap <leader>m :Neomake<CR>
+noremap <leader>m :execute "Dispatch!" @m<CR>
 
 "------------------------------------------------------------
 " Command abbreviations (renamings)
@@ -60,30 +76,6 @@ ca QA qa
 "------------------------------------------------------------
 " Start of what was previously private_mappings
 "------------------------------------------------------------
-" Influences color theme.
-" bg = background
-set bg=light
-"------------------------------------------------------------
-" Make vsplit put the new buffer on the right side
-set splitright
-"------------------------------------------------------------
-" Formatting options
-"------------------------------------------------------------
-" Settings to wrap text automatically
-" textwidth is used as the max line length when wrapping
-set textwidth=79
-"   t automatic line wrapping in text
-"   c automatic line wrapping in comments
-"   r insert comment leader when hitting <ENTER> in insert mode
-set formatoptions+=tcr
-"   o insert comment leader when hitting 'o' or 'O' in normal mode
-set formatoptions-=o 
-
-"------------------------------------------------------------
-" Highlighting
-"------------------------------------------------------------
-" Highlights trailing whitespace
-match Todo /\s\+$/
 "------------------------------------------------------------
 " Plug-In configurations
 "------------------------------------------------------------
@@ -123,49 +115,50 @@ command! -nargs=1 GrepTagFileAndSearch :call GrepTagFileAndSearch(<q-args>)
 noremap <leader>c gcc
 " Search backwards for a line without indentation
 " Can be used for GAP code to jump to definition of the outermost function.
-noremap <leader>d <ESC>?^\S<CR>:nohl<CR>
 inoremap <S-space> <ESC>
-noremap <leader><space> 10j
+noremap <leader><space> za
 " Delete EOL and following whitespace, if we were in insert mode
 " we go back to insert mode afterwards.
 inoremap <S-del> <ESC>$a  <del><ESC>dwi
 noremap <S-del> $a  <del><ESC>dw
 " substitute
-noremap <leader>s :<C-f>i:%s//gc<ESC>2hi
+noremap <leader>subst :<C-f>i:%s//gc<ESC>2hi
 
 " Remap Y to be similar to C and D
 noremap Y y$
 
 "------------------------------------------------------------
 " Fugitive maps
+" For further Fugitive maps see
+noremap <C-F> :silent! /^M\>\\|^U\>\\|^A\><CR>:Git<CR><C-W>L
+noremap <C-G> :Git<CR>H/^M\>\\|^U\><CR>
+noremap <leader>gc :Git commit<CR>
+noremap <leader>ga :Git commit --amend<CR>
 noremap <leader><S-G> :Git 
 noremap <leader><S-S> :Git switch 
-noremap <leader>gi :Git 
-noremap <C-F> :Git<CR><C-W>H/^M\>\\|^U\><CR>
-noremap <C-G> :Git<CR>H/^M\>\\|^U\><CR>
-noremap <leader>gee :Git edit<CR>
-noremap <leader>gfe :Git fetch<CR>
-noremap <leader>grr :Git rebase<CR>
+noremap <leader>git :Git 
+noremap <leader>gee :Gedit<CR>
+noremap <leader>gff :Git! fetch<CR>
+noremap <leader>grr :Git rebase --autosquash<CR>
 noremap <leader>gri :Git rebase --interactive HEAD~
 noremap <leader>grcc :Git rebase --continue<CR>
 noremap <leader>gre :Git restructure 
 noremap <leader>gree :Git restructure<CR><CR>
 noremap <leader>gb :Git blame<CR>
-noremap <leader>gsh :0Git show<CR>
-noremap <leader>gss :Git stash<CR>
+noremap <leader>gstt :Git stash<CR>
 noremap <leader>gsp :Git stash pop<CR>
 noremap <leader>gll :Git log<CR>
 noremap <leader>gln :Git log --decorate --oneline<CR>
 noremap <leader>0gln :0Git log --decorate --oneline<CR>
-noremap <leader>guu :Git update<CR>
+noremap <leader>guu :Git! update<CR>
 noremap <leader>gd :Git diff<CR>
-noremap <leader>gpp :Git push<CR>
-noremap <leader>gpff :Git push -f
-noremap <leader>gtpp :Git push --tags
-noremap <leader>gtpff :Git push -f --tags
+noremap <leader>gpp :Git! push<CR>
+noremap <leader>gpff :Git! push -f
+noremap <leader>gtpp :Git! push --tags
+noremap <leader>gtpff :Git! push -f --tags
 " Somewhat hacky map to change from diff view to normal view
 " of the current buffer
-noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
+" noremap <leader>gD :diffoff \| windo if &diff \| hide \| endif<CR>:Gedit<CR>
 
 "------------------------------------------------------------
 " Splits
@@ -189,23 +182,35 @@ tnoremap <C-l> <C-\><C-N><C-W>l
 " Doesn't work
 tnoremap <C-S-h> <C-\><C-N><C-W>h
 
+" Open terminal splits
+noremap <C-W>tt :vsplit<CR>:terminal<CR>i
+noremap <C-W>ts :split<CR>:terminal<CR>i
+
 noremap <C-W>_ <C-W>_:set cmdheight=2<CR>
+noremap <C-W><C--> <C-W>_:set cmdheight=2<CR>
+noremap <C-W><C-=> <C-W>=:set cmdheight=2<CR>
+noremap <C-W><C-\> <C-W>\|:set cmdheight=2<CR>
+noremap <C-W><C-t> :split<CR>:terminal<CR>
 "------------------------------------------------------------
 " Tabs
 " Moving through tabs
+" To enable mapping Ctrl+Shift combinations, on iterm2 enable Session >
+" Terminal State > modifyOtherKeys mode 1
+noremap <C-S-Tab> :tabprevious<CR>
+noremap <C-Tab>   :tabnext<CR>
+tnoremap <C-S-Tab> <C-\><C-N>:tabprevious<CR>
+tnoremap <C-Tab>   <C-\><C-N>:tabnext<CR>
+noremap <C-S-h> :echomsg "removed"<CR>
+noremap <C-S-l> :echomsg "removed"<CR>
+
+tnoremap <C-S-h> <C-\><C-N>:echomsg "removed"<CR>
+tnoremap <C-S-l> <C-\><C-N>:echomsg "removed"<CR>
 " Press ctrl+v to see what I need to map to map C-S-Tab
-noremap <S-H> :tabprevious<CR>
-noremap <S-L> :tabnext<CR>
+noremap <S-H> :echomsg "removed"<CR>
+noremap <S-L> :echomsg "removed"<CR>
 
-noremap <leader><S-L> :tabmove +1<CR>
-noremap <leader><S-H> :tabmove -1<CR>
-
-noremap <leader><PageUp> :tabprevious<CR>
-noremap <leader><PageDown> :tabnext<CR>
-" You can move through tabs with Ctrl + PageUp / PageDown
-" Make this also work in terminal mode
-:tnoremap <C-PageUp> <C-\><C-N><C-PageUp>
-:tnoremap <C-PageDown> <C-\><C-N><C-PageDown>
+noremap <leader>tl :tabmove +1<CR>
+noremap <leader>th :tabmove -1<CR>
 
 " Opening and closing tabs
 noremap <leader>tt :tabedit %<CR>
@@ -221,16 +226,16 @@ noremap <leader>try y:TabooRename <C-F>p
 "------------------------------------------------------------
 " Maps for terminals and terminal mode
 noremap <leader>ter :terminal<CR>i
-noremap <leader>gap :terminal gap-master<CR>i
-" Open terminal in split
-noremap <leader>tv :vs<CR>:term<CR>
+" Make pasting form registers work in terminal. I have no idea what <expr> does.
+tnoremap <expr> <C-\><C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " Make <C-W> exit terminal mode
-:tnoremap <C-W> <C-\><C-N><C-W><ESC>
+tnoremap <C-W> <C-\><C-N><C-W><ESC><C-W>
+" Doesn't work: tnoremap <C-Q> <C-W><ESC><C-Q>
 " Make <C-W> also work in insert mode
 inoremap <C-W> <ESC><C-W>
 
 "------------------------------------------------------------
-" Quickfix window
+" Quickfix and preview window
 " Toggle it, from
 " https://stackoverflow.com/questions/11198382/how-to-create-a-key-map-to-open-and-close-the-quickfix-window-in-vim
 function! ToggleQuickFix()
@@ -241,6 +246,8 @@ function! ToggleQuickFix()
     endif
 endfunction
 nnoremap <leader>cc :call ToggleQuickFix()<cr>
+" Close preview windows
+nnoremap <leader>cp :pclose<cr>
 
 "------------------------------------------------------------
 " Dispatch-vim
@@ -255,9 +262,10 @@ noremap `gt :Start gap-master --quitonbreak -c "Test(\"%\");QUIT;"<CR>
 " Save
 noremap  <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
+noremap  <leader>nw :noautocmd w<CR>
 " Save and quit
-noremap   <C-x> :x<CR>
-inoremap  <C-x> <ESC>:x<CR>
+"noremap   <C-x> :x<CR>
+"inoremap  <C-x> <ESC>:x<CR>
 " Quit
 " Unfortunately <C-w> is already used for working with splits
 noremap   <C-q> :q<CR>
