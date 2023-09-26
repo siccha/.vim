@@ -11,3 +11,6 @@ function start_and_open_scratch_and_set_slime(register_character)
     vim.b.slime_config = {jobid = job_id}
     -- TODO Add hook to close the scratch.py window when the Start-ed terminal is closed.
 end
+
+-- Function to: switch to cr-cli, if not term: {close buffer, bdel cr-cli, open terminal, :file cr-cli}
+-- map to <leader>bc
