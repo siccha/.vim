@@ -19,6 +19,10 @@ augroup MyTermMappings
     autocmd TermOpen * nnoremap <buffer> <C-A> i<C-A>
 augroup END
 
+" Movements
+" doesn't work, why?
+noremap [c [czz
+noremap ]c ]czz
 " Where to put these?
 noremap <leader>% :let @+=@%<CR>
 " TODO make this an operator
@@ -36,13 +40,21 @@ let mapleader=" "
 " Mappings to move through buffers
 " List all available buffers
 noremap <leader>l :buffers<CR>:b 
-noremap <leader>b :b 
-noremap <leader>f :b 
+noremap <leader>pf :b 
 " Go to last buffer
 " noremap <leader>uu :b#<CR> " use <C-6> or <C-^> instead
 " Open current working directory
 noremap <leader>j :bnext<CR>
 noremap <leader>k :bprev<CR>
+" Buffers I use often
+noremap <leader>bb :b 
+noremap <leader>bt :b todo.md<CR>
+noremap <leader>bd :b docker<CR>
+noremap <leader>bc :b cr<CR>
+noremap <leader>bl :b cloud<CR>
+noremap <leader>bp :b python<CR>
+noremap <leader>bf :SP format.py<CR>
+noremap <leader>bs :SP scratch.py<CR>
 
 " Yank and Paste
 " Yank line into the OS clipboard
@@ -57,9 +69,25 @@ nnoremap <leader>/ :nohl<CR>
 
 " Dispatch maps
 " mnemonic: r = run
-noremap <leader>re :execute "Dispatch" @e<CR>
-noremap <leader>rr :execute "Dispatch" @r<CR>
-noremap <leader>rt :execute "Dispatch" @t<CR>
+" mnemonic: s = start
+
+noremap <leader>sq :execute "Start" @q<CR><CR><C-\><C-N>:tabmove -1<CR>G
+noremap <leader>sw :execute "Start" @w<CR><CR><C-\><C-N>:tabmove -1<CR>G
+noremap <leader>se :execute "Start" @e<CR><CR><C-\><C-N>:tabmove -1<CR>G
+noremap <leader>sr :execute "Start" @r<CR><CR><C-\><C-N>:tabmove -1<CR>G
+noremap <leader>st :execute "Start" @t<CR><CR><C-\><C-N>:tabmove -1<CR>G
+" m = make
+noremap <leader>sm :execute "Start" @m<CR><CR><C-\><C-N>:tabmove -1<CR>G
+lua << EOF
+require('sergio.functions')
+vim.keymap.set({'n'}, '<leader>re', function() start_and_open_scratch_and_set_slime("e") end)
+vim.keymap.set({'n'}, '<leader>rs', function() start_and_open_scratch_and_set_slime("s") end)
+vim.keymap.set({'n'}, '<leader>rt', function() start_and_open_scratch_and_set_slime("t") end)
+-- True-zen focus
+truezen = require("sergio.true-zen")
+vim.keymap.set("n", "<leader>zf", function() truezen.toggle() end, { noremap = true })
+EOF
+
 
 " Make
 " With latexmk use the -silent option for sane warnings
@@ -141,15 +169,17 @@ noremap <leader>gee :Gedit<CR>
 noremap <leader>gff :Git! fetch<CR>
 noremap <leader>grr :Git rebase --autosquash<CR>
 noremap <leader>gri :Git rebase --interactive HEAD~
-noremap <leader>grcc :Git rebase --continue<CR>
+noremap <leader>grc :Git rebase --continue<CR>
 noremap <leader>gre :Git restructure 
-noremap <leader>gree :Git restructure<CR><CR>
+noremap <leader>gree <C-W>k:Git restructure<CR><CR>
 noremap <leader>gb :Git blame<CR>
 noremap <leader>gstt :Git stash<CR>
-noremap <leader>gsp :Git stash pop<CR>
-noremap <leader>gll :Git log<CR>
-noremap <leader>gln :Git log --decorate --oneline<CR>
-noremap <leader>0gln :0Git log --decorate --oneline<CR>
+noremap <leader>gstp :Git stash pop<CR>
+noremap <leader>gll :vertical Git log<CR>
+noremap <leader>gln :vertical Git log --decorate --name-only<CR>
+noremap <leader>0gln :0Git log --decorate --name-only<CR>
+noremap <leader>glo :vertical Git log --decorate --oneline<CR>
+noremap <leader>0glo :0Git log --decorate --oneline<CR>
 noremap <leader>guu :Git! update<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gpp :Git! push<CR>
@@ -162,8 +192,6 @@ noremap <leader>gtpff :Git! push -f --tags
 
 "------------------------------------------------------------
 " Splits
-" Open terminal split
-noremap <leader>vt :vsplit<CR>:terminal<CR>i
 " Open small splits
 command! NEW new |resize 10
 command! -nargs=? -complete=buffer SP sp <args>|resize 10
@@ -191,6 +219,7 @@ noremap <C-W><C--> <C-W>_:set cmdheight=2<CR>
 noremap <C-W><C-=> <C-W>=:set cmdheight=2<CR>
 noremap <C-W><C-\> <C-W>\|:set cmdheight=2<CR>
 noremap <C-W><C-t> :split<CR>:terminal<CR>
+noremap <C-W><C-p> :vsplit python<CR>
 "------------------------------------------------------------
 " Tabs
 " Moving through tabs
@@ -213,12 +242,18 @@ noremap <leader>tl :tabmove +1<CR>
 noremap <leader>th :tabmove -1<CR>
 
 " Opening and closing tabs
+noremap <leader>tn :tabnew<CR>
 noremap <leader>tt :tabedit %<CR>
+noremap <leader>tr :tabedit %<CR>:terminal<CR>
 noremap <leader>tb :tabedit %<CR>:b
 noremap <leader>tee :tabedit 
 noremap <leader>tc :tabclose<CR>
 noremap <leader>tq :tabclose<CR>
 noremap <leader>tre :TabooRename 
+
+" Moving to a fixed tab
+" Xgt switches to tab nr X
+" g<Tab> switches to last accessed tab!
 
 " Yank current selection and use it as tab name
 noremap <leader>try y:TabooRename <C-F>p

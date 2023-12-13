@@ -18,7 +18,7 @@ filetype plugin indent off
 
 " use the correct python version
 let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/opt/homebrew/bin/python3.9'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 "-----------------------------------------------------------------------------
 " vim-plug settings
@@ -42,6 +42,16 @@ function! BuildYCM(info)
   endif
 endfunction
 
+function! BuildCodeWhisperer(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !cat ~/.local/share/nvim/plugged/AmazonCodeWhispererVimPlugin/service-2.json | jq '.metadata += {"serviceId":"codewhisperer"}' | tee /tmp/aws-coral-model.json && aws configure add-model --service-model file:///tmp/aws-coral-model.json --service-name codewhisperer
+  endif
+endfunction
+
 "-----------------------------------------------------------------------------
 " Must have plugins
 " Provides tab completion. For system packages that need to be installed see
@@ -50,6 +60,8 @@ endfunction
 "Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
@@ -58,11 +70,11 @@ Plug 'lukas-reineke/cmp-rg'
 " Plug 'L3MON4D3/LuaSnip'
 " Plug 'saadparwaiz1/cmp_luasnip'
 " For ultisnips users.
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 " Provides code snippets. This plugin is VERY customizable and you
 " SHOULD at least have a look at the basic tutorials (2 - 10 minutes).
 " For links to the tutorials, see the file README.md.
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 " Fixes all kinds of vulnerabilities related to modelines
 Plug 'ciaranm/securemodelines'
 " Provides a helpful status line (the thing at the bottom)
@@ -75,6 +87,10 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'fisadev/vim-isort'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
+" CodeWhisperer: https://code.amazon.com/packages/AmazonCodeWhispererVimPlugin
+" Depends on: https://code.amazon.com/packages/AmazonCodeWhispererPythonClient
+"Plug 'ssh://git.amazon.com/pkg/AmazonCodeWhispererVimPlugin', { 'do': function('BuildCodeWhisperer') }
+Plug 'ssh://git.amazon.com/pkg/AmazonCodeWhispererVimPlugin'
 " If vim-fugitive is the Git, vim-rhubarb is the Hub.
 Plug 'tpope/vim-rhubarb'
 " Alternative for project drawer, that is for browsing the project file tree
@@ -113,6 +129,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'Julian/vim-textobj-variable-segment'
 " text object ij/aj for innermost of either (, [, {
 Plug 'Julian/vim-textobj-brace'
+" text object iq/aq for innermost quote
+Plug 'beloglazov/vim-textobj-quotes'
 " text object ir/ar for indention based paragraph
 Plug 'pianohacker/vim-textobj-indented-paragraph'
 " Signcolumn markers, stage from within buffer and much more
@@ -163,6 +181,13 @@ Plug 'onsails/lspkind.nvim', {'branch': 'master' }
 " Reimagine organization
 " Might have to do :Neorg sync-parsers
 Plug 'nvim-neorg/neorg'
+" Plug 'mbbill/undotree'
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'shaunsingh/solarized.nvim'
+Plug 'shaunsingh/moonlight.nvim'
+Plug 'shaunsingh/nord.nvim'
+"  Clean and elegant distraction-free writing for NeoVim 
+Plug 'Pocco81/true-zen.nvim'
 "-----------------------------------------------------------------------------
 
 " Add plugins to &runtimepath
@@ -316,7 +341,8 @@ let g:tex_flavor = "latex"
 
 " Influences color theme.
 " bg = background
-set background=light
+set background=dark
+colorscheme moonlight
 
 "------------------------------------------------------------
 " Make vsplit put the new buffer on the right side
@@ -338,6 +364,10 @@ set formatoptions+=tcr
 "   o insert comment leader when hitting 'o' or 'O' in normal mode
 set formatoptions-=o 
 
+" Terminal options
+" how many lines are kept as scrollback
+set scrollback=50000
+
 "------------------------------------------------------------
 " Highlighting
 "------------------------------------------------------------
@@ -357,6 +387,10 @@ let g:airline#extensions#default#layout = [
     \ ]
 " TODO Need to use tabline to have this?
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+"-----------------------------------------------------------------------------
+" Black
+let g:black_linelength = 100
 
 "-----------------------------------------------------------------------------
 " Slime
@@ -389,6 +423,10 @@ augroup black_on_save
   autocmd BufWritePre *.py execute 'Black' | execute 'Isort'
 augroup end
 
+augroup source_dispatch_on_write
+  autocmd!
+  autocmd BufWritePost dispatch.vim source dispatch.vim
+augroup end
 "-----------------------------------------------------------------------------
 " UltiSnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -463,8 +501,9 @@ endif
 " Lua
 " Plugins to try
 lua require('buffertag').enable()
-lua require('telescope').setup()
 lua require('fold-preview').setup()
+
+lua require('telescope').setup()
 "lua require('telescope').load_extension('fzf')
 " From the fzf installation logs:
 " To install useful keybindings and fuzzy completion:
@@ -550,7 +589,7 @@ cmp.setup({
       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
       -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
   window = {
@@ -562,7 +601,7 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -584,9 +623,11 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
+    { name = 'nvim_lua' },
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'luasnip' }, -- For luasnip users.
-    { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'path' },
   }, {
@@ -680,61 +721,112 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR><C-F>0', opts)
+  -- Previously I set this to 'lua vim.lsp.buf.rename()<CR><C-F>0'. That doesn't work anymore.
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- TODO try this, it looks super cool!
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'v', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>lf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 
 -- Setup lspconfig.
--- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local util = require("lspconfig/util")
-local servers = { 'pylsp' } -- 'jedi_language_server', 'pyright', 'rust_analyzer',
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
+require('lspconfig')['pylsp'].setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = function(fname)
+      return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+        util.path.dirname(fname)
+  end,
+  settings = {
+      pylsp = {
+          plugins = {
+              pycodestyle = {
+                  maxLineLength = 100,
+              },
+              jedi = {
+                  extra_paths = {
+                      "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
+                      -- "/Volumes/workplace/asr-workspace/src/Dory/",
+                      "/Volumes/workplace/AlexaAsrDailyLMUpdate/src/AlexaAsrDailyLMUpdate/src",
+                      "/Volumes/workplace/phasa_ws/src/AlexaAsrDailyLMUpdate/src",
+                      "/Volumes/workplace/pyrama/build-clouddesktop/",
+                      "/Volumes/workplace/asr-workspace/src/MetadoryPOC/src/",
+                      "/Volumes/workplace/asr-workspace/src/AlexaAsrUberRecipe/src/",
+                      "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/lib/",
+                      "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/recipes/",
+                      "/Volumes/workplace/asr-workspace/build-clouddesktop/Dory-BlueShift-Speech/Dory-BlueShift-Speech-1.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
+                  },
+              },
+          },
+      },
+  },
+}
+
+require('lspconfig').rust_analyzer.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    root_dir = function(fname)
-    return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-      util.path.dirname(fname)
-    end,
-    settings = {
-        pylsp = {
-            plugins = {
-                jedi = {
-                    extra_paths = {
-                        "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
-                        "/Volumes/workplace/AlexaAsrDailyLMUpdate/src/AlexaAsrDailyLMUpdate/src",
-                        "/Volumes/workplace/phasa_ws/src/AlexaAsrDailyLMUpdate/src",
-                        "/Volumes/workplace/pyrama/build-clouddesktop/",
-                        "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/lib/",
-                        "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/recipes/",
-                        "/Volumes/workplace/asr-workspace/build-clouddesktop/Dory-BlueShift-Speech/Dory-BlueShift-Speech-1.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
-                    },
-                },
-            },
-        },
-    },
-  }
-end
+})
+
+require'lspconfig'.tsserver.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 
 -- Setup nvim-surround
 require("nvim-surround").setup()
 
 -- Treesitter
-require('nvim-treesitter.configs').setup{
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
     -- "lua"
     -- To be able to install neorg Treesitter parser on MacOS check https://github.com/nvim-neorg/neorg#troubleshooting-treesitter
     -- Install llvm and use its clang compiler
-    ensure_installed = { "rust", "norg" },
-}
-EOF
+  ensure_installed = { "help", "rust", "norg" },
 
-lua <<EOF
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { "javascript" },
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
+    disable = function(lang, buf)
+        local max_filesize = 100 * 1024 -- 100 KB
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+            return true
+        end
+    end,
+    disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 -- Neorg
 require('neorg').setup {
     load = {
@@ -758,6 +850,10 @@ require('neorg').setup {
         -- ["core.gtd.base"] = {},
     }
 }
+
+-- Undotree
+-- vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, {})
+
 EOF
 "   core.presenter - Neorg module to create gorgeous presentation slides.
 "   core.gtd.base - Manages your tasks with Neorg using the Getting Things Done methodology.
