@@ -15,7 +15,7 @@ function! s:GrepOperator(type)
     " so adding '\>' at the end breaks it
     silent execute "grep! -R "
         \ . "--exclude-dir=\.git --exclude-dir=\.venv "
-        \ . "--exclude-dir=plugged "
+        \ . "--exclude-dir=plugged --exclude-dir=node_modules "
         \ . shellescape("\\<") . shellescape(@@) . shellescape("\\>") . " ."
     copen
     let @@ = saved_unnamed_register

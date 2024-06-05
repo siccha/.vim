@@ -6,6 +6,6 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
 -- delete visual into void, then paste
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>pp", "\"_dP")
 -- substitute what's under the cursor
 vim.keymap.set("n", "<leader>subst", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

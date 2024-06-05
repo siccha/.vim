@@ -48,13 +48,15 @@ noremap <leader>j :bnext<CR>
 noremap <leader>k :bprev<CR>
 " Buffers I use often
 noremap <leader>bb :b 
-noremap <leader>bt :b todo.md<CR>
+noremap <leader>bi :b dispatch.vim<CR>
 noremap <leader>bd :b docker<CR>
 noremap <leader>bc :b cr<CR>
 noremap <leader>bl :b cloud<CR>
 noremap <leader>bp :b python<CR>
-noremap <leader>bf :SP format.py<CR>
-noremap <leader>bs :SP scratch.py<CR>
+
+" Restarting a vim session keeps terminal buffer names like cloud, cr, python
+" but turns them into regular buffers
+command! -nargs=? -complete=buffer RestartNamedTerminal 0file |bdel |tabnew |execute "terminal"|file <args>
 
 " Yank and Paste
 " Yank line into the OS clipboard
@@ -71,6 +73,8 @@ nnoremap <leader>/ :nohl<CR>
 " mnemonic: r = run
 " mnemonic: s = start
 
+command! -nargs=1 LeftStart execute "Start" <q-args> | tabmove -1
+command! LeftTabedit tabedit % | tabmove -1
 noremap <leader>sq :execute "Start" @q<CR><CR><C-\><C-N>:tabmove -1<CR>G
 noremap <leader>sw :execute "Start" @w<CR><CR><C-\><C-N>:tabmove -1<CR>G
 noremap <leader>se :execute "Start" @e<CR><CR><C-\><C-N>:tabmove -1<CR>G
@@ -91,8 +95,8 @@ EOF
 
 " Make
 " With latexmk use the -silent option for sane warnings
-" map <leader>m :Neomake!<CR>
-noremap <leader>m :execute "Dispatch!" @m<CR>
+" map <leader>mm :Neomake!<CR>
+noremap <leader>mm :execute "Dispatch" @m<CR>
 
 "------------------------------------------------------------
 " Command abbreviations (renamings)

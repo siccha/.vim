@@ -750,6 +750,7 @@ require('lspconfig')['pylsp'].setup {
               },
               jedi = {
                   extra_paths = {
+                      "/Volumes/workplace/AGIWorkflow/src/AGIWorkflowServiceLambda/src/",
                       "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
                       -- "/Volumes/workplace/asr-workspace/src/Dory/",
                       "/Volumes/workplace/AlexaAsrDailyLMUpdate/src/AlexaAsrDailyLMUpdate/src",
