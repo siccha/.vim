@@ -81,10 +81,13 @@ Plug 'ciaranm/securemodelines'
 Plug 'vim-airline/vim-airline'
 " Ctags
 Plug 'preservim/tagbar'
+" Linters
 " Black for python
 Plug 'psf/black', { 'branch': 'stable' }
 " Isort for python
 Plug 'fisadev/vim-isort'
+" Ale for running JS prettier and maybe eslint
+Plug 'dense-analysis/ale'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
 " CodeWhisperer: https://code.amazon.com/packages/AmazonCodeWhispererVimPlugin
@@ -392,6 +395,8 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " Black
 let g:black_linelength = 100
 
+" Ale
+let g:ale_fix_on_save = 1
 "-----------------------------------------------------------------------------
 " Slime
 let g:slime_target = "neovim"
@@ -750,6 +755,7 @@ require('lspconfig')['pylsp'].setup {
               },
               jedi = {
                   extra_paths = {
+                      "/Volumes/workplace/AGITaskLibrary/src/AGIMLOpsCommonTaskLibrary/src/",
                       "/Volumes/workplace/AGIWorkflow/src/AGIWorkflowServiceLambda/src/",
                       "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
                       -- "/Volumes/workplace/asr-workspace/src/Dory/",
