@@ -733,12 +733,32 @@ end
 -- map buffer local keybindings when the language server attaches
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local util = require("lspconfig/util")
+
+local lspconfig = require 'lspconfig'
+local configs = require 'lspconfig.configs'
+if not configs.codewhisperer then
+    configs.codewhisperer = {
+        default_config = {
+            -- Add the codewhisperer to our PATH or BIN folder
+            cmd = { "cwls" },
+            -- root_dir = lspconfig.util.root_pattern("packageInfo", "package.json", "tsconfig.json", "jsconfig.json", ".git", "pyproject.toml"),
+            root_dir = function(fname)
+                return util.find_git_ancestor(fname)
+            end,
+            filetypes = { 'java', 'python', 'typescript', 'javascript', 'csharp', 'ruby', 'kotlin', 'shell', 'sql', 'c', 'cpp', 'go', 'rust', 'lua' },
+        },
+    }
+end
+lspconfig.codewhisperer.setup {}
+
+
 require('lspconfig')['pylsp'].setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = function(fname)
-      return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-        util.path.dirname(fname)
+      return util.find_git_ancestor(fname)
+      -- return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+      --   util.path.dirname(fname)
   end,
   settings = {
       pylsp = {
@@ -747,14 +767,17 @@ require('lspconfig')['pylsp'].setup {
                   maxLineLength = 100,
               },
               jedi = {
+                  -- environment = "", -- set this via env var $VIRTUAL_ENV
                   extra_paths = {
                       "/Volumes/workplace/AGITaskLibrary/src/AGIMLOpsCommonTaskLibrary/src/",
+                      "/Volumes/workplace/AGITaskLibrary/build-clouddesktop/brazil-pkg-cache/AGIMLOpsCommonTaskLibrary/AGIMLOpsCommonTaskLibrary-TODO/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.8/site-packages",
                       "/Volumes/workplace/AGIWorkflow/src/AGIWorkflowServiceLambda/src/",
-                      "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
+                      -- "/Volumes/workplace/asr-workspace/build-clouddesktop/brazil-pkg-cache/Dory/Dory-1.4.13465.0/AL2_x86_64/DEV.STD.PTHREAD/build/lib/python3.6/site-packages",
                       -- "/Volumes/workplace/asr-workspace/src/Dory/",
                       "/Volumes/workplace/AlexaAsrDailyLMUpdate/src/AlexaAsrDailyLMUpdate/src",
                       "/Volumes/workplace/phasa_ws/src/AlexaAsrDailyLMUpdate/src",
                       "/Volumes/workplace/pyrama/build-clouddesktop/",
+                      "/Volumes/workplace/pyrama/src/AlexaLLM-Transformers",
                       "/Volumes/workplace/asr-workspace/src/MetadoryPOC/src/",
                       "/Volumes/workplace/asr-workspace/src/AlexaAsrUberRecipe/src/",
                       "/Volumes/workplace/asr-workspace/src/Dory-BlueShift-Speech/lib/",
