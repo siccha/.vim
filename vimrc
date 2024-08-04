@@ -84,6 +84,8 @@ Plug 'dense-analysis/ale'
 Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
 " toggleterm: A neovim plugin to persist and toggle multiple terminals during an editing session
 Plug 'akinsho/toggleterm.nvim'
+" nvim-projectconfig: Load config depend on current directory.
+Plug 'windwp/nvim-projectconfig'
 " If vim-fugitive is the Git, vim-rhubarb is the Hub.
 Plug 'tpope/vim-rhubarb'
 " Alternative for project drawer, that is for browsing the project file tree
@@ -511,6 +513,71 @@ lua require('telescope').setup()
 "   set rtp+=/opt/homebrew/opt/fzf
 
 lua << EOF
+local harpoon = require("harpoon")
+
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+
+-- basic telescope configuration for harpoon
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
+vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window" })
+
+vim.keymap.set("n", "<leader>hj", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>hk", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>hl", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>h;", function() harpoon:list():select(4) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+-- binding C-S-* does not work?
+vim.keymap.set("n", "<C-S-P>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
+
+-- Example config: https://github.com/akinsho/toggleterm.nvim?tab=readme-ov-file#setup
+require("toggleterm").setup{
+  open_mapping = [[<c-\>]],
+  -- size can be a number or function which is passed the current terminal
+  size = function(term)
+    if term.direction == "horizontal" then
+      return 20
+    elseif term.direction == "vertical" then
+      return vim.o.columns * 0.4
+    end
+  end,
+  insert_mappings = false, -- whether or not the open mapping applies in insert mode
+  terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
+  direction = 'vertical',
+}
+
+-- Command to edit project config
+-- EditProjectConfig
+require('nvim-projectconfig').setup({
+  project_dir = "~/.amazon_config/vim/projectconfig/",
+  -- Example:
+  -- Current directory is /home/abcde/projects/awesome/.
+  -- Load config file projectconfig/awesome.lua
+})
+
+
 require('gitsigns').setup{
   sign_priority = 100,
   watch_gitdir = {
