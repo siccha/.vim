@@ -80,10 +80,10 @@ Plug 'fisadev/vim-isort'
 Plug 'dense-analysis/ale'
 "-----------------------------------------------------------------------------
 " Nice to have plugins
-" CodeWhisperer: https://code.amazon.com/packages/AmazonCodeWhispererVimPlugin
-" Depends on: https://code.amazon.com/packages/AmazonCodeWhispererPythonClient
-"Plug 'ssh://git.amazon.com/pkg/AmazonCodeWhispererVimPlugin', { 'do': function('BuildCodeWhisperer') }
-Plug 'ssh://git.amazon.com/pkg/AmazonCodeWhispererVimPlugin'
+" Harpoon: Getting you where you want with the fewest keystrokes.
+Plug 'ThePrimeagen/harpoon', { 'branch': 'harpoon2' }
+" toggleterm: A neovim plugin to persist and toggle multiple terminals during an editing session
+Plug 'akinsho/toggleterm.nvim'
 " If vim-fugitive is the Git, vim-rhubarb is the Hub.
 Plug 'tpope/vim-rhubarb'
 " Alternative for project drawer, that is for browsing the project file tree

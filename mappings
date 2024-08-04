@@ -3,6 +3,10 @@
 "------------------------------------------------------------
 " NONE
 
+inoremap <S-Space> <Space>
+tnoremap <S-Space> <Space>
+noremap <S-Space> <Space>
+
 "------------------------------------------------------------
 " Mappings
 "------------------------------------------------------------
@@ -49,9 +53,11 @@ noremap <leader>k :bprev<CR>
 " Buffers I use often
 noremap <leader>bb :b 
 noremap <leader>bi :b dispatch.vim<CR>
+" Terminal buffers I use often
+" Now managed by toggleterm
 noremap <leader>bd :b docker<CR>
-noremap <leader>bc :b cr<CR>
-noremap <leader>bl :b cloud<CR>
+noremap <leader>bc :4ToggleTerm name=cr<CR>
+noremap <leader>bl :5ToggleTerm name=cloud<CR>
 noremap <leader>bp :b python<CR>
 
 " Restarting a vim session keeps terminal buffer names like cloud, cr, python
@@ -128,8 +134,8 @@ map <Left> <Plug>RepeatMotionLeft
 nmap <F8> :TagbarToggle<CR>
 
 " tags
-noremap <C-[> :tprevious<CR>
-noremap <C-\> :tnext<CR>
+" noremap <C-[> :tprevious<CR>
+" noremap <C-\> :tnext<CR>
 
 "------------------------------------------------------------
 " Functions
@@ -145,14 +151,6 @@ command! -nargs=1 GrepTagFileAndSearch :call GrepTagFileAndSearch(<q-args>)
 "------------------------------------------------------------
 " Comment/uncomment a line
 noremap <leader>c gcc
-" Search backwards for a line without indentation
-" Can be used for GAP code to jump to definition of the outermost function.
-inoremap <S-space> <ESC>
-noremap <leader><space> za
-" Delete EOL and following whitespace, if we were in insert mode
-" we go back to insert mode afterwards.
-inoremap <S-del> <ESC>$a  <del><ESC>dwi
-noremap <S-del> $a  <del><ESC>dw
 " substitute
 noremap <leader>subst :<C-f>i:%s//gc<ESC>2hi
 
@@ -180,10 +178,10 @@ noremap <leader>gb :Git blame<CR>
 noremap <leader>gstt :Git stash<CR>
 noremap <leader>gstp :Git stash pop<CR>
 noremap <leader>gll :vertical Git log<CR>
-noremap <leader>gln :vertical Git log --decorate --name-only<CR>
-noremap <leader>0gln :0Git log --decorate --name-only<CR>
-noremap <leader>glo :vertical Git log --decorate --oneline<CR>
-noremap <leader>0glo :0Git log --decorate --oneline<CR>
+" noremap <leader>gln :vertical Git log --decorate --name-only<CR>
+noremap <leader>gln :0Git log --decorate --name-only<CR>
+"noremap <leader>glo :vertical Git log --decorate --oneline<CR>
+noremap <leader>glo :0Git log --decorate --oneline<CR>
 noremap <leader>guu :Git! update<CR>
 noremap <leader>gd :Git diff<CR>
 noremap <leader>gpp :Git! push<CR>
@@ -268,10 +266,10 @@ noremap <leader>ter :terminal<CR>i
 " Make pasting form registers work in terminal. I have no idea what <expr> does.
 tnoremap <expr> <C-\><C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 " Make <C-W> exit terminal mode
-tnoremap <C-W> <C-\><C-N><C-W><ESC><C-W>
+tnoremap <C-W><C-W> <C-\><C-N><C-W><ESC><C-W>
 " Doesn't work: tnoremap <C-Q> <C-W><ESC><C-Q>
 " Make <C-W> also work in insert mode
-inoremap <C-W> <ESC><C-W>
+inoremap <C-W><C-W> <ESC><C-W>
 
 "------------------------------------------------------------
 " Quickfix and preview window
