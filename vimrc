@@ -18,7 +18,7 @@ filetype plugin indent off
 
 " use the correct python version
 let g:python_host_prog = '/usr/bin/python2'
-let g:python3_host_prog = '/opt/homebrew/bin/python3'
+let g:python3_host_prog = '/Users/sergiocf/.my_venv/bin/python'
 
 "-----------------------------------------------------------------------------
 " vim-plug settings
@@ -39,16 +39,6 @@ function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
     "--clang-completer " you can add this option if you want semantic C support
     !python2 ./install.py
-  endif
-endfunction
-
-function! BuildCodeWhisperer(info)
-  " info is a dictionary with 3 fields
-  " - name:   name of the plugin
-  " - status: 'installed', 'updated', or 'unchanged'
-  " - force:  set on PlugInstall! or PlugUpdate!
-  if a:info.status == 'installed' || a:info.force
-    !cat ~/.local/share/nvim/plugged/AmazonCodeWhispererVimPlugin/service-2.json | jq '.metadata += {"serviceId":"codewhisperer"}' | tee /tmp/aws-coral-model.json && aws configure add-model --service-model file:///tmp/aws-coral-model.json --service-name codewhisperer
   endif
 endfunction
 
@@ -314,8 +304,9 @@ set autoread
 " Sets 'foldlevel' when starting to edit another buffer in a window.
 set foldlevelstart=1
 
+" vim-markdown settings
 let g:vim_markdown_folding_disabled = 1
-
+let g:vim_markdown_conceal = 1
 set conceallevel=2
 
 " Remove coloured background from folding
@@ -395,6 +386,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " Black
 let g:black_linelength = 100
 
+" Isort
+let g:vim_isort_config_overrides = {"profile": "black"}
+
 " Ale
 let g:ale_fix_on_save = 1
 "-----------------------------------------------------------------------------
@@ -435,13 +429,13 @@ augroup end
 "-----------------------------------------------------------------------------
 " UltiSnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<A-l>"
-let g:UltiSnipsJumpBackwardTrigger="<A-h>"
-let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="horizontal"
+" let g:UltiSnipsExpandTrigger="<C-j>"
+" let g:UltiSnipsJumpForwardTrigger="<A-l>"
+" let g:UltiSnipsJumpBackwardTrigger="<A-h>"
+" let g:UltiSnipsSnippetsDir=$HOME.'/.vim/ultisnips'
+" let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips']
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="horizontal"
 
 "-----------------------------------------------------------------------------
 " Neomake configuration
@@ -515,7 +509,6 @@ lua require('telescope').setup()
 "   /opt/homebrew/opt/fzf/install
 " To use fzf in Vim, add the following line to your .vimrc:
 "   set rtp+=/opt/homebrew/opt/fzf
-
 
 lua << EOF
 require('gitsigns').setup{
